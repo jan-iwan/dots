@@ -1,0 +1,10 @@
+ncmpcpp_directory = ~/.config/ncmpcpp
+mpd_music_dir = ~/Music
+visualizer_data_source = /tmp/mpd.fifo
+visualizer_in_stereo = no
+visualizer_output_name = mpdFIFO
+visualizer_type = spectrum
+visualizer_fps = 60
+visualizer_spectrum_smooth_look = yes
+
+display_volume_level = yes

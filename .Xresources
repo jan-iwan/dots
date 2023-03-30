@@ -1,0 +1,31 @@
+Xcursor.theme: Simp1e-Gruvbox-Dark
+Xcursor.size: 16
+*.background: #1d2021
+*.foreground: #d6c4a1
+*.font: xft:Terminus-11
+Sxiv.font: Terminus
+
+!black
+*.color0: #263640
+*.color8: #4a697d
+!red
+*.color1: #cc241d
+*.color9: #fb4934
+!green
+*.color2: #98971a
+*.color10: #b8bb26
+!yellow
+*.color3: #d79921
+*.color11: #fadb2f
+!blue
+*.color4: #458588
+*.color12: #83a598
+!magenta
+*.color5: #b16282
+*.color13: #d3869b
+!cyan
+*.color6: #489d7a
+*.color14: #7ec08c
+!white
+*.color7: #a89984
+*.color15: #eaeaea

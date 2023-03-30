@@ -1,0 +1,15 @@
+#!/bin/bash
+
+scripts=$HOME/.config/river/scripts
+logfile=$HOME/r/log
+
+$scripts/display.sh &
+$scripts/autostart.sh &
+$scripts/input.sh &
+$scripts/keybindings.sh &
+$scripts/theme.sh &
+$scripts/misc.sh &
+
+# layout
+riverctl default-layout rivertile
+rivertile -view-padding 1 -outer-padding 1

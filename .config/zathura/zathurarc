@@ -1,0 +1,7 @@
+set selection-clipboard clipboard
+set recolor-darkcolor "#D5C4A1"
+set recolor-lightcolor "#1D2021"
+set recolor-keephue false
+set recolor-reverse-video true
+set recolor
+set font Terminus
