@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# CPU passthrough in QEMU/KVM
+
+echo 1 > /sys/module/kvm/parameters/ignore_msrs
