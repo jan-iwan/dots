@@ -82,20 +82,20 @@ int done(Vec s) {
 }
 
 int main(void) {
-    Vec s = { RADIUS, RADIUS };
+    Vec r = { RADIUS, RADIUS };
     Vec v = { V0_X, V0_Y };
     Vec a = { 0, GRAVITY };
 
     term(GREEN_BOLD);
     term(SAVE_CURSOR);
 
-    while(!done(s)) {
+    while(!done(r)) {
         v = sum(v, scalar(a, DT));
-        s = sum(s, scalar(v, DT));
-        collisions(&s, &v);
+        r = sum(r, scalar(v, DT));
+        collisions(&r, &v);
 
         clear();
-        ball(s, RADIUS);
+        ball(r, RADIUS);
         draw();
 
         term(RESTORE_CURSOR);
