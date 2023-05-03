@@ -40,6 +40,8 @@ return require("packer").startup(function(use)
 
 	use("mbbill/undotree")
 
+    use("lervag/vimtex")
+
 	-- lsp
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -67,7 +69,7 @@ return require("packer").startup(function(use)
 
     -- utils
     use("nvim-tree/nvim-tree.lua")
-    use("terrortylor/nvim-comment")
+    -- use("terrortylor/nvim-comment")
     use("vimwiki/vimwiki")
     use {
         "windwp/nvim-autopairs",
