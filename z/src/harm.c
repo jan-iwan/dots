@@ -4,12 +4,17 @@
 #define HEIGHT 32
 #define BUF_SIZE (WIDTH * HEIGHT / 8)
 #define RADIUS 4
-#define V0_X 34
-#define V0_Y 12
-#define GRAVITY 98
-#define DAMPER 0.8
 #define FPS 60
 #define DT (1.0 / FPS)
+#define V0 ((Vec){ 94, 29 })
+#define R0 ((Vec){ WIDTH / 8.0, HEIGHT / 5.0 })
+#define R_EQ ((Vec){ WIDTH / 2.0, HEIGHT / 2.0 })
+#define V_MIN 0.01
+#define GRAVITY 98
+#define DAMPER 0.8
+#define K 4.0
+#define M 0.5
+#define B 0.1
 
 #define print(x) write(1, x, sizeof(x))
 #define term(x) print(x)
@@ -57,6 +62,7 @@ void draw(void) {
     static char row[WIDTH + 1];
 
     row[WIDTH] = '\n';
+    buffer[index((int)R_EQ.x, (int)R_EQ.y)] |= 1 << (int)R_EQ.x % 8;
 
     for(int y = 0; y < HEIGHT / 2; y++) {
         for(int x = 0; x < WIDTH; x++) {
@@ -69,29 +75,50 @@ void draw(void) {
     }
 }
 
+Vec mov_de(Vec r, Vec v) {
+    r = sum(r, scalar(R_EQ, -1));
+    r = scalar(r, -1 / M);
+    v = scalar(v, -B / M);
+    return sum(r, v);
+}
+
 void collisions(Vec* r, Vec* v) {
     if(r->y > HEIGHT - RADIUS) {
         r->y = HEIGHT - RADIUS;
         v->y *= -DAMPER;
-        v->x *= DAMPER;
+    }
+    if(r->y < RADIUS) {
+        r->y = RADIUS;
+        v->y *= -DAMPER;
+    }
+    if(r->x > WIDTH - RADIUS) {
+        r->x = WIDTH - RADIUS;
+        v->x *= -DAMPER;
+    }
+    if(r->x < RADIUS) {
+        r->x = RADIUS;
+        v->x *= -DAMPER;
     }
 }
 
 int done(Vec r) {
-    return r.x > WIDTH + RADIUS;
+    // return r.x > WIDTH + RADIUS;
+    return 0;
 }
 
 int main(void) {
-    Vec r = { RADIUS, RADIUS };
-    Vec v = { V0_X, V0_Y };
-    Vec a = { 0, GRAVITY };
+    Vec r = R0;
+    Vec v = V0;
+    Vec a = { 0, 0 };
 
     term(GREEN_BOLD);
     term(SAVE_CURSOR);
 
     while(!done(r)) {
+        a = mov_de(r, v);
         v = sum(v, scalar(a, DT));
         r = sum(r, scalar(v, DT));
+
         collisions(&r, &v);
 
         clear();
