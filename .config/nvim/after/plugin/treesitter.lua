@@ -1,15 +1,12 @@
 local ok, _ = pcall(require, "nvim-treesitter")
+
 if not ok then
-    if not packer_installed then
-        return
-    end
-    print("treesitter not loaded")
     return
 end
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "cpp", "lua", "rust", "help", "bash" },
+  ensure_installed = { "c", "cpp", "lua", "rust", "bash" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

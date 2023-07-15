@@ -1,45 +1,65 @@
+local opt = vim.opt
+local g = vim.g
 
-vim.opt.backup = false
-vim.opt.swapfile = false
-vim.opt.undofile = true
-vim.opt.writebackup = false
+vim.diagnostic.config({ virtual_text = false })
 
-vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
+opt.backup = false
+opt.swapfile = false
+opt.undofile = true
+opt.writebackup = false
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.showtabline = 2
-vim.opt.smartindent = true
+opt.mouse = "a"
+opt.clipboard = "unnamedplus"
+
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.showtabline = 2
+opt.smartindent = true
 
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.smartcase = true
+opt.hlsearch = false
+opt.incsearch = true
+opt.smartcase = true
 
-vim.opt.cursorline = true
-vim.opt.termguicolors = true
-vim.opt.nu = true
-vim.opt.relativenumber = true
-vim.opt.signcolumn = "yes"
+opt.cursorline = true
+opt.termguicolors = true
+opt.number = true
+opt.relativenumber = true
+opt.signcolumn = "yes"
 
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
-vim.opt.wrap = false
-vim.opt.pumheight = 10
+opt.scrolloff = 8
+opt.sidescrolloff = 8
+opt.wrap = false
+opt.pumheight = 10
 
-vim.opt.updatetime = 50
+opt.updatetime = 50
 
-vim.opt.splitbelow = true
+opt.splitbelow = true
 
-vim.opt.conceallevel = 0
+opt.conceallevel = 0
 
---vim.opt.fileencoding = "utf-8"
+--opt.fileencoding = "utf-8"
 
-if not packer_installed then
-    vim.opt.termguicolors = false
-    vim.opt.cursorline = false
-    vim.opt.signcolumn = "no"
-end
+-- if not packer_installed then
+--     opt.termguicolors = false
+--     opt.cursorline = false
+--     opt.signcolumn = "no"
+-- end
+
+
+-- # vimwiki # --
+
+g.vimwiki_list = {{
+    path = "~/Documents/notes/",
+    syntax = "markdown",
+    ext = ".md"
+}}
+
+
+-- # vimtex # --
+
+g.vimtex_view_method = "zathura"
+g.vimtex_view_general_options = "-c ~/.config/zathura/zathurarc-latex"
+-- maplocalleader = " "

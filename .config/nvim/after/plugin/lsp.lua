@@ -1,9 +1,6 @@
 local ok, _ = pcall(require, "lsp-zero")
+
 if not ok then
-    if not packer_installed then
-        return
-    end
-    print("lsp-zero not loaded")
     return
 end
 

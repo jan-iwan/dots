@@ -1,9 +1,6 @@
 local ok, _ = pcall(require, "telescope")
+
 if not ok then
-    if not packer_installed then
-        return
-    end
-    print("telescope not loaded")
     return
 end
 

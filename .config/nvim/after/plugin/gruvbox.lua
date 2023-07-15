@@ -1,9 +1,6 @@
 local ok, _ = pcall(require, "gruvbox")
+
 if not ok then
-    if not packer_installed then
-        return
-    end
-    print("gruvbox not loaded")
     return
 end
 

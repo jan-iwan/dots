@@ -1,9 +1,6 @@
 local ok, _ = pcall(require, "rainbow")
+
 if not ok then
-    if not packer_installed then
-        return
-    end
-    print("rainbow not loaded")
     return
 end
 

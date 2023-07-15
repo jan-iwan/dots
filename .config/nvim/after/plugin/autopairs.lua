@@ -1,9 +1,6 @@
 local ok, _ = pcall(require, "nvim-autopairs")
+
 if not ok then
-    if not packer_installed then
-        return
-    end
-    print("autopairs not loaded")
     return
 end
 

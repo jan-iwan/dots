@@ -1,22 +1,20 @@
 local map = vim.keymap.set
+local g = vim.g
+local cmd = vim.cmd
 
-vim.g.mapleader = " "
+g.mapleader = " "
+g.maplocalleader = " "
 
 --# normal mode #--
 
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
-map("n", ";w", vim.cmd.write)
-map("n", ";q", vim.cmd.quit)
+map("n", ";w", cmd.write)
+map("n", ";q", cmd.quit)
 -- disable cmp
-map("n","<A-c>" ,":lua require('cmp').setup.buffer { enabled = false }<CR>")
+map("n","<A-c>" , "require('cmp').setup.buffer { enabled = false }<CR>")
 
--- packer
-map("n", "<leader>PS", vim.cmd.PackerSync)
-map("n", "<leader>Ps", vim.cmd.PackerStatus)
-map("n", "<leader>PC", vim.cmd.PackerClean)
-map("n", "<leader>Pps", vim.cmd.PackerSnapshot)
-map("n", "<leader>Ppd", vim.cmd.PackerSnapshotDelete)
-map("n", "<leader>Ppr", vim.cmd.PackerSnapshotRollack)
+-- plugins
+map("n", "<leader>PP", cmd.Lazy)
 
 -- windows
 map("n", "<C-h>", "<C-w>h") -- move between windows
@@ -33,9 +31,9 @@ map("n", "<C-Left>", ":vertical resize -2<CR>")
 map("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- buffers
-map("n", "<C-c>", vim.cmd.bwipeout)
-map("n", "<S-l>", vim.cmd.bnext)
-map("n", "<S-h>", vim.cmd.bprevious)
+map("n", "<C-c>", cmd.bwipeout)
+map("n", "<S-l>", cmd.bnext)
+map("n", "<S-h>", cmd.bprevious)
 
 -- move text up and down
 map("n", "<A-j>", "<Esc>:m .+1<CR>==gi")
@@ -69,3 +67,6 @@ map("t", "<C-h>", "<C-\\><C-N><C-w>h")
 map("t", "<C-j>", "<C-\\><C-N><C-w>j")
 map("t", "<C-k>", "<C-\\><C-N><C-w>k")
 map("t", "<C-l>", "<C-\\><C-N><C-w>l")
+
+map("n", "<leader>Gs", cmd.Git)
+map("n", "<leader>u", cmd.UndotreeToggle)

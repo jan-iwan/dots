@@ -1,6 +1,4 @@
-require("jiwn.packer")
+require("jiwn.options")
+require("jiwn.plugins")
 require("jiwn.keymaps")
 require("jiwn.autocmd")
-require("jiwn.options")
-require("jiwn.vimwiki")
-require("jiwn.vimtex")
