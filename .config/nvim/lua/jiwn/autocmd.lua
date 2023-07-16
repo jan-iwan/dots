@@ -1,23 +1,25 @@
--- highlight yank, autoresize window, etc
-
 au = vim.api.nvim_create_autocmd
 aug = vim.api.nvim_create_augroup
 
-local sitelen_wawa = aug("sitelen_wawa", { clear = true })
+local austuff = aug("austuff", { clear = true })
 local file_types = aug("file_types", { clear = true })
-local auto_resize = aug("auto_resize", { clear = true })
-local git = aug("git", { clear = true })
 
 au("BufWinEnter", {
+    desc = "no autocomment on new line",
     command = "set formatoptions-=cro",
-    group = sitelen_wawa,
+    group = austuff,
 })
 au("TextYankPost", {
-    -- command = "lua vim.highlight.on_yank()",
+    desc = "Highlight yank",
     callback = function()
         vim.highlight.on_yank()
     end,
-    group = sitelen_wawa
+    group = austuff
+})
+au("VimResized", {
+    desc = "autoresize split",
+    command = "tabdo wincmd =",
+    group = austuff,
 })
 
 au("FileType", {
@@ -29,18 +31,11 @@ au("FileType", {
     end,
     group = file_types,
 })
-
 au("FileType", {
     pattern = "gitcommit",
     callback = function()
         vim.cmd("setlocal wrap")
         vim.cmd("setlocal spell")
     end,
+    group = file_types,
 })
-
-vim.cmd [[
-    augroup _auto_resize
-        autocmd!
-        autocmd VimResized * tabdo wincmd = 
-    augroup end
-]]

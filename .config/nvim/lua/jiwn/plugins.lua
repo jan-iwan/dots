@@ -1,6 +1,7 @@
 -- lazy.nvim plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
+    print("Hello world!")
     vim.fn.system({
         "git",
         "clone",
@@ -12,47 +13,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- plugins
 local plugins = {
-    {
-        "ellisonleao/gruvbox.nvim",
+    -- colorscheme
+    { "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
         config = function()
             vim.opt.termguicolors = true
-        end,
-    },
+        end, },
 
     "nvim-treesitter/nvim-treesitter",
-    "mbbill/undotree",
-    "lervag/vimtex",
+    "mbbill/undotree", -- undo history
+    "lervag/vimtex", -- latex
     "tpope/vim-fugitive", -- git
     "nvim-tree/nvim-tree.lua", -- utils
-    -- "terrortylor/nvim-comment",
     "vimwiki/vimwiki",
 
-    -- ui
-    "norcalli/nvim-colorizer.lua", -- colorize color codes
-    -- "p00f/nvim-ts-rainbow", -- colored parentheses
-    "lukas-reineke/indent-blankline.nvim", -- indent mark
-    {
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup {}
-        end
-    },
-    {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    },
-    {
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
-        dependencies = {{ "nvim-lua/plenary.nvim" }}
-    },
-    -- lsp
     {
         'VonHeikemen/lsp-zero.nvim',
         dependencies = {
@@ -74,10 +50,24 @@ local plugins = {
             {'rafamadriz/friendly-snippets'},
         }
     },
+
+    { "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end },
+    { "numToStr/Comment.nvim",
+        config = function()
+            require('Comment').setup()
+        end },
+    { "nvim-telescope/telescope.nvim",
+        tag = "0.1.0",
+        dependencies = {{ "nvim-lua/plenary.nvim" }} },
 }
 
+-- lazy.nvim options
 local opts = {
     install = {
+        -- i prefer the default
         colorscheme = { "default" },
     },
     ui = {
@@ -95,8 +85,8 @@ local opts = {
             start = "[start]",
             task = "[task]",
             lazy = "[lazy]",
-            loaded = "{1}",
-            not_loader = "{0}",
+            loaded = "ok",
+            not_loader = "no",
             task = "tsk",
             list = {
                 "o",

@@ -1,8 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
-vim.diagnostic.config({ virtual_text = false })
-
 opt.backup = false
 opt.swapfile = false
 opt.undofile = true
@@ -39,13 +37,8 @@ opt.splitbelow = true
 
 opt.conceallevel = 0
 
---opt.fileencoding = "utf-8"
-
--- if not packer_installed then
---     opt.termguicolors = false
---     opt.cursorline = false
---     opt.signcolumn = "no"
--- end
+-- lazy.nvim turned this on
+vim.diagnostic.config({ virtual_text = false })
 
 
 -- # vimwiki # --
