@@ -24,7 +24,6 @@ opt.incsearch = true
 opt.smartcase = true
 
 opt.cursorline = true
-opt.termguicolors = true
 opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
@@ -34,7 +33,7 @@ opt.sidescrolloff = 8
 opt.wrap = false
 opt.pumheight = 10
 
-opt.updatetime = 50
+opt.updatetime = 476
 
 opt.splitbelow = true
 

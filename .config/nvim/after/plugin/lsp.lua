@@ -7,7 +7,7 @@ end
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
-lsp.ensure_installed({ "clangd" })
+-- lsp.ensure_installed({ "clangd" })
 
 local cmp = require("cmp")
 --local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -30,8 +30,8 @@ lsp.set_preferences({
     -- i don't like icons
     sign_icons = {
         error = 'E',
-        warn = 'W',
-        hint = 'h',
+        warn = '!',
+        hint = '*',
         info = 'i'
     }
 })

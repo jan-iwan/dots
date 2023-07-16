@@ -14,18 +14,26 @@ vim.opt.rtp:prepend(lazypath)
 
 -- plugins
 local plugins = {
-    "nvim-treesitter/nvim-treesitter",
+    {
+        "ellisonleao/gruvbox.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.opt.termguicolors = true
+        end,
+    },
 
+    "nvim-treesitter/nvim-treesitter",
     "mbbill/undotree",
     "lervag/vimtex",
     "tpope/vim-fugitive", -- git
     "nvim-tree/nvim-tree.lua", -- utils
     -- "terrortylor/nvim-comment",
     "vimwiki/vimwiki",
+
     -- ui
-    "ellisonleao/gruvbox.nvim",
     "norcalli/nvim-colorizer.lua", -- colorize color codes
-    "p00f/nvim-ts-rainbow", -- colored parentheses
+    -- "p00f/nvim-ts-rainbow", -- colored parentheses
     "lukas-reineke/indent-blankline.nvim", -- indent mark
     {
         "windwp/nvim-autopairs",
@@ -68,6 +76,36 @@ local plugins = {
     },
 }
 
-local opts = {}
+local opts = {
+    install = {
+        colorscheme = { "default" },
+    },
+    ui = {
+        -- i don't like icons
+        icons = {
+            cmd = "[cmd]",
+            config = "[cfg]",
+            event = "[event]",
+            ft = "[dir]",
+            init = "[init]",
+            keys = "[keys]",
+            plugin = "[plug]",
+            runtime = "[rt]",
+            source = "[src]",
+            start = "[start]",
+            task = "[task]",
+            lazy = "[lazy]",
+            loaded = "{1}",
+            not_loader = "{0}",
+            task = "tsk",
+            list = {
+                "o",
+                "->",
+                "*",
+                "-",
+            },
+        },
+    },
+}
 
 require("lazy").setup(plugins, opts)

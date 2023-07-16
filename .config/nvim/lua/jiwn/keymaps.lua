@@ -14,7 +14,8 @@ map("n", ";q", cmd.quit)
 map("n","<A-c>" , "require('cmp').setup.buffer { enabled = false }<CR>")
 
 -- plugins
-map("n", "<leader>PP", cmd.Lazy)
+map("n", "<leader>p", cmd.Lazy)
+map("n", "<leader>lm", cmd.Mason)
 
 -- windows
 map("n", "<C-h>", "<C-w>h") -- move between windows
