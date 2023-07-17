@@ -1,10 +1,5 @@
-local ok, _ = pcall(require, "gruvbox")
-if not ok then
-    return
-end
+-- vim.opt.termguicolors = true
 
--- setup must be called before loading the colorscheme
--- Default options:
 require("gruvbox").setup({
     undercurl = false,
     underline = true,

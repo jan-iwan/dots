@@ -37,7 +37,9 @@ opt.splitbelow = true
 
 opt.conceallevel = 0
 
--- lazy.nvim turned this on
+-- opt.foldenable = false -- disable folding
+
+-- lazy.nvim turned this on, i don't like it
 vim.diagnostic.config({ virtual_text = false })
 
 
@@ -52,6 +54,6 @@ g.vimwiki_list = {{
 
 -- # vimtex # --
 
-g.vimtex_view_method = "zathura"
-g.vimtex_view_general_options = "-c ~/.config/zathura/zathurarc-latex"
+-- g.vimtex_view_method = "zathura"
+-- g.vimtex_view_general_options = "-c ~/.config/zathura/zathurarc-latex"
 -- maplocalleader = " "

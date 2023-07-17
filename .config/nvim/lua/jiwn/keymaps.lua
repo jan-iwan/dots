@@ -13,10 +13,6 @@ map("n", ";q", ":q<cr>")
 -- disable cmp
 map("n","<A-c>" , "require('cmp').setup.buffer { enabled = false }<CR>")
 
--- plugins
-map("n", "<leader>p", cmd.Lazy)
-map("n", "<leader>lm", cmd.Mason)
-
 -- windows
 map("n", "<C-h>", "<C-w>h") -- move between windows
 map("n", "<C-j>", "<C-w>j")
@@ -32,7 +28,7 @@ map("n", "<C-Left>", ":vertical resize -2<CR>")
 map("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- buffers
-map("n", "<C-c>", cmd.bwipeout)
+map("n", "<C-c>", cmd.bdelete)
 map("n", "<S-l>", cmd.bnext)
 map("n", "<S-h>", cmd.bprevious)
 
@@ -42,6 +38,7 @@ map("n", "<A-k>", "<Esc>:m .-2<CR>==gi")
 
 
 --# visual mode #--
+
 -- for indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
@@ -51,6 +48,7 @@ map("v", "<A-k>", ":m .-2<CR>==")
 
 -- pasted stuff stays in clipboard
 map("v", "p", '"_dP')
+
 
 --# visual block mode #--
 
@@ -69,5 +67,13 @@ map("t", "<C-j>", "<C-\\><C-N><C-w>j")
 map("t", "<C-k>", "<C-\\><C-N><C-w>k")
 map("t", "<C-l>", "<C-\\><C-N><C-w>l")
 
-map("n", "<leader>Gs", cmd.Git)
-map("n", "<leader>u", cmd.UndotreeToggle)
+
+--# plugins #--
+
+-- plugin manager
+map("n", "<leader>P", cmd.Lazy)
+-- lsp manager
+map("n", "<leader>lm", cmd.Mason)
+
+-- map("n", "<leader>Gs", cmd.Git)
+-- map("n", "<leader>u", cmd.UndotreeToggle)

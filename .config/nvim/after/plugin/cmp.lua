@@ -4,27 +4,13 @@ if not ok then
 end
 
 local kind_icons = {
-    Class = "class",
-    Color = "color",
-    Constant = "const",
-    Constructor = "class()",
-    Enum = "enum",
-    EnumMember = "enum",
-    Field = "field",
-    File = "file",
-    Folder = "file",
-    Function = "func",
-    Interface = "intf",
-    Keyword = "key",
-    Method = "method",
-    Module = "lib",
-    Property = "prop",
-    Snippet = "snip",
-    Struct = "struct",
-    Text = "txt",
-    Unit = "unit",
-    Value = "value",
-    Variable = "var",
+    Class = "class", Color = "color", Constant = "const",
+    Constructor = "class()", Enum = "enum", EnumMember = "enum",
+    Field = "field", File = "file", Folder = "file",
+    Function = "func", Interface = "intf", Keyword = "key",
+    Method = "method", Module = "lib", Property = "prop",
+    Snippet = "snip", Struct = "struct", Text = "txt",
+    Unit = "unit", Value = "value", Variable = "var",
 }
 
 local cmp = require("cmp")
