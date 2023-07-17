@@ -1,5 +1,4 @@
 local ok, _ = pcall(require, "gruvbox")
-
 if not ok then
     return
 end

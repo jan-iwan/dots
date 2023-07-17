@@ -29,27 +29,31 @@ local plugins = {
     "nvim-tree/nvim-tree.lua", -- utils
     "vimwiki/vimwiki",
 
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        dependencies = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+    -- ui
+    "norcalli/nvim-colorizer.lua", -- colorize color codes
+    "p00f/nvim-ts-rainbow", -- colored parentheses
+    "lukas-reineke/indent-blankline.nvim", -- indent mark
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-nvim-lua'},
+    -- lsp
+    "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
 
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
-        }
-    },
+    -- "mfussenegger/nvim-lint",
+
+    "p00f/clangd_extensions.nvim", -- clangd extra features
+
+    -- cmp
+    { "hrsh7th/nvim-cmp",
+    dependencies = {
+        {"hrsh7th/cmp-nvim-lsp"},
+        {"hrsh7th/cmp-buffer"},
+        {"hrsh7th/cmp-path"},
+        {"saadparwaiz1/cmp_luasnip"},
+        {"L3MON4D3/LuaSnip"}} },
+
+    -- "hrsh7th/cmp-nvim-lua",
+    -- "rafamadriz/friendly-snippets",
 
     { "windwp/nvim-autopairs",
         config = function()
@@ -76,7 +80,7 @@ local opts = {
             cmd = "[cmd]",
             config = "[cfg]",
             event = "[event]",
-            ft = "[dir]",
+            ft = "[ft]",
             init = "[init]",
             keys = "[keys]",
             plugin = "[plug]",
@@ -87,7 +91,6 @@ local opts = {
             lazy = "[lazy]",
             loaded = "ok",
             not_loader = "no",
-            task = "tsk",
             list = {
                 "o",
                 "->",

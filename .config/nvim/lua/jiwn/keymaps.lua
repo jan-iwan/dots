@@ -8,8 +8,8 @@ g.maplocalleader = " "
 --# normal mode #--
 
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
-map("n", ";w", cmd.write)
-map("n", ";q", cmd.quit)
+map("n", ";w", ":w<cr>")
+map("n", ";q", ":q<cr>")
 -- disable cmp
 map("n","<A-c>" , "require('cmp').setup.buffer { enabled = false }<CR>")
 

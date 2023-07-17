@@ -1,3 +1,9 @@
+local ok, _ = pcall(require, "lspconfig")
+if not ok then
+    return
+end
+
+-- lsp keymaps
 lsp_group = vim.api.nvim_create_augroup("Lsp", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = 'LSP actions',
@@ -26,19 +32,27 @@ require('mason').setup({
             package_installed = "ok",
             package_pending = "...",
             package_uninstalled = "x"},
-    },
-    keymaps = {
-        cancel_installation = "x",
-    },
+        },
+        keymaps = {
+            cancel_installation = "x",
+        }})
+require('mason-lspconfig').setup({
+    ensure_installed = {}
 })
 
-require('mason-lspconfig').setup()
-
 local lspconfig = require('lspconfig')
-local get_servers = require('mason-lspconfig').get_installed_servers
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-for _, server_name in ipairs(get_servers()) do
-  lspconfig[server_name].setup({
-    capabilities = lsp_capabilities,
-  })
+require('mason-lspconfig').setup_handlers({
+    function(server_name)
+        lspconfig[server_name].setup({
+            capabilities = lsp_capabilities,
+        })
+    end,
+})
+
+local signs = { Error = "E", Warn = "!", Hint = "*", Info = "i" }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
