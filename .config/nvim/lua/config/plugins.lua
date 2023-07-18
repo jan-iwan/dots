@@ -1,7 +1,19 @@
 -- lazy.nvim plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    print("Hello world!")
+    print("<insert>Hello world!<Esc>:wq<cr>")
+
+    -- color before installing colorscheme
+    -- vim.opt.termguicolors = false
+    -- vim.cmd([[
+    -- hi SignColumn NONE
+    -- hi CursorLine ctermbg=0 cterm=NONE
+    -- hi StatusLine NONE
+    -- hi NormalFloat ctermbg=0
+    -- hi TabLineFill NONE
+    -- hi TabLineSel NONE
+    -- ]])
+    --
     vim.fn.system({
         "git",
         "clone",
@@ -12,6 +24,9 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- open lazy menu
+vim.keymap.set("n", "<leader>P", vim.cmd.Lazy)
 
 -- lazy.nvim options
 local opts = {
@@ -34,6 +49,7 @@ local opts = {
             start = "[start]",
             task = "[task]",
             lazy = "[lazy]",
+            import = "[import]",
             loaded = "ok",
             not_loader = "no",
             list = {

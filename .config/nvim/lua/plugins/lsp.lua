@@ -1,54 +1,63 @@
-local lsp = {
-    "neovim/nvim-lspconfig",
+local lsp_zero = {
+    "VonHeikemen/lsp-zero.nvim",
 
-    -- dependencies = {
-    --     { "mfussenegger/nvim-lint" },
-    -- }
+    branch = "v2.x",
+    lazy = true,
 
     config = function()
-        -- lsp keymaps
-        lsp_group = vim.api.nvim_create_augroup("Lsp", { clear = true })
-        vim.api.nvim_create_autocmd("LspAttach", {
-            desc = 'LSP actions',
-            callback = function(event)
-                local map = vim.keymap.set
-                local opts = { buffer = event.buf }
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "[l", vim.diagnostic.goto_next, opts)
-                vim.keymap.set("n", "]l", vim.diagnostic.goto_prev, opts)
-                vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "<leader>li", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "<leader>lg", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "<leader>lca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<leader>lrr", vim.lsp.buf.references, opts)
-                vim.keymap.set("n", "<leader>lrn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "<leader>lws", vim.lsp.buf.workspace_symbol, opts)
-                vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-            end,
-            group = lsp_group,
-        })
-
-        local signs = { Error = "E", Warn = "!", Hint = "*", Info = "i" }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
-    end
+        require('lsp-zero.settings').preset({})
+    end,
 }
 
-local mason = {
-    "williamboman/mason.nvim",
+local lsp_config = {
+    "neovim/nvim-lspconfig" ,
+
+    cmp = "LspInfo",
+    event = {"BufReadPre", "BufNewFile"},
 
     dependencies = {
+        { "hrsh7th/nvim-cmp" },
         { "williamboman/mason-lspconfig.nvim" },
+        {
+            "williamboman/mason.nvim",
+            build = function()
+                pcall(vim.cmd, "MasonUpdate")
+            end,
+        },
     },
 
-    build = ":MasonUpdate",
-
     config = function()
+        local lsp = require("lsp-zero").preset({})
 
-        require('mason').setup({
+        lsp.on_attach(function(client, bufnr)
+            local map = vim.keymap.set
+            local opts = { buffer = bufnr }
+
+            -- "l" for lsp
+            map("n", "K", vim.lsp.buf.hover, opts)
+            map("n", "[l", vim.diagnostic.goto_next, opts)
+            map("n", "]l", vim.diagnostic.goto_prev, opts)
+            map("n", "<leader>ld", vim.lsp.buf.definition, opts)
+            map("n", "<leader>lD", vim.lsp.buf.declaration, opts)
+            map("n", "<leader>li", vim.lsp.buf.implementation, opts)
+            map("n", "<leader>lg", vim.diagnostic.open_float, opts)
+            map("n", "<leader>lca", vim.lsp.buf.code_action, opts)
+            map("n", "<leader>lrr", vim.lsp.buf.references, opts)
+            map("n", "<leader>lrn", vim.lsp.buf.rename, opts)
+            map("n", "<leader>lws", vim.lsp.buf.workspace_symbol, opts)
+            map("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+        end)
+
+        lsp.set_sign_icons({
+            error = "E", warn = "!", hint = "*", info = "i",
+        })
+
+        vim.diagnostic.config({ virtual_text = false })
+
+        lsp.setup()
+
+        vim.keymap.set("n", "<leader>lm", vim.cmd.Mason)
+        require("mason").setup({
             ui = {
                 icons = {
                     package_installed = "ok",
@@ -61,23 +70,11 @@ local mason = {
             },
         })
 
-        require('mason-lspconfig').setup({
-            ensure_installed = {}
-        })
-
-        local lspconfig = require('lspconfig')
-        local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-        require('mason-lspconfig').setup_handlers({
-            function(server_name)
-                lspconfig[server_name].setup({
-                    capabilities = lsp_capabilities,
-                })
-            end,
-        })
-    end,
+        require("mason-lspconfig").setup()
+    end
 }
 
+-- language specific extras
 local specific = {
     -- latex
     {
@@ -86,7 +83,7 @@ local specific = {
         config = function()
             vim.g.vimtex_view_method = "zathura"
         end
-},
+    },
 
     -- c, c++
     {
@@ -95,4 +92,4 @@ local specific = {
     },
 }
 
-return { lsp, mason }
+return { lsp_zero, lsp_config, specific }

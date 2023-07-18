@@ -3,7 +3,7 @@ local vimwiki = {
     "vimwiki/vimwiki",
 
     cmd = { "VimwikiIndex" },
-    config = function()
+    init = function()
         vim.g.vimwiki_list = {{
             path = "~/Documents/notes/",
             syntax = "markdown",
@@ -15,10 +15,9 @@ local vimwiki = {
 local git = {
     "tpope/vim-fugitive",
 
-    keys = { "<leader>Gs", desc = "git" },
-    opts = { use_default_keymaps = true },
+    keys = { "<leader>gs", desc = "git" },
     config = function()
-        vim.keymap.set("n", "<leader>Gs", cmd.Git)
+        vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
     end
 }
 
@@ -28,13 +27,14 @@ local undo_tree = {
 
     keys = { "<leader>u", desc = "undo tree" },
     config = function()
-        vim.keymap.set("n", "<leader>u", cmd.UndotreeToggle)
+        vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
     end
 }
 
 -- comment stuff
 local comment = {
     "numToStr/Comment.nvim",
+
     config = function()
         require('Comment').setup()
     end

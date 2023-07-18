@@ -7,9 +7,9 @@ g.maplocalleader = " "
 
 --# normal mode #--
 
-map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 map("n", ";w", ":w<cr>")
 map("n", ";q", ":q<cr>")
+map("n", ";Q", ":qall<cr>")
 -- disable cmp
 map("n","<A-c>" , "require('cmp').setup.buffer { enabled = false }<CR>")
 
@@ -66,14 +66,3 @@ map("t", "<C-h>", "<C-\\><C-N><C-w>h")
 map("t", "<C-j>", "<C-\\><C-N><C-w>j")
 map("t", "<C-k>", "<C-\\><C-N><C-w>k")
 map("t", "<C-l>", "<C-\\><C-N><C-w>l")
-
-
---# plugins #--
-
--- plugin manager
-map("n", "<leader>P", cmd.Lazy)
--- lsp manager
-map("n", "<leader>lm", cmd.Mason)
-
--- map("n", "<leader>Gs", cmd.Git)
--- map("n", "<leader>u", cmd.UndotreeToggle)

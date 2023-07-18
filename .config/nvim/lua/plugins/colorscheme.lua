@@ -1,4 +1,4 @@
-local colorscheme = {
+local gruvbox = {
     "ellisonleao/gruvbox.nvim",
 
     lazy = false,
@@ -37,6 +37,10 @@ local colorscheme = {
                 Include = { fg = "#689d6a" },
                 Define = { fg = "#689d6a" },
 
+                StatusLine = { fg = "#1d2021" },
+                TabLineFill = { bg = "#1d2021" },
+                TabLineSel = { bg = "#1d2021" },
+
                 -- i hate undercurl
                 GruvboxRedUnderline = { underline = true, undercurl = false },
                 GruvboxGreenUnderline = { underline = true, undercurl = false },
@@ -56,4 +60,4 @@ local colorscheme = {
     end,
 }
 
-return colorscheme
+return gruvbox

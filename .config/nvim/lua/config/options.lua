@@ -29,31 +29,10 @@ opt.signcolumn = "yes"
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.wrap = false
-opt.pumheight = 10
+opt.pumheight = 24
 
 opt.updatetime = 476
 
 opt.splitbelow = true
 
 opt.conceallevel = 0
-
--- opt.foldenable = false -- disable folding
-
--- lazy.nvim turned this on, i don't like it
-vim.diagnostic.config({ virtual_text = false })
-
-
--- # vimwiki # --
-
-g.vimwiki_list = {{
-    path = "~/Documents/notes/",
-    syntax = "markdown",
-    ext = ".md"
-}}
-
-
--- # vimtex # --
-
--- g.vimtex_view_method = "zathura"
--- g.vimtex_view_general_options = "-c ~/.config/zathura/zathurarc-latex"
--- maplocalleader = " "

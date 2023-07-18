@@ -68,9 +68,9 @@ local others = {
     -- { "p00f/nvim-ts-rainbow" }, -- abandoned :(
 
     -- close parentheses
-    -- {
-    --     "windwp/nvim-autopairs",
-    --
+    {
+        "windwp/nvim-autopairs",
+    },
     --     dependencies = {{ "nvim-treesitter" }},
     --     event = "InsertEnter",
     --     -- config = function()

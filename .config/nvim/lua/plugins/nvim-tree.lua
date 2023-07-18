@@ -3,6 +3,8 @@ local nvim_tree = {
     "nvim-tree/nvim-tree.lua",
 
     config = function()
+        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>")
+
         require("nvim-tree").setup({
             sort_by = "case_sensitive",
             view = {
