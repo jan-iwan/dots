@@ -1,27 +1,35 @@
 -- lazy.nvim plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    print("<insert>Hello world!<Esc>:wq<cr>")
+    print("<insert>Hello world! Run `:lua install()` to install plugins.<Esc>:wq<cr>")
 
     -- color before installing colorscheme
-    -- vim.opt.termguicolors = false
-    -- vim.cmd([[
-    -- hi SignColumn NONE
-    -- hi CursorLine ctermbg=0 cterm=NONE
-    -- hi StatusLine NONE
-    -- hi NormalFloat ctermbg=0
-    -- hi TabLineFill NONE
-    -- hi TabLineSel NONE
-    -- ]])
-    --
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+    vim.opt.termguicolors = false
+    vim.cmd([[
+    hi SignColumn NONE
+    hi CursorLine ctermbg=0 cterm=NONE
+    hi CursorLineNr ctermbg=0 cterm=NONE
+    hi StatusLine NONE
+    hi NormalFloat ctermbg=0
+    hi TabLineFill NONE
+    hi TabLineSel NONE
+    ]])
+
+    function install()
+        print("<insert>Installing Lazy.nvim!<cr>")
+        print("Close and reopen nvim.<Esc>:wq<cr>")
+
+        vim.fn.system({
+            "git",
+            "clone",
+            "--filter=blob:none",
+            "https://github.com/folke/lazy.nvim.git",
+            "--branch=stable", -- latest stable release
+            lazypath,
+        })
+    end
+
+    return
 end
 vim.opt.rtp:prepend(lazypath)
 
