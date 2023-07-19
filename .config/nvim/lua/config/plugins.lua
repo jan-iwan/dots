@@ -43,6 +43,9 @@ if vim.loop.fs_stat(lazypath) then
     vim.opt.rtp:prepend(lazypath)
 
     require("lazy").setup("plugins", opts)
+
+    return
+
 else
     -- if lazy is not installed don't install it right away,
     -- if there was no internet connection that would make nvim unusable

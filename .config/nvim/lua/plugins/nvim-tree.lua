@@ -2,8 +2,10 @@
 local nvim_tree = {
     "nvim-tree/nvim-tree.lua",
 
+    -- keys = { { "<leader>e", vim.cmd.NvimTreeToggle }, desc = "Nvim Tree" },
+
     config = function()
-        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>")
+        vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 
         require("nvim-tree").setup({
             sort_by = "case_sensitive",

@@ -16,27 +16,19 @@ local plugins = {
 
     {
         "tpope/vim-fugitive",
-
-        keys = { "<leader>gs", desc = "git" },
-        config = function()
-            vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-        end
+        keys = { { "<leader>gs", vim.cmd.Git }, desc = "git" },
     },
 
     -- undo history
     {
         "mbbill/undotree",
-
-        keys = { "<leader>u", desc = "undo tree" },
-        config = function()
-            vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-        end
+        keys = { { "<leader>u", vim.cmd.UndotreeToggle }, desc = "undo tree" },
     },
 
     -- comment stuff
     {
         "numToStr/Comment.nvim",
-
+        event = { "BufReadPre", "InsertEnter" },
         opts = {},
     },
 }

@@ -12,8 +12,9 @@ local lsp_zero = {
 local lsp_config = {
     "neovim/nvim-lspconfig" ,
 
-    cmd = "LspInfo",
-    event = {"BufReadPre", "BufNewFile"},
+    cmd = { "LspInfo" , "Mason"},
+    event = { "BufReadPre", "BufNewFile" },
+    keys = { { "<leader>lm", vim.cmd.Mason }, desc = "Mason" },
 
     dependencies = {
         { "hrsh7th/nvim-cmp" },
@@ -56,7 +57,6 @@ local lsp_config = {
 
         lsp.setup()
 
-        vim.keymap.set("n", "<leader>lm", vim.cmd.Mason)
         require("mason").setup({
             ui = {
                 icons = {
