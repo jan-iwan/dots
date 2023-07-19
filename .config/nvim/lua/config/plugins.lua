@@ -1,45 +1,7 @@
--- lazy.nvim plugin manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    print("<insert>Hello world! Run `:lua install()` to install plugins.<Esc>:wq<cr>")
-
-    -- color before installing colorscheme
-    vim.opt.termguicolors = false
-    vim.cmd([[
-    hi SignColumn NONE
-    hi CursorLine ctermbg=0 cterm=NONE
-    hi CursorLineNr ctermbg=0 cterm=NONE
-    hi StatusLine NONE
-    hi NormalFloat ctermbg=0
-    hi TabLineFill NONE
-    hi TabLineSel NONE
-    ]])
-
-    function install()
-        print("<insert>Installing Lazy.nvim!<cr>")
-        print("Close and reopen nvim.<Esc>:wq<cr>")
-
-        vim.fn.system({
-            "git",
-            "clone",
-            "--filter=blob:none",
-            "https://github.com/folke/lazy.nvim.git",
-            "--branch=stable", -- latest stable release
-            lazypath,
-        })
-    end
-
-    return
-end
-vim.opt.rtp:prepend(lazypath)
-
--- open lazy menu
-vim.keymap.set("n", "<leader>P", vim.cmd.Lazy)
-
--- lazy.nvim options
+-- declare lazy.nvim options before doing anything
 local opts = {
     install = {
-        -- i prefer the default
+        -- if gruvbox is not available, use default
         colorscheme = { "gruvbox", "default" },
     },
     ui = {
@@ -68,11 +30,51 @@ local opts = {
             },
         },
     },
-    -- performance = {
-    --     rtp = {
-    --         disabled_plugins = { "telescope.nvim" }
-    --     }
-    -- }
 }
 
-require("lazy").setup("plugins", opts)
+-- lazy.nvim plugin manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+-- check if lazy is installed
+if vim.loop.fs_stat(lazypath) then
+    -- open lazy menu
+    vim.keymap.set("n", "<leader>P", vim.cmd.Lazy)
+
+    vim.opt.rtp:prepend(lazypath)
+
+    require("lazy").setup("plugins", opts)
+else
+    -- if lazy is not installed don't install it right away,
+    -- if there was no internet connection that would make nvim unusable
+    function install()
+        print("Installing lazy.nvim!")
+
+        vim.fn.system({
+            "git",
+            "clone",
+            "--filter=blob:none",
+            "https://github.com/folke/lazy.nvim.git",
+            "--branch=stable", -- latest stable release
+            lazypath,
+        })
+
+        vim.opt.rtp:prepend(lazypath)
+        require("lazy").setup("plugins", opts)
+    end
+
+    -- some highlights for when there is no colorscheme
+    vim.opt.termguicolors = false
+    vim.cmd([[
+    hi SignColumn NONE
+    hi CursorLine ctermbg=0 cterm=NONE
+    hi CursorLineNr ctermbg=0 cterm=NONE
+    hi StatusLine NONE
+    hi TabLineFill NONE
+    hi TabLineSel NONE
+    ]])
+
+    -- same as `:lua install`
+    vim.keymap.set("n", "<leader>P", install)
+
+    print("<insert>Hello world!<Esc>:wq<cr> Run `:lua install()` to install plugins.")
+end
