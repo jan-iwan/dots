@@ -62,7 +62,7 @@ local opts = {
     },
     -- performance = {
     --     rtp = {
-    --         disabled_plugins = { "telescope" }
+    --         disabled_plugins = { "telescope.nvim" }
     --     }
     -- }
 }

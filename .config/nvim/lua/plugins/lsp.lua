@@ -12,7 +12,7 @@ local lsp_zero = {
 local lsp_config = {
     "neovim/nvim-lspconfig" ,
 
-    cmp = "LspInfo",
+    cmd = "LspInfo",
     event = {"BufReadPre", "BufNewFile"},
 
     dependencies = {

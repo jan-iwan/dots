@@ -15,7 +15,9 @@ local gruvbox = {
                 operators = false,
                 comments = false,
                 folds = false,
-            }, strikethrough = true, invert_selection = true,
+            },
+            strikethrough = true,
+            invert_selection = true,
             invert_signs = false,
             invert_tabline = false,
             invert_intend_guides = false,
@@ -54,8 +56,6 @@ local gruvbox = {
             transparent_mode = true,
         })
 
-        -- weird results if only set once
-        vim.cmd.colorscheme("gruvbox")
         vim.cmd.colorscheme("gruvbox")
     end,
 }

@@ -70,6 +70,8 @@ local others = {
     -- close parentheses
     {
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {},
     },
     --     dependencies = {{ "nvim-treesitter" }},
     --     event = "InsertEnter",
