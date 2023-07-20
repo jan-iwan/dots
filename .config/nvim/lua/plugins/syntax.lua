@@ -65,10 +65,10 @@ local others = {
         end,
     },
 
-    -- indent mark
+    -- indentation mark
     {
-        "lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPre", "InsertEnter" },
+        "lukas-reineke/indent-blankline.nvim", 
+        event = { "InsertEnter", "BufEnter" },
     },
 
     -- close parentheses

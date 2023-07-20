@@ -10,25 +10,25 @@ g.maplocalleader = " "
 map("n", ";w", ":w<cr>")
 map("n", ";q", ":q<cr>")
 map("n", ";Q", ":qall<cr>")
--- disable cmp
-map("n","<A-c>" , "require('cmp').setup.buffer { enabled = false }<CR>")
+map("n", "<leader>e", cmd.Lexplore)
 
--- windows
-map("n", "<C-h>", "<C-w>h") -- move between windows
+-- window navigation
+map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
-map("n", "q:", "<Esc>")
+
+-- window size
+map("n", "<C-A-k>", ":resize -2<CR>")
+map("n", "<C-A-j>", ":resize +2<CR>")
+map("n", "<C-A-h>", ":vertical resize -2<CR>")
+map("n", "<C-A-l>", ":vertical resize +2<CR>")
+
 -- terminal window
 map("n", "<C-t>", "<Esc>:split<cr>:resize 10<cr>:set nonumber<cr>:terminal<cr>i")
 
-map("n", "<C-Up>", ":resize -2<CR>")
-map("n", "<C-Down>", ":resize +2<CR>")
-map("n", "<C-Left>", ":vertical resize -2<CR>")
-map("n", "<C-Right>", ":vertical resize +2<CR>")
-
 -- buffers
-map("n", "<C-c>", cmd.bdelete)
+map("n", "<leader>c", cmd.bdelete)
 map("n", "<S-l>", cmd.bnext)
 map("n", "<S-h>", cmd.bprevious)
 

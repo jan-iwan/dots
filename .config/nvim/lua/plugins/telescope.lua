@@ -1,5 +1,3 @@
--- TODO --
-
 -- fuzzy finder
 local telescope = {
     "nvim-telescope/telescope.nvim",

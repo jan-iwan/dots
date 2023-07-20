@@ -3,6 +3,7 @@ aug = vim.api.nvim_create_augroup
 
 local austuff = aug("austuff", { clear = true })
 local file_types = aug("file_types", { clear = true })
+local netrw = aug("netrw_keys", {clear = true})
 
 au("BufWinEnter", {
     desc = "no autocomment on new line",
@@ -38,4 +39,24 @@ au("FileType", {
         vim.cmd("setlocal spell")
     end,
     group = file_types,
+})
+
+au("FileType", {
+    pattern = "netrw",
+    callback = function()
+        local map = function(lhs, rhs)
+            vim.keymap.set("n", lhs, rhs, { remap = true, buffer = true })
+        end
+
+        map("<Esc>", vim.cmd.bdelete)
+        map("H", "u") -- previous
+        map("h", "-^") -- up dir
+        map("l", "<cr>") -- enter
+        map(".", "gh") -- hidden files
+        map("P", "<C-w>z") -- close preview
+        map("<tab>", "mf") -- mark a file
+        map("<S-tab>", "mF") -- unmark all in current buffer
+        map("<A-tab>", "mu") -- unmark all
+    end,
+    group = netrw_keys,
 })

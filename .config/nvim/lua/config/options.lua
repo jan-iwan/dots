@@ -36,3 +36,8 @@ opt.updatetime = 476
 opt.splitbelow = true
 
 opt.conceallevel = 0
+
+g.netrw_keepdir = 0
+g.netrw_banner = 0
+g.netrw_localcopydircmd = "cp -r"
+g.netrw_winsize = 30

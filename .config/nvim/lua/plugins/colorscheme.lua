@@ -43,6 +43,12 @@ local gruvbox = {
                 TabLineFill = { bg = "#1d2021" },
                 TabLineSel = { bg = "#1d2021" },
 
+                netrwDir = { fg = "#458588", bold = true },
+                netrwSymLink = { fg = "#689d6a" },
+                netrwExe = { fg = "#98971a", bold = true },
+                netrwExe = { fg = "#98971a", bold = true },
+                netrwMarkFile = { fg = "#d79921", bold = true },
+
                 -- i hate undercurl
                 GruvboxRedUnderline = { underline = true, undercurl = false },
                 GruvboxGreenUnderline = { underline = true, undercurl = false },

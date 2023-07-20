@@ -18,12 +18,27 @@ local lsp_config = {
 
     dependencies = {
         { "hrsh7th/nvim-cmp" },
-        { "williamboman/mason-lspconfig.nvim" },
+        {
+            "williamboman/mason-lspconfig.nvim",
+            opts = {},
+        },
         {
             "williamboman/mason.nvim",
             build = function()
                 pcall(vim.cmd, "MasonUpdate")
             end,
+            opts = {
+                ui = {
+                    icons = {
+                        package_installed = "ok",
+                        package_pending = "...",
+                        package_uninstalled = "x",
+                    },
+                },
+                keymaps = {
+                    cancel_installation = "x",
+                },
+            }
         },
     },
 
@@ -56,21 +71,6 @@ local lsp_config = {
         vim.diagnostic.config({ virtual_text = false })
 
         lsp.setup()
-
-        require("mason").setup({
-            ui = {
-                icons = {
-                    package_installed = "ok",
-                    package_pending = "...",
-                    package_uninstalled = "x",
-                },
-            },
-            keymaps = {
-                cancel_installation = "x",
-            },
-        })
-
-        require("mason-lspconfig").setup()
     end
 }
 
