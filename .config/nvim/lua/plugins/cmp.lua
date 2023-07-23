@@ -18,9 +18,8 @@ local cmp = {
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-nvim-lua" },
-        { "L3MON4D3/LuaSnip" },
+        { "L3MON4D3/LuaSnip", dependencies = {{ "rafamadriz/friendly-snippets" }} },
         { "saadparwaiz1/cmp_luasnip" },
-        -- { "rafamadriz/friendly-snippets" },
     },
 
     config = function()
@@ -28,6 +27,15 @@ local cmp = {
 
         local cmp = require("cmp")
         local cmp_action = require("lsp-zero.cmp").action()
+
+        require("luasnip.loaders.from_vscode").lazy_load()
+
+        local enable = true
+        vim.keymap.set("n", "<leader>lC",
+        function()
+            enable = not enable
+            cmp.setup({enabled = enable})
+        end)
 
         cmp.setup({
             mapping = {
@@ -50,9 +58,9 @@ local cmp = {
             },
             sources = {
                 { name = "nvim_lsp" },
-                { name = "path" },
-                { name = "buffer", keyword_length = 4 },
                 { name = "luasnip", keyword_length = 2 },
+                { name = "buffer", keyword_length = 4 },
+                { name = "path" },
                 { name = "nvim_lua" }, -- lua for nvim
             },
             snippet = {
@@ -90,7 +98,12 @@ local cmp = {
 
                     return item
                 end,
-            }
+            },
+            -- preselect first item
+            preselect = "item",
+            completion = {
+                completeopt = "menu,menuone,noinsert",
+            },
         })
     end
 }
