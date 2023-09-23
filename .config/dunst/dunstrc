@@ -1,0 +1,35 @@
+[global]
+    width = (128, 384)
+    frame_width = 1
+    gap_size = 2
+
+    font = Terminus 11
+    markup = full
+    format = "<b><span foreground='#98971a'>%a</span>: %s</b>\n\n%b"
+
+    icon_theme = GruvboxPlus, Adwaita
+    enable_recursive_icon_lookup = true
+
+    # progress bar color
+    highlight = "#458588"
+    frame_color = "#4a697d" 
+
+    history_lenght = 8
+
+[urgency_low]
+    background = "#1d2021"
+    foreground = "#d5c4a1"
+    timeout = 7
+
+[urgency_normal]
+    background = "#1d2021"
+    foreground = "#d5c4a1"
+    timeout = 7
+
+[urgency_critical]
+    background = "#fbf1c7"
+    foreground = "#fb4934"
+    highlight = "#b16282"
+    frame_color = "#fe8019"
+    format = "<b><span foreground='#fb4934'>%a</span>: <span foreground='#cc241d'>%s</span></b>\n\n%b"
+    timeout = 0
