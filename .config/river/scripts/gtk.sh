@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# gsettings set org.gnome.desktop.wm.preferences button-layout "" &
+gsettings set org.gnome.desktop.wm.preferences button-layout "" &
 
 config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
 if [ ! -f "$config" ]; then exit 1; fi

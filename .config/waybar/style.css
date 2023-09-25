@@ -1,0 +1,126 @@
+* {
+    font-family: Terminus;
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+window#waybar {
+    background-color: #1d2021;
+    margin: 0px;
+    border: 0px;
+    color: #a89984;
+}
+
+tooltip {
+    background: #263640;
+    border: 0px;
+    margin: 0px;
+}
+tooltip label {
+  color: #d79921;
+  border: 0px;
+  margin: 0px;
+}
+
+button {
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+    min-width: 18px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: #98971a;
+}
+
+#mode {
+    background-color: #1d2021;
+    border-bottom: 0px;
+    padding: 0px;
+    color: #b16282;
+}
+
+#tags {
+    margin: 0px;
+    padding: 0px;
+}
+
+#tags button {
+    color: #928374;
+    padding: 0px;
+    margin: 0px;
+}
+#tags button.occupied {
+    color: #d5c4a1;
+    margin: 0px;
+}
+#tags button.focused {
+    border-bottom: 1px solid #d65d0e;
+}
+
+#window,
+#workspaces {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.modules-right {
+    margin-right: 6px;
+}
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#tray,
+#mpd {
+    padding: 0px;
+    color: #d5c4a1;
+}
+
+#image {
+    padding-top: 2px;
+    padding-left: 1px;
+}
+
+#taskbar button {
+    min-width: 23px;
+    padding-left: 6px;
+}
+#taskbar button.active {
+    border-bottom: 1px solid #689d6a;
+}
+
+#network {
+    color: #d79921;
+}
+
+#network.disconnected {
+    color: #fb4934;
+}
+
+#temperature {
+    color: #458588;
+}
+
+#cpu {
+    color: #458588;
+}
+
+#memory {
+    color: #98971a;
+}
+
+#pulseaudio {
+    color: #b16282;
+}
+
+#clock {
+    background-color: #1d2021;
+}

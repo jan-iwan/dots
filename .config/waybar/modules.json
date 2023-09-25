@@ -1,0 +1,89 @@
+{
+    "image#mudkip": {
+        "path": "/home/jiwn/z/img/xpm/mudkip.xpm",
+        "interval": 0,
+        "size": 23
+    },
+
+    "river/window": {
+        "format": "{}",
+        "max-length": 48
+    },
+
+    "river/mode": {
+        "format": "<span color='#a89984'>::</span> {} <span color='#a89984'>::</span>",
+        "max-length": 16
+    },
+
+    "wlr/taskbar": {
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "tooltip-format": "{name}\n{title}",
+        "app_ids-mapping": {
+            "alacrittyf": "alacritty"
+        }
+    },
+
+    "network": {
+        "interval": 3,
+        "format-disconnected": "net down",
+        "tooltip-format": "interface: {ifname}\nip: {gwaddr}",
+        "format": "{bandwidthDownBytes} {bandwidthUpBytes}"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "tooltip-format": "CPU temp: {temperatureC}°C",
+        "on-click": "alacritty --class alacrittyf,alacrittyf -e watch -n.5 sensors"
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "{usage}%",
+        "on-click": "alacritty --class alacrittyf,alacrittyf -e btop"
+    },
+
+    "memory": {
+        "format": "{percentage}%",
+        "interval": 3,
+        "on-click": "alacritty --class alacrittyf,alacrittyf -e btop"
+    },
+
+    "pulseaudio": {
+        "format": "{volume:3}%",
+        "format-muted": "muted",
+        "on-click": "pavucontrol",
+        "on-click-right": "amixer -D pipewire set Master toggle",
+        "on-click-middle": "qpwgraph",
+        "on-click-forward": "alacritty --class alacrittyf,alacrittyf -e alsamixer",
+        "scroll-step": 1
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "<span color='#a89984'>::</span> {:%a. %d/%m/%Y  %T} ",
+        "tooltip-format": "<small>{calendar}</small>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "on-scroll"     : 1,
+            "on-click": "mode",
+            "format": {
+                "months":     "<span color='#d5c4a1'><b>{}</b></span>",
+                "days":       "<span color='#ebdbb2'>{}</span>",
+                "weekdays":   "<span color='#d79921'><b>{}</b></span>",
+                "today":      "<span color='#d65d0e'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 6
+    }
+}

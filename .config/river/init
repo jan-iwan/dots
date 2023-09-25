@@ -1,7 +1,6 @@
 #!/bin/bash
 
 scripts=$HOME/.config/river/scripts
-logfile=$HOME/r/log
 
 $scripts/display.sh &
 $scripts/autostart.sh &
@@ -12,4 +11,4 @@ $scripts/misc.sh &
 
 # layout
 riverctl default-layout rivertile
-rivertile -view-padding 1 -outer-padding 1
+rivertile -view-padding 1 -outer-padding 0

@@ -9,6 +9,7 @@ riverctl map normal  Super          A       spawn "firefox"
 riverctl map normal  Super          S       spawn "firefox -P $my_firefox_profile"
 riverctl map normal  Super          E       spawn "thunar"
 riverctl map normal  Super          A       spawn "firefox"
+riverctl map normal Super Q spawn "killall waybar; waybar"
 
 
 riverctl map normal  Super        C         close
@@ -19,13 +20,13 @@ riverctl map normal  Super+Control End      spawn "systemctl hibernate"
 riverctl map normal  Super+Control Home     spawn "systemctl suspend"
 riverctl map normal  Super+Control Pause    spawn "systemctl hybrid-sleep"
 
-riverctl map normal -repeat Super        J focus-view next
-riverctl map normal -repeat Super        K focus-view previous
+riverctl map -repeat normal Super        J focus-view next
+riverctl map -repeat normal Super        K focus-view previous
 riverctl map normal  Super+Shift  J swap next
 riverctl map normal  Super+Shift  K swap previous
 
-riverctl map normal -repeat Super        H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal -repeat Super        L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map -repeat normal Super        H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map -repeat normal Super        L send-layout-cmd rivertile "main-ratio +0.05"
 riverctl map normal  Super+Shift  H send-layout-cmd rivertile "main-count +1"
 riverctl map normal  Super+Shift  L send-layout-cmd rivertile "main-count -1"
 
@@ -87,15 +88,15 @@ riverctl map normal  Super Space toggle-fullscreen
 
 riverctl declare-mode           passthrough
 riverctl map normal  Super                      F11 enter-mode passthrough
-riverctl map normal passthrough Super           F11 enter-mode normal
+riverctl map passthrough Super                  F11 enter-mode normal
 
 
-riverctl map normal -repeat None        XF86AudioRaiseVolume  spawn 'amixer -q set Master 5%+'
-riverctl map normal -repeat None        XF86AudioLowerVolume  spawn 'amixer -q set Master 5%-'
-riverctl map normal  None        XF86AudioMute         spawn 'amixer -q set Master toggle'
+riverctl map -repeat normal None        XF86AudioRaiseVolume  spawn 'amixer -D pipewire set Master 5%+'
+riverctl map -repeat normal None        XF86AudioLowerVolume  spawn 'amixer -D pipewire set Master 5%-'
+riverctl map normal  None        XF86AudioMute         spawn 'amixer -D pipewire set Master toggle'
 
-riverctl map normal -repeat Super+Shift XF86AudioRaiseVolume  spawn 'mpc -q volume +5'
-riverctl map normal -repeat Super+Shift XF86AudioLowerVolume  spawn 'mpc -q volume +5-'
+riverctl map -repeat normal Super+Shift XF86AudioRaiseVolume  spawn 'mpc -q volume +5'
+riverctl map -repeat normal Super+Shift XF86AudioLowerVolume  spawn 'mpc -q volume +5-'
 riverctl map normal  Super+Shift XF86AudioRaiseVolume  spawn 'mpc next -q'
 riverctl map normal  Super+Shift XF86AudioLowerVolume  spawn 'mpc next -q'
 riverctl map normal  Super       Slash                 spawn 'mpc toggle -q'
