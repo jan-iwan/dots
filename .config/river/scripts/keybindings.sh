@@ -1,104 +1,121 @@
 #!/bin/bash
 
-riverctl map normal  Super        Return    spawn alacritty
-riverctl map normal  Super+Shift  Return    spawn "alacritty --class alacrittyf,alacrittyf"
-riverctl map normal  Super        P         spawn "rofi -show drun -show-icons"
-riverctl map normal  Super        O         spawn "rofi -show run"
+# simple macros
 
-riverctl map normal  Super          A       spawn "firefox"
-riverctl map normal  Super          S       spawn "firefox -P $my_firefox_profile"
-riverctl map normal  Super          E       spawn "thunar"
-riverctl map normal  Super          A       spawn "firefox"
-riverctl map normal Super Q spawn "killall waybar; waybar"
+map() {
+    riverctl map normal "$@"
+}
+mapr() {
+    riverctl map -repeat normal "$@" 
+}
+mapp() {
+    riverctl map-pointer normal "$@" 
+}
 
+### views (windows) ###
 
-riverctl map normal  Super        C         close
-riverctl map normal  Super+Shift  Q         exit
-riverctl map normal  Super+Shift  End       spawn "poweroff"
-riverctl map normal  Super+Shift  Home      spawn "reboot"
-riverctl map normal  Super+Control End      spawn "systemctl hibernate"
-riverctl map normal  Super+Control Home     spawn "systemctl suspend"
-riverctl map normal  Super+Control Pause    spawn "systemctl hybrid-sleep"
+map  Super C                close
+map  Super+Shift Q          exit
 
-riverctl map -repeat normal Super        J focus-view next
-riverctl map -repeat normal Super        K focus-view previous
-riverctl map normal  Super+Shift  J swap next
-riverctl map normal  Super+Shift  K swap previous
+map  Super J                focus-view next
+map  Super K                focus-view previous
+map  Super+Shift J          swap next
+map  Super+Shift K          swap previous
 
-riverctl map -repeat normal Super        H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map -repeat normal Super        L send-layout-cmd rivertile "main-ratio +0.05"
-riverctl map normal  Super+Shift  H send-layout-cmd rivertile "main-count +1"
-riverctl map normal  Super+Shift  L send-layout-cmd rivertile "main-count -1"
+map  Super Tab              focus-previous-tags
+map  Super+Shift Tab        send-to-previous-tags
 
-riverctl map normal  Super        Tab focus-previous-tags
-riverctl map normal  Super+Shift  Tab send-to-previous-tags
+map  Super U                focus-output next
+map  Super+Shift U          send-to-output next
 
-riverctl map normal  Super        W focus-output next
-riverctl map normal  Super+Shift  W send-to-output next
+map  Super T                toggle-float
+map  Super Space            toggle-fullscreen
 
-riverctl map normal  Super Z zoom
+# move
+mapr Super+Alt H            move left 100
+mapr Super+Alt J            move down 100
+mapr Super+Alt K            move up 100
+mapr Super+Alt L            move right 100
+mapp Super BTN_LEFT         move-view
 
-
-# move views
-riverctl map normal  Super+Alt          H move left 100
-riverctl map normal  Super+Alt          J move down 100
-riverctl map normal  Super+Alt          K move up 100
-riverctl map normal  Super+Alt          L move right 100
-riverctl map-pointer normal Super BTN_LEFT move-view
-
-# snap views to screen edges
-riverctl map normal  Super+Alt+Control  H snap left
-riverctl map normal  Super+Alt+Control  J snap down
-riverctl map normal  Super+Alt+Control  K snap up
-riverctl map normal  Super+Alt+Control  L snap right
+# snap to screen edges
+map  Super+Shift+Alt H      snap left
+map  Super+Shift+Alt J      snap down
+map  Super+Shift+Alt K      snap up
+map  Super+Shift+Alt L      snap right
 
 # resize views
-riverctl map normal  Super+Alt+Shift    H resize horizontal -100
-riverctl map normal  Super+Alt+Shift    J resize vertical 100
-riverctl map normal  Super+Alt+Shift    K resize vertical -100
-riverctl map normal  Super+Alt+Shift    L resize horizontal 100
-riverctl map-pointer normal Super BTN_RIGHT resize-view
+mapr Super+Control H        resize horizontal -100
+mapr Super+Control J        resize vertical 100
+mapr Super+Control K        resize vertical -100
+mapr Super+Control L        resize horizontal 100
+mapp Super BTN_RIGHT        resize-view
 
+# map  Super Z                zoom
 
+### layout ###
+
+mapr Super H                send-layout-cmd rivertile "main-ratio -0.05"
+mapr Super L                send-layout-cmd rivertile "main-ratio +0.05"
+map  Super+Shift H          send-layout-cmd rivertile "main-count +1"
+map  Super+Shift L          send-layout-cmd rivertile "main-count -1"
+
+### tags ###
+
+# map Super i with i = 1, ..., 9
 for i in $(seq 1 9)
 do
     tags=$((1 << ($i - 1)))
 
     # focus tag [0-8]
-    riverctl map normal  Super $i set-focused-tags $tags
+    map Super $i            set-focused-tags $tags
 
     # tag focused view with tag [0-8]
-    riverctl map normal  Super+Shift $i set-view-tags $tags
+    map Super+Shift $i      set-view-tags $tags
 
     # toggle focus of tag [0-8]
-    riverctl map normal  Super+Control $i toggle-focused-tags $tags
+    map Super+Control $i    toggle-focused-tags $tags
 
     # toggle tag [0-8] of focused view
-    riverctl map normal  Super+Shift+Control $i toggle-view-tags $tags
+    map Super+Shift+Control $i toggle-view-tags $tags
 done
 
 # tag focused view with all tags
 all_tags=$(((1 << 32) - 1))
-riverctl map normal  Super 0 set-focused-tags $all_tags
-riverctl map normal  Super+Shift 0 set-view-tags $all_tags
+map  Super 0                set-focused-tags $all_tags
+map  Super+Shift 0          set-view-tags $all_tags
 
-riverctl map normal  Super T toggle-float
-
-riverctl map normal  Super Space toggle-fullscreen
-
-riverctl declare-mode           passthrough
-riverctl map normal  Super                      F11 enter-mode passthrough
-riverctl map passthrough Super                  F11 enter-mode normal
+riverctl declare-mode       passthrough
+map  Super F11 enter-mode   passthrough
+riverctl map passthrough Super F11 enter-mode normal
 
 
-riverctl map -repeat normal None        XF86AudioRaiseVolume  spawn 'amixer -D pipewire set Master 5%+'
-riverctl map -repeat normal None        XF86AudioLowerVolume  spawn 'amixer -D pipewire set Master 5%-'
-riverctl map normal  None        XF86AudioMute         spawn 'amixer -D pipewire set Master toggle'
+### apps ###
 
-riverctl map -repeat normal Super+Shift XF86AudioRaiseVolume  spawn 'mpc -q volume +5'
-riverctl map -repeat normal Super+Shift XF86AudioLowerVolume  spawn 'mpc -q volume +5-'
-riverctl map normal  Super+Shift XF86AudioRaiseVolume  spawn 'mpc next -q'
-riverctl map normal  Super+Shift XF86AudioLowerVolume  spawn 'mpc next -q'
-riverctl map normal  Super       Slash                 spawn 'mpc toggle -q'
-#riverctl map normal  Super       S                     spawn 'mpc toggle -q'
-riverctl map normal  Super+Shift XF86AudioMute         spawn 'mpc stop -q'
+# don't like these ones
+map  Super+Shift End        spawn "poweroff"
+map  Super+Shift Home       spawn "reboot"
+map  Super+Control End      spawn "systemctl hibernate"
+map  Super+Control Home     spawn "systemctl suspend"
+map  Super+Control Pause    spawn "systemctl hybrid-sleep"
+
+map  Super Return           spawn "alacritty"
+map  Super+Shift Return     spawn "alacritty --class alacrittyf,alacrittyf"
+map  Super A                spawn "rofi -show drun -show-icons -monitor -1"
+map  Super P                spawn "rofi -show run -monitor -1"
+
+map  Super W                spawn "firefox"
+map  Super E                spawn "firefox -P $my_firefox_profile"
+map  Super Q                spawn "killall waybar; waybar"
+
+# volume
+mapr None XF86AudioRaiseVolume  spawn "amixer -D pipewire set Master 5%+"
+mapr None XF86AudioLowerVolume  spawn "amixer -D pipewire set Master 5%-"
+map  None XF86AudioMute         spawn "amixer -D pipewire set Master toggle"
+
+mapr Super+Shift XF86AudioRaiseVolume  spawn "mpc -q volume +5"
+mapr Super+Shift XF86AudioLowerVolume  spawn "mpc -q volume +5-"
+map  Super+Shift XF86AudioRaiseVolume  spawn "mpc next -q"
+map  Super+Shift XF86AudioLowerVolume  spawn "mpc next -q"
+map  Super       Slash                 spawn "mpc toggle -q"
+map  Super+Shift XF86AudioMute         spawn "mpc stop -q"
