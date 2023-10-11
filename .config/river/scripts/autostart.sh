@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mpd $HOME/.config/mpd/mpd.conf
 waybar &
+mpd $HOME/.config/mpd/mpd.conf
 dapper -u &
 dunst &
 

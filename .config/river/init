@@ -5,10 +5,10 @@ scripts=$HOME/.config/river/scripts
 $scripts/display.sh &
 $scripts/autostart.sh &
 $scripts/input.sh &
-$scripts/keybindings.sh &
 $scripts/theme.sh &
 $scripts/misc.sh &
+$scripts/keybindings.sh &
 
 # layout
 riverctl default-layout rivertile
-rivertile -view-padding 0 -outer-padding 0
+rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5
