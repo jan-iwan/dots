@@ -8,12 +8,12 @@ local vimwiki = {
         vim.g.vimwiki_list = {{
             path = "~/Documents/notes/",
             syntax = "markdown",
-            ext = ".md"
+            ext = ".md",
         }}
     end,
 
     config = function()
-        -- i have defined three special schemes, 'vim:', 'tex:' and 'pdf:'
+    -- i have defined three special schemes, 'vim:', 'tex:' and 'pdf:'
     -- 'vim:' opens a file in a new buffer
     -- 'tex:' opens a .tex file from a latex directory
     -- 'pdf:' opens a pdf from a latex directory with zathura
@@ -74,7 +74,7 @@ local vimwiki = {
             " open pdf in zathura, "--fork" so  that vim doesn't freeze
             " "-c" since i use a different config in this case
             let file = '"' . file . '"'
-            silent execute '!zathura' '--fork -c ~/.config/zathura/latex' file
+            silent execute '!zathura' '--fork' file
         else
             " open files with vim
             exe 'tabnew ' . fnameescape(file)

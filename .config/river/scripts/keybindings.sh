@@ -103,9 +103,10 @@ map  Super Return           spawn "alacritty"
 map  Super+Shift Return     spawn "alacritty --class alacrittyf,alacrittyf"
 map  Super A                spawn "rofi -show drun -show-icons -monitor -1"
 map  Super P                spawn "rofi -show run -monitor -1"
+map  Super g                spawn "gpu-chill"
 
 map  Super W                spawn "firefox"
-map  Super E                spawn "firefox -P $my_firefox_profile"
+map  Super E                spawn "firefox -P $MY_FIREFOX_PROFILE"
 map  Super Q                spawn "killall waybar; waybar"
 
 # volume

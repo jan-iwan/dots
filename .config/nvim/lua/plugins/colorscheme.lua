@@ -46,7 +46,6 @@ local gruvbox = {
                 netrwDir = { fg = "#458588", bold = true },
                 netrwSymLink = { fg = "#689d6a" },
                 netrwExe = { fg = "#98971a", bold = true },
-                netrwExe = { fg = "#98971a", bold = true },
                 netrwMarkFile = { fg = "#d79921", bold = true },
 
                 -- i hate undercurl

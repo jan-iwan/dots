@@ -40,8 +40,8 @@ local cmp = {
         cmp.setup({
             mapping = {
                 ["<C-k>"] = cmp.mapping.confirm({select = false}),
-                ["<C-b>"] = cmp.mapping.select_prev_item(cmp_select),
-                ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
+                ["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
 
                 ["<C-m>"] = cmp.mapping.abort(),
 
@@ -53,8 +53,8 @@ local cmp = {
                 ["<C-Space>"] = cmp.mapping.complete(),
 
                 -- navigate between snippet placeholder
-                ["<Tab>"] = cmp_action.luasnip_jump_forward(),
-                ["<S-Tab>"] = cmp_action.luasnip_jump_backward(),
+                ["<C-n>"] = cmp_action.luasnip_jump_forward(),
+                ["<C-b>"] = cmp_action.luasnip_jump_backward(),
             },
             sources = {
                 { name = "nvim_lsp" },
@@ -108,4 +108,18 @@ local cmp = {
     end
 }
 
-return cmp
+-- what i use for latex snippets
+local ultisnips = {
+    "SirVer/ultisnips",
+
+    ft = { "tex" },
+
+    init = function()
+        -- vim.g.UltiSnipsExpandTrigger = "<tab>"
+        vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
+        vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+        -- vim.g.UltiSnipsEditSplit = "vertical"
+    end,
+}
+
+return { cmp, ultisnips }

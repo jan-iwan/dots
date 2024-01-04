@@ -33,6 +33,14 @@ au("FileType", {
     group = file_types,
 })
 au("FileType", {
+    pattern = "tex",
+    callback = function()
+        vim.cmd("setlocal spelllang=en,es")
+        vim.cmd("setlocal spell")
+    end,
+    group = file_types,
+})
+au("FileType", {
     pattern = "gitcommit",
     callback = function()
         vim.cmd("setlocal wrap")

@@ -7,7 +7,7 @@ riverctl background-color 0x1d2021
 # riverctl border-color-unfocused 0x263640
 riverctl border-width 0
 
-riverctl hide-cursor timeout 7621
+riverctl hide-cursor timeout 27953 
 
 # gtk settings
 $HOME/.config/river/scripts/gtk
