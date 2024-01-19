@@ -1,0 +1,50 @@
+#!/bin/bash
+
+riverctl default-layout rivertile
+
+riverctl xcursor-theme Simp1e-Gruvbox-Dark
+riverctl hide-cursor timeout 27953 
+
+riverctl background-color 0x1d2021
+riverctl border-color-focused 0x79740e
+riverctl border-color-unfocused 0x263640
+riverctl border-width 1
+
+# floating windows
+float_add() {
+    riverctl float-filter-add $@
+} 
+
+float_add app-id alacrittyf
+float_add app-id FloatingWindow
+float_add app-id rofi
+float_add app-id Gimp
+float_add app-id thunar
+float_add app-id pavucontrol
+float_add app-id virt-manager
+float_add app-id vimiv
+float_add app-id python3
+float_add app-id foot-float
+float_add title Telegram
+float_add title ""
+
+# Set app-ids and titles of views which should use client side decorations
+riverctl csd-filter-add app-id "firefox"
+
+# riverctl rule add ssd -app-id "firefox"
+
+# gtk settings
+gsettings set org.gnome.desktop.wm.preferences button-layout ""
+
+config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+if [ ! -f "$config" ]; then exit 1; fi
+
+gnome_schema="org.gnome.desktop.interface"
+gtk_theme="$(grep 'gtk-theme-name' "$config" | sed 's/.*\s*=\s*//')"
+icon_theme="$(grep 'gtk-icon-theme-name' "$config" | sed 's/.*\s*=\s*//')"
+cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | sed 's/.*\s*=\s*//')"
+font_name="$(grep 'gtk-font-name' "$config" | sed 's/.*\s*=\s*//')"
+gsettings set "$gnome_schema" gtk-theme "$gtk_theme"
+gsettings set "$gnome_schema" icon-theme "$icon_theme"
+gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
+gsettings set "$gnome_schema" font-name "$font_name"

@@ -1,14 +1,16 @@
 #!/bin/bash
 
-scripts=$HOME/.config/river/scripts
+scripts=(
+    autostart
+    input
+    keybindings
+    decoration
+)
 
-$scripts/display.sh &
-$scripts/autostart.sh &
-$scripts/input.sh &
-$scripts/theme.sh &
-$scripts/misc.sh &
-$scripts/keybindings.sh &
+for script in ${scripts[@]}
+do
+    riverctl spawn "$HOME/.config/river/scripts/$script" &
+done
 
 # layout
-riverctl default-layout rivertile
 rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+term=foot
+term_float="foot --app-id=foot-float"
+
 # simple macros
 
 map() {
@@ -99,8 +102,8 @@ map  Super+Control End      spawn "systemctl hibernate"
 map  Super+Control Home     spawn "systemctl suspend"
 map  Super+Control Pause    spawn "systemctl hybrid-sleep"
 
-map  Super Return           spawn "alacritty"
-map  Super+Shift Return     spawn "alacritty --class alacrittyf,alacrittyf"
+map  Super Return           spawn "$term"
+map  Super+Shift Return     spawn "$term_float"
 map  Super A                spawn "rofi -show drun -show-icons -monitor -1"
 map  Super P                spawn "rofi -show run -monitor -1"
 map  Super g                spawn "gpu-chill"
@@ -109,6 +112,9 @@ map  Super W                spawn "firefox"
 map  Super E                spawn "firefox -P $MY_FIREFOX_PROFILE"
 map  Super Q                spawn "killall waybar; waybar"
 
+# screenshot
+map  None Print             spawn "grim -g \$(slurp) $HOME/Pictures/Screenshots/$(date +%F-%T).png"
+
 # volume
 mapr None XF86AudioRaiseVolume  spawn "amixer -D pipewire set Master 5%+"
 mapr None XF86AudioLowerVolume  spawn "amixer -D pipewire set Master 5%-"
@@ -116,7 +122,7 @@ map  None XF86AudioMute         spawn "amixer -D pipewire set Master toggle"
 
 mapr Super+Shift XF86AudioRaiseVolume  spawn "mpc -q volume +5"
 mapr Super+Shift XF86AudioLowerVolume  spawn "mpc -q volume +5-"
-map  Super+Shift XF86AudioRaiseVolume  spawn "mpc next -q"
-map  Super+Shift XF86AudioLowerVolume  spawn "mpc next -q"
+# map  Super+Shift XF86AudioRaiseVolume  spawn "mpc next -q"
+# map  Super+Shift XF86AudioLowerVolume  spawn "mpc next -q"
 map  Super       Slash                 spawn "mpc toggle -q"
 map  Super+Shift XF86AudioMute         spawn "mpc stop -q"
