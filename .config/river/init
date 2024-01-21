@@ -1,4 +1,22 @@
-#!/bin/bash
+#!/bin/lua
 
-cd $HOME/.config/river
-lua init.lua
+-- required to load scripts
+local river_path = os.getenv("HOME") .. "/.config/river/?.lua"
+package.path = package.path .. ";" .. river_path
+print(package.path)
+
+-- run scripts
+require("scripts.autostart")
+require("scripts.input")
+require("scripts.deco")
+require("scripts.keys")
+
+local rivertile_opts = {
+    "-view-padding", "0",
+    "-outer-padding", "0",
+    "-main-ratio", "0.5",
+}
+
+-- replace init with rivertile
+-- the lua-posix package is needed to have access to execp
+require("posix.unistd").execp("rivertile", rivertile_opts)
