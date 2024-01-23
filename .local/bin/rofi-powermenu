@@ -1,0 +1,88 @@
+#!/bin/luajit
+
+local config_dir = "$XDG_CONFIG_HOME/rofi/"
+local style = config_dir .. "powermenu.rasi"
+local confirm_style = config_dir .. "confirm.rasi"
+
+local uptime_cmd = "$(uptime -p |\
+    awk '{print $2,$3}' |\
+    awk -F, '{print $1}' |\
+    sed 's/minute/min/')"
+
+local prompt = "$(whoami)@$(hostname): up " .. uptime_cmd
+local message = "Session: $DESKTOP_SESSION"
+
+-- not using key value table so that the order of options is kept
+local options = {
+    {
+        opt = "Logout",
+        cmd = "riverctl exit"
+    },
+    {
+        opt = "Suspend",
+        cmd = "systemctl suspend"
+    },
+    {
+        opt = "Hibernate",
+        cmd = "systemctl hibernate"
+    },
+    {
+        opt = "Hybrid sleep",
+        cmd = "systemctl hybrid-sleep"
+    },
+    {
+        opt = "Reboot",
+        cmd = "systemctl reboot"
+    },
+    {
+        opt = "Poweroff",
+        cmd = "systemctl poweroff"
+    }
+}
+
+-- capture stdout of cmd
+function os.capture(cmd, raw)
+    local f = assert(io.popen(cmd, 'r'))
+    local s = assert(f:read("*a"))
+    f:close()
+
+    if raw then return s end
+
+    s = string.gsub(s, "^%s+", "")
+    s = string.gsub(s, "%s+$", "")
+    s = string.gsub(s, "[\n\r]+", " ")
+
+    return s
+end
+
+
+-- concatenate option names
+local opts = {}
+for i, entry in ipairs(options) do
+    opts[i] = entry.opt
+end
+
+local echo = string.format("printf '%s' |", table.concat(opts, "\n"))
+local rofi_cmd = string.format(
+    "rofi -monitor -1 -dmenu -p \"%s\" -mesg \"%s\" -theme %s",
+    prompt, message, style
+)
+
+-- run rofi and pass options
+local selected = os.capture(echo .. rofi_cmd)
+
+-- find selected pair
+for _, entry in ipairs(options) do
+    if entry.opt == selected then
+        local confirm = os.capture(string.format(
+            "printf 'Yes\nNo' | rofi -monitor -1 -dmenu -p 'Confirm' -mesg '%s?' -theme %s",
+            entry.opt, confirm_style
+        ))
+
+        if confirm == "Yes" then
+            os.execute(entry.cmd)
+        end
+
+        break
+    end
+end
