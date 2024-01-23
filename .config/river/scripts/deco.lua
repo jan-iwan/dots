@@ -1,3 +1,13 @@
+local wallpaper = {
+    ["HDMI-A-1"] = "$HOME/z/img/bg.png",
+    ["DP-3"] = "$HOME/z/img/bg.png",
+}
+
+local monitors = {
+    ["HDMI-A-1"] = "--preferred --pos 0,0",
+    ["DP-3"] = "--pos 1920,0",
+}
+
 local river_settings = {
     ["default-layout"] = "rivertile",
 
@@ -51,6 +61,18 @@ local gsettings = {
     }
 }
 
+for monitor, image in pairs(wallpaper) do
+    os.execute(string.format(
+        "riverctl spawn \"swaybg -o %s -i %s\"",
+    monitor, image
+    ))
+end
+
+local randr = "wlr-randr"
+for monitor, settings in pairs(monitors) do
+    randr = randr ..string.format(" --output %s %s", monitor, settings)
+end
+os.execute(string.format("riverctl spawn \"%s\"", randr))
 
 for key, value in pairs(river_settings) do
     os.execute(string.format("riverctl %s %s", key, value))
@@ -59,13 +81,17 @@ end
 for filter, types in pairs(filters) do
     for type, patterns in pairs(types) do
         for _, pattern in ipairs(patterns) do
-            os.execute(string.format("riverctl %s %s \"%s\"", filter, type, pattern))
+            os.execute(string.format(
+            "riverctl %s %s \"%s\""
+            , filter, type, pattern))
         end
     end
 end
 
 for schema, keys in pairs(gsettings) do
     for key, value in pairs(keys) do
-        os.execute(string.format("gsettings set %s %s \"%s\"", schema, key, value))
+        os.execute(string.format(
+        "gsettings set %s %s \"%s\"",
+        schema, key, value))
     end
 end

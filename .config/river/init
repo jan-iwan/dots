@@ -3,13 +3,12 @@
 -- required to load scripts
 local river_path = os.getenv("HOME") .. "/.config/river/?.lua"
 package.path = package.path .. ";" .. river_path
-print(package.path)
 
 -- run scripts
-require("scripts.autostart")
-require("scripts.input")
 require("scripts.deco")
 require("scripts.keys")
+require("scripts.autostart")
+require("scripts.input")
 
 local rivertile_opts = {
     "-view-padding", "0",

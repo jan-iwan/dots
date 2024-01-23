@@ -1,1 +1,61 @@
-@theme "gruvbox-dark.rasi"
+configuration {
+    modi: "run,drun";
+    icon-theme: "gruvbox-plus-icon-pack";
+    drun-display-format: "{icon} {name}";
+    display-drun: "drun ";
+    display-run: "run ";
+    hover-select: true;
+    terminal: "foot";
+}
+
+@theme "shared/colors.rasi"
+@import "shared/elements.rasi"
+
+* {
+  font: "Terminus 11";
+}
+
+window {
+    background-color: @bg;
+    border: 1px;
+    border-color: @border;
+    width: 620px;
+    height: 400px;
+}
+
+mainbox {
+    background-color: inherit;
+    padding: 6px;
+    spacing: 10px;
+}
+
+// input bar
+
+inputbar {
+    background-color: @black;
+    padding: 5px;
+    children:   [ prompt, entry ];
+    text-color: @prompt;
+}
+
+
+prompt {
+    background-color: inherit;
+    text-color: @prompt;
+}
+
+entry {
+    background-color: inherit;
+    text-color: @fg;
+    placeholder: "Search";
+    placeholder-color: @white;
+}
+
+// listview
+
+listview {
+    background-color: inherit;
+    spacing:      0px;
+    padding:      0px 0px 0px ;
+    columns: 2;
+}

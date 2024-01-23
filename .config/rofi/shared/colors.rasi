@@ -1,0 +1,22 @@
+* {
+    bg:     #1d2021ff;
+    fg:     #d5c4a1ff;
+    black:  #263640;
+    red:    #cc241d;
+    green:  #98971a;
+    yellow: #d79921;
+    blue:   #458588;
+    magenta:#b16282;
+    cyan:   #689d6a;
+    white:  #a89984;
+    orange: #d65d0e;
+}
+
+* {
+    border: @yellow;
+    prompt:  @magenta;
+    element-bg: @bg;
+    element-fg: @fg;
+    selected-bg: @green;
+    selected-fg: @bg;
+}

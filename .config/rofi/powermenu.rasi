@@ -1,0 +1,70 @@
+@theme "shared/colors.rasi"
+@import "shared/elements.rasi"
+
+// font
+* {
+    font: "Terminus 11";
+}
+
+// main window
+
+window {
+    background-color: @bg;
+    border: 1px;
+    border-color: @border;
+    width: 230px;
+    height: 230px;
+}
+
+// main box
+
+mainbox {
+    background-color: inherit;
+    padding: 6px;
+    spacing: 10px;
+    children: [ inputbar, message, listview ];
+}
+
+// inputbar
+
+inputbar {
+    background-color: inherit;
+    spacing:    10px;
+    children:   [ prompt ];
+}
+
+prompt {
+    background-color: inherit;
+    text-color: @prompt;
+}
+
+// message
+
+message {
+    background-color: inherit;
+    padding: 0px;
+}
+
+textbox {
+    background-color: inherit;
+    text-color: @white;
+}
+
+// listview
+
+listview {
+    background-color: inherit;
+    spacing: 0px;
+}
+
+element {
+    background-color: inherit;
+    padding: 6px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}

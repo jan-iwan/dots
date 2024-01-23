@@ -199,9 +199,9 @@ local apps = {
         cmd = "rofi -show drun -show-icons -monitor -1",
     },
     {
-        mod = { "Super" },
-        key = "P",
-        cmd = "rofi -show run -monitor -1",
+        mod = { "Super", "Shift" },
+        key = "Q",
+        cmd = "rofi-powermenu",
     },
     {
         mod = { "Super" },
@@ -264,7 +264,9 @@ local function keyopt(opt)
     end
 end
 
+-- local bit = require("bit") -- for luajit
 for key = 1, 9 do
+    -- local tag_num = bit.lshift(1, key - 1)
     local tag_num = 1 << (key - 1)
 
     for cmd, mods in pairs(tags) do

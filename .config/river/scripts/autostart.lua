@@ -10,18 +10,14 @@ local programs = {
     "swayidle -w timeout 593 \'wlopm --off \\*\' resume \'wlopm --on \\*\'" ,
 
     -- autostart desktop apps
-    "dapper",
+    "dapper -u",
 
     -- notifications
     "dunst",
 
     "mpd $HOME/.config/mpd/mpd.conf",
 
-    "wlr-randr --output HDMI-A-1 --pos 0,0 --output DP-3 --pos 1920,0",
-
-    -- background
-    "swaybg -o HDMI-A-1 -i $HOME/z/img/bg.png",
-    "swaybg -o DP-3 -i $HOME/z/img/bg.png",
+    -- "wlr-randr --output HDMI-A-1 --pos 0,0 --output DP-3 --pos 1920,0",
 }
 
 
