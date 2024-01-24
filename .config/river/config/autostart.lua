@@ -7,7 +7,7 @@ local programs = {
     "gammastep -l -34:-58",
 
     -- turn off display after timeout
-    "swayidle -w timeout 593 \'wlopm --off \\*\' resume \'wlopm --on \\*\'" ,
+    "swayidle -w timeout 593 'wlopm --off *' resume 'wlopm --on *'" ,
 
     -- autostart desktop apps
     "dapper -u",
@@ -16,11 +16,13 @@ local programs = {
     "dunst",
 
     "mpd $HOME/.config/mpd/mpd.conf",
-
-    -- "wlr-randr --output HDMI-A-1 --pos 0,0 --output DP-3 --pos 1920,0",
 }
 
+local fork_exec = require("config.fork_exec")
+
+-- if require("posix.unistd").getenv("") then
+-- end
 
 for _, program in ipairs(programs) do
-    os.execute(string.format("riverctl spawn \"%s\"", program))
+    fork_exec("riverctl", { "spawn", program })
 end
