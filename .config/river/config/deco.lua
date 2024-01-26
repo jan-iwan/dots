@@ -64,10 +64,10 @@ local gsettings = {
 
 ---- apply config ----
 
-local fork_exec = require("config.fork_exec")
+local cmd = require("cmd")
 
 for monitor, image in pairs(wallpaper) do
-    fork_exec("riverctl", {
+    cmd.exec("riverctl", {
         "spawn", "swaybg -o " .. monitor .. " -i " .. image
     })
 
@@ -79,22 +79,22 @@ for monitor, settings in pairs(monitors) do
     randr = randr .. " --output " .. monitor .. " " .. settings
 end
 
-fork_exec("riverctl", { "spawn", randr })
+cmd.exec("riverctl", { "spawn", randr })
 
 for key, value in pairs(river_settings) do
-    fork_exec("riverctl", { key, value })
+    cmd.exec("riverctl", { key, value })
 end
 
 for filter, types in pairs(filters) do
     for type, patterns in pairs(types) do
         for _, pattern in ipairs(patterns) do
-            fork_exec("riverctl", { filter, type, pattern })
+            cmd.exec("riverctl", { filter, type, pattern })
         end
     end
 end
 
 for schema, keys in pairs(gsettings) do
     for key, value in pairs(keys) do
-        fork_exec("gsettings", { "set", schema, key, value })
+        cmd.exec("gsettings", { "set", schema, key, value })
     end
 end

@@ -1,0 +1,19 @@
+#!/bin/fish
+
+set color $(hyprpicker)
+
+# run only if a color was picked
+if test -n "$color"
+    wl-copy $color
+
+    convert \
+        -size 16x16 \
+        xc:$color \
+        /tmp/picked_color.png
+
+    notify-send \
+        --expire-time=60000 \
+        --icon=/tmp/picked_color.png \
+        --app-name="Color" \
+        $color
+end

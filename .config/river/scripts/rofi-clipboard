@@ -1,0 +1,9 @@
+#!/bin/bash
+
+prompt="Clipboard"
+theme="$HOME/.config/rofi/clipboard.rasi"
+
+cliphist list |\
+    rofi -dmenu -p $prompt -theme $theme |\
+    cliphist decode |\
+    wl-copy

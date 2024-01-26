@@ -1,0 +1,67 @@
+#!/bin/lua
+
+local colors = require("palette")
+local icons_dir = "/tmp/colors/"
+local prompt = "Gruvbox"
+local theme = "$HOME/.config/rofi/palette.rasi"
+local appname = "Color"
+
+local cmd =  require("cmd")
+
+-- avoid creating icons if they were already created
+local should_create_dir = true
+local lfs = require("lfs")
+
+-- check if the icons directory exists
+if lfs.attributes(icons_dir, "mode") == "directory" then
+    local icons_date = lfs.attributes(icons_dir, "modification")
+    local palette_date = lfs.attributes(
+        os.getenv("HOME") .. "/.config/palette.lua", "modification"
+    )
+
+    -- if palette was edited, the icons should be reconstructed
+    if icons_date > palette_date then
+        should_create_dir = false
+    end
+else
+    lfs.mkdir(icons_dir)
+end
+
+
+local echo = {}
+
+for i, color in ipairs(colors) do
+    local icon_path = icons_dir .. color.name .. ".png"
+
+    --  if there are no icons
+    if should_create_dir then
+        -- create colors icons (`convert` from image magick)
+        cmd.exec("convert", { "-size", "16x16", "xc:" .. color.code, icon_path })
+    end
+
+    echo[i] = color.name .. "\\0icon\\x1f" .. icon_path
+end
+
+local echo_cmd = string.format("printf \"%s\"", table.concat(echo, "\n"))
+local rofi_cmd = string.format(
+    "rofi -monitor -1 -dmenu -show-icons -p \"%s\" -theme \"%s\"",
+    prompt, theme
+)
+
+local selected = cmd.capture(echo_cmd .. "|" .. rofi_cmd)
+
+-- find selected pair
+for _, color in ipairs(colors) do
+    if color.name == selected then
+        cmd.exec("wl-copy", { color.code })
+        cmd.exec("notify-send", {
+            "--expire-time=60000",
+            "--icon=" .. icons_dir .. color.name .. ".png",
+            "--app-name=" .. appname,
+            color.code,
+            color.name
+        })
+    end
+
+    break
+end

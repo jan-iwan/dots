@@ -22,8 +22,23 @@ local apps = {
     },
     {
         mod = { "Super" },
+        key = "X",
+        cmd = scripts .. "/rofi-clipboard",
+    },
+    {
+        mod = { "Super" },
         key = "Q",
         cmd = scripts .. "/reload",
+    },
+    {
+        mod = { "Super" },
+        key = "P",
+        cmd = scripts .. "/rofi-palette",
+    },
+    {
+        mod = { "Super", "Shift" },
+        key = "P",
+        cmd = scripts .. "/color-picker",
     },
     {
         mod = { "Super" },
@@ -62,6 +77,18 @@ local apps = {
         mod = { "Super" },
         key = "Slash",
         cmd = "mpc toggle -q",
+    },
+
+    -- notifications
+    {
+        mod = { "Super" },
+        key = "apostrophe",
+        cmd = "dunstctl close",
+    },
+    {
+        mod = { "Super", "Shift" },
+        key = "apostrophe",
+        cmd = "dunstctl set-paused toggle",
     },
 }
 
@@ -253,8 +280,6 @@ local tags = {
 
 ---- apply config ----
 
-local fork_exec = require("config.fork_exec")
-
 local function modstr(mods)
     if mods ~= nil then
         return table.concat(mods, "+")
@@ -262,6 +287,8 @@ local function modstr(mods)
         return "None"
     end
 end
+
+local command = require("cmd")
 
 for _, keybind in ipairs(apps) do
     local mod = modstr(keybind.mod)
@@ -273,7 +300,7 @@ for _, keybind in ipairs(apps) do
         opts = { "map", "-" .. keybind.opt, "normal", mod, keybind.key, "spawn", keybind.cmd }
     end
 
-    fork_exec("riverctl", opts)
+    command.exec("riverctl", opts)
 end
 
 -- local bit = require("bit") -- for luajit
@@ -284,7 +311,7 @@ for key = 1, 9 do
     for cmd, mods in pairs(tags) do
         local mod = modstr(mods)
 
-        fork_exec("riverctl", { "map", "normal", mod, key, cmd, tag_num })
+        command.exec("riverctl", { "map", "normal", mod, key, cmd, tag_num })
     end
 end
 
@@ -304,7 +331,7 @@ for _, keybind in ipairs(river) do
         table.insert(opts, cmd)
     end
 
-    fork_exec("riverctl", opts)
+    command.exec("riverctl", opts)
 end
 
 for _, keybind in ipairs(mouse) do
@@ -316,5 +343,5 @@ for _, keybind in ipairs(mouse) do
         table.insert(opts, cmd)
     end
 
-    fork_exec("riverctl", opts)
+    command.exec("riverctl", opts)
 end

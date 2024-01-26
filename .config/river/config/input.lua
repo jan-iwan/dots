@@ -13,8 +13,8 @@ local input_settings = {
     { "input", mouse, "pointer-accel", "-0.5" },
 }
 
-local fork_exec = require("config.fork_exec")
+local cmd = require("cmd")
 
 for _, setting in ipairs(input_settings) do
-    fork_exec("riverctl", setting)
+    cmd.exec("riverctl", setting)
 end

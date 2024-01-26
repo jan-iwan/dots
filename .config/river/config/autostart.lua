@@ -16,13 +16,12 @@ local programs = {
     "dunst",
 
     "mpd $HOME/.config/mpd/mpd.conf",
+
+    "wl-paste --watch cliphist store"
 }
 
-local fork_exec = require("config.fork_exec")
-
--- if require("posix.unistd").getenv("") then
--- end
+local cmd = require("cmd")
 
 for _, program in ipairs(programs) do
-    fork_exec("riverctl", { "spawn", program })
+    cmd.exec("riverctl", { "spawn", program })
 end

@@ -1,8 +1,8 @@
-#!/bin/luajit
+#!/bin/lua
 
 local config_dir = "$XDG_CONFIG_HOME/rofi/"
-local style = config_dir .. "powermenu.rasi"
-local confirm_style = config_dir .. "confirm.rasi"
+local theme = config_dir .. "powermenu.rasi"
+local confirm_theme = config_dir .. "confirm.rasi"
 
 local uptime_cmd = "$(uptime -p |\
     awk '{print $2,$3}' |\
@@ -40,21 +40,7 @@ local options = {
     }
 }
 
--- capture stdout of cmd
-function os.capture(cmd, raw)
-    local f = assert(io.popen(cmd, 'r'))
-    local s = assert(f:read("*a"))
-    f:close()
-
-    if raw then return s end
-
-    s = string.gsub(s, "^%s+", "")
-    s = string.gsub(s, "%s+$", "")
-    s = string.gsub(s, "[\n\r]+", " ")
-
-    return s
-end
-
+local cmd = require("cmd")
 
 -- concatenate option names
 local opts = {}
@@ -62,21 +48,21 @@ for i, entry in ipairs(options) do
     opts[i] = entry.opt
 end
 
-local echo = string.format("printf '%s' |", table.concat(opts, "\n"))
+local echo = string.format("printf '%s'", table.concat(opts, "\n"))
 local rofi_cmd = string.format(
     "rofi -monitor -1 -dmenu -p \"%s\" -mesg \"%s\" -theme %s",
-    prompt, message, style
+    prompt, message, theme
 )
 
 -- run rofi and pass options
-local selected = os.capture(echo .. rofi_cmd)
+local selected = cmd.capture(echo .. "|" .. rofi_cmd)
 
 -- find selected pair
 for _, entry in ipairs(options) do
     if entry.opt == selected then
-        local confirm = os.capture(string.format(
+        local confirm = cmd.capture(string.format(
             "printf 'Yes\nNo' | rofi -monitor -1 -dmenu -p 'Confirm' -mesg '%s?' -theme %s",
-            entry.opt, confirm_style
+            entry.opt, confirm_theme
         ))
 
         if confirm == "Yes" then
