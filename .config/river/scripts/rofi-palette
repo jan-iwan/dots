@@ -1,10 +1,11 @@
 #!/bin/lua
 
 local colors = require("palette")
-local icons_dir = "/tmp/colors/"
 local prompt = "Gruvbox"
 local theme = "$HOME/.config/rofi/palette.rasi"
 local appname = "Color"
+local icons_dir = "/tmp/colors/"
+local palette_location = os.getenv("HOME") .. "/.config/palette.lua"
 
 local cmd =  require("cmd")
 
@@ -15,19 +16,19 @@ local lfs = require("lfs")
 -- check if the icons directory exists
 if lfs.attributes(icons_dir, "mode") == "directory" then
     local icons_date = lfs.attributes(icons_dir, "modification")
-    local palette_date = lfs.attributes(
-        os.getenv("HOME") .. "/.config/palette.lua", "modification"
-    )
+    local palette_date = lfs.attributes(palette_location, "modification")
 
     -- if palette was edited, the icons should be reconstructed
     if icons_date > palette_date then
         should_create_dir = false
     end
+
 else
     lfs.mkdir(icons_dir)
 end
 
 
+-- table to store element entries for rofi
 local echo = {}
 
 for i, color in ipairs(colors) do
@@ -35,25 +36,34 @@ for i, color in ipairs(colors) do
 
     --  if there are no icons
     if should_create_dir then
-        -- create colors icons (`convert` from image magick)
-        cmd.exec("convert", { "-size", "16x16", "xc:" .. color.code, icon_path })
+        -- create solid color icons (`convert` from image magick)
+        cmd.exec("convert", {
+            "-size", "24x24", "xc:" .. color.code, icon_path
+        })
     end
 
+    -- "bg\0icon\x1f/tmp/colors/bg.png" tells rofi to make an entry with
+    -- text 'bg' and use the icon stored at '/tmp/colors/bg'
     echo[i] = color.name .. "\\0icon\\x1f" .. icon_path
 end
 
+-- construct command, each entry is separated by a newline ('\n')
 local echo_cmd = string.format("printf \"%s\"", table.concat(echo, "\n"))
 local rofi_cmd = string.format(
     "rofi -monitor -1 -dmenu -show-icons -p \"%s\" -theme \"%s\"",
     prompt, theme
 )
 
+-- run command and save output
 local selected = cmd.capture(echo_cmd .. "|" .. rofi_cmd)
 
 -- find selected pair
 for _, color in ipairs(colors) do
     if color.name == selected then
+        -- copy selected color to clipboard
         cmd.exec("wl-copy", { color.code })
+
+        -- show notification
         cmd.exec("notify-send", {
             "--expire-time=60000",
             "--icon=" .. icons_dir .. color.name .. ".png",
@@ -61,7 +71,7 @@ for _, color in ipairs(colors) do
             color.code,
             color.name
         })
-    end
 
-    break
+        break
+    end
 end
