@@ -1,3 +1,6 @@
+@theme "shared/colors.rasi"
+@import "shared/common.rasi"
+
 configuration {
     modi: "run,drun";
     icon-theme: "gruvbox-plus-icon-pack";
@@ -8,44 +11,17 @@ configuration {
     terminal: "foot";
 }
 
-@theme "shared/colors.rasi"
-@import "shared/elements.rasi"
-
-* {
-  font: "Terminus 11";
-}
-
 window {
-    background-color: @bg;
-    border: 1px;
-    border-color: @border;
     width: 620px;
-    height: 400px;
-}
-
-mainbox {
-    background-color: inherit;
-    padding: 6px;
-    spacing: 10px;
 }
 
 // input bar
 
 inputbar {
-    background-color: @black;
-    padding: 5px;
     children:   [ prompt, entry ];
-    text-color: @prompt;
-}
-
-
-prompt {
-    background-color: inherit;
-    text-color: @prompt;
 }
 
 entry {
-    background-color: inherit;
     text-color: @fg;
     placeholder: "Search";
     placeholder-color: @white;
@@ -54,8 +30,6 @@ entry {
 // listview
 
 listview {
-    background-color: inherit;
-    spacing:      0px;
-    padding:      0px 0px 0px ;
+    lines: 10;
     columns: 2;
 }

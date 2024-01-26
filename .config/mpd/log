@@ -3977,3 +3977,289 @@ Jan 25 01:09 : player: played "Sui Generis/Vida/11 Posludio.flac"
 Jan 25 01:09 : player: played "0/reaper/01-211220_2251.wav"
 Jan 25 01:09 : exception: Failed to decode /home/jiwn/Music/0/reaper/01-211220_2251.wav; Failed to open '/home/jiwn/Music/0/reaper/01-211220_2251.wav': No such file or directory
 Jan 25 01:09 : player: played "0/reaper/01-211220_2251.wav"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:19 : player: played "Serú Girán/La grasa de las capitales no/00 - Hidden Track One Audio.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:19 : player: played "Serú Girán/La grasa de las capitales no/00 - Hidden Track One Audio.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:25 : player: played "Serú Girán/La grasa de las capitales no/01 - La grasa de las capitales.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:27 : player: played "Serú Girán/La grasa de las capitales no/02 - San Francisco y el lobo.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:32 : player: played "Serú Girán/La grasa de las capitales no/03 - Perro andaluz.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:36 : player: played "Serú Girán/La grasa de las capitales no/04 - Frecuencia modulada.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:40 : player: played "Serú Girán/La grasa de las capitales no/05 - Paranoia y soledad.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 18 19:47 : player: played "Serú Girán/La grasa de las capitales no/06 - Noche de perros.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 10:41 : player: played "Various Artists/The Blues Collection (Volumen 2)/01 Lightnin' Hopkins - Awful Dreams.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 10:45 : player: played "Various Artists/The Blues Collection (Volumen 2)/02 Memphis Slim - Just Landed In Your Town.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 10:48 : player: played "The Blues Collection (Volumen 2)/03 Eric Clapton - Take It Easy.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 10:53 : player: played "The Blues Collection (Volumen 2)/04 Lightnin' Hopkins - Glory Be.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 11:12 : player: played "The Blues Collection (Volumen 2)/05 Memphis Slim - Worried Life Blues.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 11:44 : player: played "The Blues Collection (Volumen 2)/06 Eric Clapton - Lonely Years.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 11:48 : player: played "The Blues Collection (Volumen 2)/07 Lightnin' Hopkins - Bring Me My Shotgun.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 11:52 : player: played "The Blues Collection (Volumen 2)/08 Memphis Slim - Miss IDA B.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 11:56 : player: played "The Blues Collection (Volumen 2)/09 Eric Clapton - Telephone Blues.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 13:32 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/01 - Humph (Rudy Van Gelder 24-Bit Mastering _ 1998 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 13:35 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/02 - Evonce (Rudy Van Gelder 24-Bit Mastering _ 2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 13:38 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/03 - Suburban Eyes (Rudy Van Gelder 24-Bit Mastering _ 2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:00 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/04 - Thelonious (Rudy Van Gelder 24-Bit Mastering _ 1998 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:03 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/05 - Evonce (Alternate Take_Rudy Van Gelder 24-Bit Mastering_2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:06 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/06 - Suburban Eyes (Alternate Take_Rudy Van Gelder 24-Bit Mastering_2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:09 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/07 - Nice Work If You Can Get It (Rudy Van Gelder 24-Bit Mastering _ 1998 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:12 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/08 - Ruby, My Dear (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:15 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/09 - Well You Needn't (Remastered).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:18 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/10 - April In Paris (Rudy Van Gelder 24-Bit Mastering _ 1998 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:23 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/11 - Off Minor (Rudy Van Gelder 24-Bit Mastering _ 1998 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:27 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/12 - Introspection (Rudy Van Gelder 24-Bit Mastering _ 1998 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:30 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/13 - Nice Work If You Can Get It (Alternate Take_Rudy Van Gelder 24-Bit Mastering_2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:33 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/14 - Ruby My Dear (Alternate Take_Rudy Van Gelder 24-Bit Mastering_2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:36 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/15 - Well You Needn't (Alternate Take_Rudy Van Gelder 24-Bit Mastering_2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:38 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/16 - April In Paris (Alternate Take_Rudy Van Gelder 24-Bit Mastering_2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:41 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/17 - In Walked Bud (Rudy Van Gelder Edition _ Remastered 1998).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:45 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/18 - Monk's Mood (Rudy Van Gelder 24-Bit Mastering _ 2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:47 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/19 - Who Knows_ (Rudy Van Gelder 24-Bit Mastering _ 2001 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:51 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/20 - 'Round Midnight.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 14:53 : player: played "Thelonious Monk/Thelonious Monk - Genius Of Modern Music (Vol.1, Expanded Edition)/21 - Who Knows_ (Alternate Take_Rudy Van Gelder 24-Bit Mastering_1998 Digital Remaster).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:01 : player: played "Ella Fitzgerald/100 Años De Swing/01 A Tisket A Tascket.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:04 : player: played "Ella Fitzgerald/100 Años De Swing/02 Undecided.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:08 : player: played "Ella Fitzgerald/100 Años De Swing/03 My Heart Belongs To Daddy.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:11 : player: played "Ella Fitzgerald/100 Años De Swing/04 Little White Lies.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:14 : player: played "Ella Fitzgerald/100 Años De Swing/05 Sing Song Swing.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:17 : player: played "Ella Fitzgerald/100 Años De Swing/06 My Man.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:19 : player: played "Ella Fitzgerald/100 Años De Swing/07 Three Little Words.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:22 : player: played "Ella Fitzgerald/100 Años De Swing/08 Shine.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:25 : player: played "Ella Fitzgerald/100 Años De Swing/09 Chew Chew Chew.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:28 : player: played "Ella Fitzgerald/100 Años De Swing/10 Rock It For Me.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:32 : player: played "Ella Fitzgerald/100 Años De Swing/11 Crying My Heart Out For You.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:34 : player: played "Ella Fitzgerald/100 Años De Swing/12 My Last Affair.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:37 : player: played "Ella Fitzgerald/100 Años De Swing/13 If Dreams Come True.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:40 : player: played "Ella Fitzgerald/100 Años De Swing/14 Organ Grinder´s Swing.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:43 : player: played "Ella Fitzgerald/100 Años De Swing/15 Sugar Blues.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:53 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/01 - Dinah (Take 2) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:56 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/02 - I Surrender, Dear (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 16:59 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/03 - Sweet And Lovely (Take 2) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:01 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/04 - North Of The Sunset (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:07 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/05 - Ruby, My Dear.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:10 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/06 - I'm Confessin' (That I Love You) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:13 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/07 - I Hadn't Anyone Till You (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:16 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/08 - Everything Happens To Me (Take 3) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:19 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/09 - Monk's Point (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:21 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/10 - I Should Care (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:25 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/11 - Ask Me Now (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:29 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/12 - These Foolish Things (Remind Me Of You) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:31 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/13 - Introspection (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:35 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/14 - Darn That Dream.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:37 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/15 - Dinah (Take 1) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:40 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/16 - Sweet And Lovely (Take 1) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:45 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/17 - Ruby, My Dear (Take 1) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 19 17:48 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/18 - I'm Confessin' (That I Love You) (Take 1) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 20 00:03 : player: played "Thelonious Monk/Thelonious Monk - Solo Monk/19 - I Hadn't Anyone Till You (Take 2) (Album Version).flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 17:50 : player: played "Eric Clapton/Unplugged [Live]/01 Signe.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 17:54 : player: played "Eric Clapton/Unplugged [Live]/02 Before You Accuse Me.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 17:57 : player: played "Eric Clapton/Unplugged [Live]/03 Hey Hey.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:02 : player: played "Eric Clapton/Unplugged [Live]/04 Tears In Heaven.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:08 : player: played "Eric Clapton/Unplugged [Live]/05 Lonely Stranger.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:11 : player: played "Eric Clapton/Unplugged [Live]/06 Nobody Knows You When You're Down & Out.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:16 : player: played "Eric Clapton/Unplugged [Live]/07 Layla.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:23 : player: played "Eric Clapton/Unplugged [Live]/08 Running On Faith.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:26 : player: played "Eric Clapton/Unplugged [Live]/09 Walkin' Blues.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:30 : player: played "Eric Clapton/Unplugged [Live]/10 Alberta.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:33 : player: played "Eric Clapton/Unplugged [Live]/11 San Francisco Bay Blues.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:37 : player: played "Eric Clapton/Unplugged [Live]/12 Malted Milk.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:45 : player: played "Eric Clapton/Unplugged [Live]/13 Old Love.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:49 : player: played "Eric Clapton/Unplugged [Live]/14 Rollin' And Tumblin'.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:53 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/01 - Sunday Morning.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 18:57 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/02 - I'm Waiting For The Man.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:00 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/03 - Femme Fatale.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:05 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/04 - Venus In Furs.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:10 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/05 - Run Run Run.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:16 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/06 - All Tomorrow's Parties.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:23 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/07 - Heroin.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:26 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/08 - There She Goes Again.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:28 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/09 - I'll Be Your Mirror.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:31 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/10 - The Black Angel's Death Song.flac"
+*** pw_stream_update_properties called from wrong context, check thread and locking: Operation not permitted
+Apr 22 19:39 : player: played "The Velvet Underground/The Velvet Underground - The Velvet Underground & Nico 45th Anniversary/11 - European Son.flac"
+Aug 11 22:30 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/01 - Gone Hollywood (2010 Remastered).flac"
+Aug 11 22:34 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/02 - The Logical Song (Remastered 2010).flac"
+Aug 11 22:40 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/03 - Goodbye Stranger (2010 Remastered).flac"
+Aug 11 22:42 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/04 - Breakfast In America (Remastered).flac"
+Aug 11 22:46 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/05 - Oh Darling (2010 Remastered).flac"
+Aug 11 22:51 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/06 - Take The Long Way Home (2010 Remastered).flac"
+Aug 11 22:56 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/07 - Lord Is It Mine (2010 Remastered).flac"
+Aug 11 23:00 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/08 - Just Another Nervous Wreck (2010 Remastered).flac"
+Aug 11 23:03 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/09 - Casual Conversations (2010 Remastered).flac"
+Aug 11 23:10 : player: played "Supertramp/Supertramp - Breakfast In America (Deluxe Edition)/CD1/10 - Child Of Vision (2010 Remastered).flac"
+Nov 12 16:03 : player: played "Charly García/Piano bar/Charly García - Piano bar.cue/track0002"
+Nov 12 16:04 : player: played "Charly García/Piano bar/Charly García - Piano bar.cue/track0001"
+Nov 12 16:09 : player: played "Charly García/Piano bar/01 - Demoliendo hoteles.flac"
+Nov 12 16:12 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:12 : player: played "Charly García/Piano bar/02 - Promesas sobre el bidet.flac"
+Nov 12 16:17 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:17 : player: played "Charly García/Piano bar/03 - Raros peinados nuevos.flac"
+Nov 12 16:32 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:32 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:32 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:32 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:32 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:32 : player: played "Charly García/Piano bar/04 - Piano Bar.flac"
+Nov 12 16:36 : player: played "Charly García/Piano bar/05 - No te animás a despegar.flac"
+Nov 12 16:38 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Nov 12 16:38 : player: played "Charly García/Piano bar/06 - No se va a llamar mi amor.flac"
+Nov 12 16:42 : player: played "Charly García/Piano bar/07 - Tuve tu amor.flac"
+Nov 12 16:44 : player: played "Charly García/Piano bar/08 - Rap del exilio.flac"
+Nov 12 16:49 : player: played "Charly García/Piano bar/09 - Cerca de la revolución.flac"
+Nov 12 16:54 : player: played "Charly García/Piano bar/10 - Total interferencia.flac"
+Nov 12 16:54 : player: played "Charly García/Piano bar/Charly García - Piano bar.cue/track0001"
+Nov 12 16:59 : player: played "The Rolling Stones/Bridges To Babylon/01 Flip The Switch.flac"
+Nov 12 17:04 : player: played "The Rolling Stones/Bridges To Babylon/02 Anybody Seen My Baby-.flac"
+Nov 12 17:08 : player: played "The Rolling Stones/Bridges To Babylon/03 Low Down.flac"
+Nov 12 17:13 : player: played "The Rolling Stones/Bridges To Babylon/04 Already Over Me.flac"
+Nov 12 17:18 : player: played "The Rolling Stones/Bridges To Babylon/05 Gunface.flac"
+Nov 12 17:22 : player: played "The Rolling Stones/Bridges To Babylon/06 You Don't Have To Mean It.flac"
+Nov 12 17:27 : player: played "The Rolling Stones/Bridges To Babylon/07 Out Of Control.flac"
+Nov 12 17:32 : player: played "The Rolling Stones/Bridges To Babylon/08 Saint Of Me.flac"
+Nov 12 17:37 : player: played "The Rolling Stones/Bridges To Babylon/09 Might As Well Get Juiced.flac"
+Dec 03 13:11 : player: played "Ella Fitzgerald/100 Años De Swing/01 A Tisket A Tascket.flac"
+Dec 03 13:15 : player: played "Ella Fitzgerald/100 Años De Swing/02 Undecided.flac"
+Dec 03 13:18 : player: played "Ella Fitzgerald/100 Años De Swing/03 My Heart Belongs To Daddy.flac"
+Dec 03 13:21 : player: played "Ella Fitzgerald/100 Años De Swing/04 Little White Lies.flac"
+Dec 03 13:24 : player: played "Ella Fitzgerald/100 Años De Swing/05 Sing Song Swing.flac"
+Dec 03 13:27 : player: played "Ella Fitzgerald/100 Años De Swing/06 My Man.flac"
+Dec 03 13:30 : player: played "Ella Fitzgerald/100 Años De Swing/07 Three Little Words.flac"
+Dec 03 13:33 : player: played "Ella Fitzgerald/100 Años De Swing/08 Shine.flac"
+Dec 03 13:35 : player: played "Ella Fitzgerald/100 Años De Swing/09 Chew Chew Chew.flac"
+Dec 03 13:39 : player: played "Ella Fitzgerald/100 Años De Swing/10 Rock It For Me.flac"
+Dec 03 13:42 : player: played "Ella Fitzgerald/100 Años De Swing/11 Crying My Heart Out For You.flac"
+Dec 18 18:11 : player: played "Pink Floyd/Pink Floyd - Atom Heart Mother/01 - Atom Heart Mother.flac"
+Dec 18 19:42 : player: played "Pink Floyd/Pink Floyd - Atom Heart Mother/01 - Atom Heart Mother.flac"
+Dec 18 19:46 : player: played "Pink Floyd/Pink Floyd - Atom Heart Mother/02 - If.flac"
+Dec 18 19:52 : player: played "Pink Floyd/Pink Floyd - Atom Heart Mother/03 - Summer '68.flac"
+Dec 18 19:57 : player: played "Pink Floyd/Pink Floyd - Atom Heart Mother/04 - Fat Old Sun.flac"
+Dec 18 20:10 : player: played "Pink Floyd/Pink Floyd - Atom Heart Mother/05 - Alan's Psychedelic Breakfast.flac"
+Dec 18 20:17 : player: played "Ella Fitzgerald/100 Años De Swing/01 A Tisket A Tascket.flac"
+Dec 18 20:20 : player: played "Ella Fitzgerald/100 Años De Swing/02 Undecided.flac"
+Dec 18 20:23 : player: played "Ella Fitzgerald/100 Años De Swing/03 My Heart Belongs To Daddy.flac"
+Dec 18 20:26 : player: played "Ella Fitzgerald/100 Años De Swing/04 Little White Lies.flac"
+Dec 18 20:29 : player: played "Ella Fitzgerald/100 Años De Swing/05 Sing Song Swing.flac"
+Dec 18 20:32 : player: played "Ella Fitzgerald/100 Años De Swing/06 My Man.flac"
+Dec 18 20:35 : player: played "Ella Fitzgerald/100 Años De Swing/07 Three Little Words.flac"
+Dec 18 20:38 : player: played "Ella Fitzgerald/100 Años De Swing/08 Shine.flac"
+Dec 18 20:41 : player: played "Ella Fitzgerald/100 Años De Swing/09 Chew Chew Chew.flac"
+Dec 18 20:44 : player: played "Ella Fitzgerald/100 Años De Swing/10 Rock It For Me.flac"
+Dec 18 20:47 : player: played "Ella Fitzgerald/100 Años De Swing/11 Crying My Heart Out For You.flac"
+Dec 18 20:50 : player: played "Ella Fitzgerald/100 Años De Swing/12 My Last Affair.flac"
+Dec 18 20:52 : player: played "Ella Fitzgerald/100 Años De Swing/13 If Dreams Come True.flac"
+Dec 18 20:55 : player: played "Ella Fitzgerald/100 Años De Swing/14 Organ Grinder´s Swing.flac"
+Dec 18 20:58 : player: played "Ella Fitzgerald/100 Años De Swing/15 Sugar Blues.flac"
+Dec 19 14:59 : player: played "Yes/Yes - Yesterdays/01 - America.flac"
+Dec 19 15:03 : player: played "Yes/Yes - Yesterdays/02 - Looking Around.flac"
+Dec 19 15:08 : player: played "Yes/Yes - Yesterdays/03 - Time and a Word.flac"
+Dec 19 15:11 : player: played "Yes/Yes - Yesterdays/04 - Sweet Dreams.flac"
+Dec 19 15:17 : player: played "Yes/Yes - Yesterdays/05 - Then.flac"
+Dec 19 15:24 : player: played "Yes/Yes - Yesterdays/06 - Survival.flac"
+Dec 19 15:29 : player: played "Yes/Yes - Yesterdays/07 - Astral Traveller.flac"
+Dec 19 15:34 : player: played "Yes/Yes - Yesterdays/08 - Dear Father.flac"
+Dec 19 15:52 : player: played "Charly García/Piano bar/01 - Demoliendo hoteles.flac"
+Dec 19 15:55 : player: played "Charly García/Piano bar/02 - Promesas sobre el bidet.flac"
+Dec 19 15:58 : player: played "Charly García/Piano bar/03 - Raros peinados nuevos.flac"
+Dec 19 16:03 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Dec 19 16:03 : player: played "Charly García/Piano bar/04 - Piano Bar.flac"
+Dec 19 16:07 : player: played "Charly García/Piano bar/05 - No te animás a despegar.flac"

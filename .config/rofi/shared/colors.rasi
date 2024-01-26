@@ -19,4 +19,9 @@
     element-fg: @fg;
     selected-bg: @green;
     selected-fg: @bg;
+
+    background: @bg;
+    background-alt: @bg;
+    foreground: @bg;
+    foreground-alt: @bg;
 }

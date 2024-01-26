@@ -1,5 +1,5 @@
 @theme "shared/colors.rasi"
-@import "shared/elements.rasi"
+@import "shared/common.rasi"
 
 // font
 * {
@@ -9,15 +9,16 @@
 // main window
 
 window {
+    background-color: @bg;
     border: 1px;
     border-color: @border;
-    width: 120px;
-    height: 120px;
+    width: 135px;
 }
 
 // main box
 
 mainbox {
+    background-color: inherit;
     padding: 6px;
     spacing: 10px;
     children: [ inputbar, message, listview ];
@@ -26,31 +27,38 @@ mainbox {
 // inputbar
 
 inputbar {
+    background-color: inherit;
     spacing:    10px;
     children:   [ prompt ];
 }
 
 prompt {
+    background-color: inherit;
     text-color: @prompt;
 }
 
 // message
 
 message {
+    background-color: inherit;
     padding: 0px;
 }
 
 textbox {
+    background-color: inherit;
     text-color: @white;
 }
 
 // listview
 
 listview {
+    lines: 2;
+    background-color: inherit;
     spacing: 0px;
 }
 
 element {
+    background-color: inherit;
     padding: 6px;
 }
 

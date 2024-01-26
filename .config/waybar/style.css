@@ -54,7 +54,7 @@ button:hover {
     margin: 0px;
 }
 #tags button.occupied {
-    color: #d5c4a1;
+    color: #ebdbb2;
     margin: 0px;
 }
 #tags button.focused {
@@ -81,7 +81,7 @@ button:hover {
 #tray,
 #mpd {
     padding: 0px;
-    color: #d5c4a1;
+    color: #ebdbb2;
 }
 
 #image {
@@ -106,7 +106,7 @@ button:hover {
 }
 
 #temperature {
-    color: #458588;
+    color: #cc241d;
 }
 
 #cpu {

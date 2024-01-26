@@ -36,8 +36,8 @@ Vec scalar(Vec a, float b) {
 }
 
 void clear(void) {
-    long* ptr = (void*)buffer;
-    while(ptr < (long*)buffer + BUF_SIZE)
+    char* ptr = (void*)buffer;
+    while(ptr < (char*)buffer + BUF_SIZE)
         *ptr++ = 0;
 }
 

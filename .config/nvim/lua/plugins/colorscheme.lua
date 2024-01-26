@@ -33,7 +33,7 @@ local gruvbox = {
                 Number = { fg = "#b8bb26" },
                 Function = { fg = "#d79921", bold = true },
                 Macro = { fg = "#d3869b"},
-                Identifier = { fg = "#d5c4a1" },
+                Identifier = { fg = "#ebdbb2" },
                 Structure = { fg = "#458588" },
                 PreProc = { fg = "#689d6a" },
                 Include = { fg = "#689d6a" },

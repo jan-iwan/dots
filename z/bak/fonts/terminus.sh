@@ -2,42 +2,39 @@
 
 ## WARNING: VERY POORLY WRITTEN SCRIPT ##
 
-# compile and install terminus font
-# with some patches
-# only compile OTB and PCF
-# no console support
+# Compile and install terminus font with some patches.
+# Only compile OTB and PCF.
+# No console support.
 
-# this downloads the tarball and extracts it automatically
-# but it may be out of date idk
-# you can go to https://terminus-font.sourceforge.net
-# and do this manually
+# This downloads the tarball and extracts it automatically but it may be out of
+# date idk you can go to https://terminus-font.sourceforge.net and do this
+# manually.
 mkdir /tmp/terminus
 cd /tmp/terminus
 wget https://sourceforge.net/projects/terminus-font/files/terminus-font-4.49/terminus-font-4.49.1.tar.gz/download -O terminus.tar.gz
 tar xpvf terminus.tar.gz
 cd terminus-font-*
 
-# this steps are described in the README
-# this is just what i need
+# This steps are described in the README, this is just what i need.
 
-# install to ~/.local/share/fonts/
+# Install to ~/.local/share/fonts/
 ./configure --prefix=$HOME/.local
 
-# patch for low tilde (~)
+# Patch for low tilde (~)
 patch -p1 -i alt/td1.diff
 
-# patch for thick braille
+# Patch for thick braille
 patch -p1 -i alt/br1.diff
 
-# compile OTB and PCF
+# Compile OTB and PCF
 make -j8 otb pcf
 
-# install PCF
+# Install PCF
 make install-pcf
 
-# install OTB
+# Install OTB
 make install-otb
 
-# clean files
+# Clean files
 cd /tmp
 rm -r /tmp/terminus
