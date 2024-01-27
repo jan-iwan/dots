@@ -1,3 +1,6 @@
+-- from ~/.config/palette.lua
+local colors = require("palette").colors
+
 local gruvbox = {
     "ellisonleao/gruvbox.nvim",
 
@@ -25,28 +28,28 @@ local gruvbox = {
             contrast = "hard", -- can be "hard", "soft" or empty string
             palette_overrides = {},
             overrides = {
-                Comment = { fg = "#98971a" },
-                String = { fg = "#d65d0e" },
-                Typedef = { fg = "#fabd2f", bold = false },
-                Type = { fg = "#458588", bold = true },
-                Special = { fg = "#d79921" },
-                Number = { fg = "#b8bb26" },
-                Function = { fg = "#d79921", bold = true },
-                Macro = { fg = "#d3869b"},
-                Identifier = { fg = "#ebdbb2" },
-                Structure = { fg = "#458588" },
-                PreProc = { fg = "#689d6a" },
-                Include = { fg = "#689d6a" },
-                Define = { fg = "#689d6a" },
+                Comment = { fg = colors["green"] },
+                String = { fg = colors["orange"] },
+                Typedef = { fg = colors["bri yellow"], bold = false },
+                Type = { fg = colors["blue"], bold = true },
+                Special = { fg = colors["yellow"] },
+                Number = { fg = colors["bri green"] },
+                Function = { fg = colors["yellow"], bold = true },
+                Macro = { fg = colors["bri magenta"]},
+                Identifier = { fg = colors["fg"] },
+                Structure = { fg = colors["blue"] },
+                PreProc = { fg = colors["cyan"] },
+                Include = { fg = colors["cyan"] },
+                Define = { fg = colors["cyan"] },
 
-                StatusLine = { fg = "#1d2021" },
-                TabLineFill = { bg = "#1d2021" },
-                TabLineSel = { bg = "#1d2021" },
+                StatusLine = { fg = colors["bg"] },
+                TabLineFill = { bg = colors["bg"] },
+                TabLineSel = { bg = colors["bg"] },
 
-                netrwDir = { fg = "#458588", bold = true },
-                netrwSymLink = { fg = "#689d6a" },
-                netrwExe = { fg = "#98971a", bold = true },
-                netrwMarkFile = { fg = "#d79921", bold = true },
+                netrwDir = { fg = colors["blue"], bold = true },
+                netrwSymLink = { fg = colors["cyan"] },
+                netrwExe = { fg = colors["green"], bold = true },
+                netrwMarkFile = { fg = colors["yellow"], bold = true },
 
                 -- i hate undercurl
                 GruvboxRedUnderline = { underline = true, undercurl = false },

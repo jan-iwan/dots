@@ -1,6 +1,6 @@
 #!/bin/lua
 
-local colors = require("palette")
+local colors = require("palette").icolors
 local prompt = "Gruvbox"
 local theme = "$HOME/.config/rofi/palette.rasi"
 local appname = "Color"
