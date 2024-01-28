@@ -17,4 +17,4 @@
 
 **Icons:** gruvbox-plus-icon-pack
 
-![Latex and rofi drun menu](./z/ims/dots/latex_and_rofi.png)
+![Latex and rofi drun menu](./z/img/dots/latex_and_rofi.png)
