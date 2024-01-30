@@ -12,25 +12,24 @@ local kind_icons = {
 local cmp = {
     "hrsh7th/nvim-cmp",
 
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
+
     dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-nvim-lua" },
-        { "L3MON4D3/LuaSnip", dependencies = {{ "rafamadriz/friendly-snippets" }} },
         { "saadparwaiz1/cmp_luasnip" },
+        { "L3MON4D3/LuaSnip" },
     },
 
     config = function()
-        require("lsp-zero.cmp").extend()
-
         local cmp = require("cmp")
         local cmp_action = require("lsp-zero.cmp").action()
 
-        require("luasnip.loaders.from_vscode").lazy_load()
-
+        -- cmp is enabled by default
         local enable = true
+        -- but it can be disabled by with this keymap
         vim.keymap.set("n", "<leader>lC",
         function()
             enable = not enable
@@ -40,10 +39,14 @@ local cmp = {
         cmp.setup({
             mapping = {
                 ["<C-k>"] = cmp.mapping.confirm({select = false}),
-                ["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
-                ["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<C-j>"] = cmp.mapping.select_prev_item(cmp_select),
+                ["<C-l>"] = cmp.mapping.select_next_item(cmp_select),
 
-                ["<C-m>"] = cmp.mapping.abort(),
+                ["<C-h>"] = cmp.mapping.abort(),
+
+                -- navigate between snippet placeholder
+                ["<Tab>"] = cmp_action.luasnip_jump_forward(),
+                ["<S-Tab>"] = cmp_action.luasnip_jump_backward(),
 
                 -- navigate documentation
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -51,10 +54,6 @@ local cmp = {
 
                 -- trigger completion menu
                 ["<C-Space>"] = cmp.mapping.complete(),
-
-                -- navigate between snippet placeholder
-                ["<C-n>"] = cmp_action.luasnip_jump_forward(),
-                ["<C-b>"] = cmp_action.luasnip_jump_backward(),
             },
             sources = {
                 { name = "nvim_lsp" },
@@ -69,6 +68,7 @@ local cmp = {
                 end,
             },
             window = {
+                -- limit docs size
                 documentation = { max_height = 32, max_width = 32, },
             },
             formatting = {
@@ -79,7 +79,7 @@ local cmp = {
 
                     -- limit cmp window width
                     local content = item.abbr
-                    local W_MAX = 28
+                    local W_MAX = 20
                     if #content > W_MAX then
                         item.abbr = vim.fn.strcharpart(content, 0, W_MAX) .. "..."
                     else
@@ -89,8 +89,9 @@ local cmp = {
                     local short_name = {
                         buffer = "buf",
                         nvim_lsp = "lsp",
-                        nvim_lua = "nvim",
+                        nvim_lua = "vim",
                         path = "path",
+                        luasnip = "sinp",
                     }
 
                     local menu_name = short_name[entry.source.name] or entry.source.name
@@ -108,18 +109,60 @@ local cmp = {
     end
 }
 
--- what i use for latex snippets
-local ultisnips = {
-    "SirVer/ultisnips",
+local snippets = {
+    "L3MON4D3/LuaSnip",
+    dependencies = {{ "rafamadriz/friendly-snippets" }},
+    build = "make install_jsregexp",
+    version = "v2.*",
+    config = function()
+        -- for friendly-snippets (VS Code-like)
+        require("luasnip.loaders.from_vscode").lazy_load()
 
-    ft = { "tex" },
+        -- SnipMate-like snippets
+        -- require("luasnip.loaders.from_snipmate").lazy_load()
 
-    init = function()
-        -- vim.g.UltiSnipsExpandTrigger = "<tab>"
-        vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
-        vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
-        -- vim.g.UltiSnipsEditSplit = "vertical"
-    end,
+        -- load lua snippets
+        require("luasnip.loaders.from_lua").lazy_load({
+            paths = "~/.config/nvim/lua/snippets"
+        })
+
+        local ls = require("luasnip")
+
+        ls.config.set_config({
+            -- remember to keep around the last snippet
+            history = true,
+
+            -- autoexpand some snippets
+            enable_autosnippets = true,
+
+            -- dynamic snippets that update while typing
+            updateevents = "TextChanged,TextChangedI",
+
+            store_selection_keys = "<C-e>",
+        })
+
+        -- for choice nodes
+        vim.keymap.set({ "i", "s" }, "<C-n>", function()
+            if ls.choice_active() then
+                ls.change_choice(1)
+            end
+        end)
+    end
 }
 
-return { cmp, ultisnips }
+
+-- what i used for latex snippets
+-- local ultisnips = {
+--     "SirVer/ultisnips",
+--
+--     ft = { "tex" },
+--
+--     init = function()
+--         -- vim.g.UltiSnipsExpandTrigger = "<tab>"
+--         vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
+--         vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+--         -- vim.g.UltiSnipsEditSplit = "vertical"
+--     end,
+-- }
+
+return { cmp, snippets }

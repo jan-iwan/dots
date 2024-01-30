@@ -5,7 +5,7 @@ local lsp_zero = {
     lazy = true,
 
     config = function()
-        require('lsp-zero.settings').preset({})
+        -- require('lsp-zero.settings').preset({})
     end,
 }
 
@@ -43,9 +43,9 @@ local lsp_config = {
     },
 
     config = function()
-        local lsp = require("lsp-zero").preset({})
+        local lsp_zero = require("lsp-zero")
 
-        lsp.on_attach(function(client, bufnr)
+        lsp_zero.on_attach(function(client, bufnr)
             local map = vim.keymap.set
             local opts = { buffer = bufnr }
 
@@ -64,13 +64,13 @@ local lsp_config = {
             map("i", "<C-h>", vim.lsp.buf.signature_help, opts)
         end)
 
-        lsp.set_sign_icons({
+        lsp_zero.set_sign_icons({
             error = "E", warn = "!", hint = "*", info = "i",
         })
 
         vim.diagnostic.config({ virtual_text = false })
 
-        lsp.setup()
+        lsp_zero.setup()
     end
 }
 
