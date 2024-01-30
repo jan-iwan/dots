@@ -1,0 +1,65 @@
+* {
+    font: "Terminus 11";
+    background-color: inherit;
+    text-color: inherit;
+}
+
+window {
+    background-color: @bg;
+    border: 1px;
+    border-color: @border;
+}
+
+mainbox {
+    padding: 6px;
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: @black;
+    text-color: @prompt;
+    padding: 7px;
+    border-radius: 7px;
+}
+
+prompt {
+        text-color: @prompt;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ": ";
+    text-color: @prompt;
+}
+
+message {
+        padding: 5px;
+}
+
+textbox {
+        text-color: @white;
+}
+
+
+
+element {
+    border:  0;
+    padding: 5px;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element normal,
+element alternate normal {
+    background-color: @element-bg;
+    text-color:       @element-fg;
+}
+
+element selected,
+element selected normal {
+    border-radius: 7px;
+    background-color: @selected-bg;
+    text-color: @selected-fg;
+}

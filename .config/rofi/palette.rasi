@@ -1,0 +1,29 @@
+@theme "shared/colors.rasi"
+@import "shared/common.rasi"
+
+window {
+    width: 340px;
+}
+
+inputbar {
+    children: [ prompt, textbox-prompt-colon, entry ];
+}
+
+listview {
+    lines: 4;
+    columns: 9;
+    flow: horizontal;
+    fixed-height: true;
+    fixed-columns: true;
+}
+
+element {
+    orientation: vertical;
+    children: [element-icon];
+}
+
+element-icon {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    size: 24px;
+}

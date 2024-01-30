@@ -1,0 +1,30 @@
+@theme "shared/colors.rasi"
+@import "shared/common.rasi"
+
+window {
+    width: 700px;
+    height: 500px;
+}
+
+// main box
+
+inputbar {
+    children: [ prompt, textbox-prompt-colon, entry ];
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ": ";
+    text-color: @prompt;
+}
+
+listview {
+    spacing:      0px;
+    padding:      0px 0px 0px ;
+}
+
+entry {
+    text-color: @fg;
+    placeholder: "Search";
+    placeholder-color: @white;
+}
