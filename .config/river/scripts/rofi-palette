@@ -7,7 +7,7 @@ local appname = "Color"
 local icons_dir = "/tmp/colors/"
 local palette_location = os.getenv("HOME") .. "/.config/palette.lua"
 
-local cmd =  require("cmd")
+local command =  require("command")
 
 -- avoid creating icons if they were already created
 local should_create_dir = true
@@ -37,7 +37,7 @@ for i, color in ipairs(colors) do
     --  if there are no icons
     if should_create_dir then
         -- create solid color icons (`convert` from image magick)
-        cmd.exec("convert", {
+        command.exec("convert", {
             "-size", "24x24", "xc:" .. color.code, icon_path
         })
     end
@@ -48,23 +48,23 @@ for i, color in ipairs(colors) do
 end
 
 -- construct command, each entry is separated by a newline ('\n')
-local echo_cmd = string.format("printf \"%s\"", table.concat(echo, "\n"))
-local rofi_cmd = string.format(
+local echo_command = string.format("printf \"%s\"", table.concat(echo, "\n"))
+local rofi_command = string.format(
     "rofi -monitor -1 -dmenu -show-icons -p \"%s\" -theme \"%s\"",
     prompt, theme
 )
 
 -- run command and save output
-local selected = cmd.capture(echo_cmd .. "|" .. rofi_cmd)
+local selected = command.capture(echo_command .. "|" .. rofi_command)
 
 -- find selected pair
 for _, color in ipairs(colors) do
     if color.name == selected then
         -- copy selected color to clipboard
-        cmd.exec("wl-copy", { color.code })
+        command.exec("wl-copy", { color.code })
 
         -- show notification
-        cmd.exec("notify-send", {
+        command.exec("notify-send", {
             "--expire-time=60000",
             "--icon=" .. icons_dir .. color.name .. ".png",
             "--app-name=" .. appname,

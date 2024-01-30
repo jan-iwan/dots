@@ -40,7 +40,7 @@ local options = {
     }
 }
 
-local cmd = require("cmd")
+local command = require("command")
 
 -- concatenate option names
 local opts = {}
@@ -55,12 +55,12 @@ local rofi_cmd = string.format(
 )
 
 -- run rofi and pass options
-local selected = cmd.capture(echo .. "|" .. rofi_cmd)
+local selected = command.capture(echo .. "|" .. rofi_cmd)
 
 -- find selected pair
 for _, entry in ipairs(options) do
     if entry.opt == selected then
-        local confirm = cmd.capture(string.format(
+        local confirm = command.capture(string.format(
             "printf 'Yes\nNo' | rofi -monitor -1 -dmenu -p 'Confirm' -mesg '%s?' -theme %s",
             entry.opt, confirm_theme
         ))

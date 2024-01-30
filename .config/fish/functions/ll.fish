@@ -1,4 +1,4 @@
-function ll --wraps=ls --wraps='exa -lg' --description 'alias ll=exa -lg'
-  exa -lg $argv
+function ll --wraps='eza --classify --group-directories-first --long' --description 'alias ll eza --classify --group-directories-first --long'
+  eza --classify --group-directories-first --long $argv
         
 end

@@ -160,14 +160,14 @@ handle_image() {
         #     exit 1;;
 
         ## PDF
-         application/pdf)
-             pdftoppm -f 1 -l 1 \
-                      -scale-to-x "${DEFAULT_SIZE%x*}" \
-                      -scale-to-y -1 \
-                      -singlefile \
-                      -jpeg -tiffcompression jpeg \
-                      -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
-                 && exit 6 || exit 1;;
+        # application/pdf)
+        #     pdftoppm -f 1 -l 1 \
+        #              -scale-to-x "${DEFAULT_SIZE%x*}" \
+        #              -scale-to-y -1 \
+        #              -singlefile \
+        #              -jpeg -tiffcompression jpeg \
+        #              -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
+        #         && exit 6 || exit 1;;
 
 
         ## ePub, MOBI, FB2 (using Calibre)
@@ -305,7 +305,7 @@ handle_mime() {
             env HIGHLIGHT_OPTIONS="${HIGHLIGHT_OPTIONS}" highlight \
                 --out-format="${highlight_format}" \
                 --force -- "${FILE_PATH}" && exit 5
-            env bat --color=always --style="plain" \
+            env COLORTERM=8bit bat --color=always --style="plain" \
                 -- "${FILE_PATH}" && exit 5
             pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}"\
                 -- "${FILE_PATH}" && exit 5

@@ -1,1 +1,8 @@
 #!/bin/lua
+
+os.execute("killall corectrl")
+
+require("river.config.theme").apply(true)
+require("river.config.input").apply()
+require("river.config.autostart").start(true)
+require("river.config.keys").apply()

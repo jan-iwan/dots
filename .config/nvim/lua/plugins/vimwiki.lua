@@ -72,7 +72,6 @@ local vimwiki = {
 
         if scheme ==# 'pdf'
             " open pdf in zathura, "--fork" so  that vim doesn't freeze
-            " "-c" since i use a different config in this case
             let file = '"' . file . '"'
             silent execute '!zathura' '--fork' file
         else

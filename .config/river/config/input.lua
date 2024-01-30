@@ -1,3 +1,5 @@
+local M = {}
+
 -- mouse device name (run `riverctl list-inputs` to find it)
 local mouse = "pointer-1133-16500-Logitech_G305"
 
@@ -13,8 +15,12 @@ local input_settings = {
     { "input", mouse, "pointer-accel", "-0.5" },
 }
 
-local cmd = require("cmd")
+local command = require("command")
 
-for _, setting in ipairs(input_settings) do
-    cmd.exec("riverctl", setting)
+function M.apply()
+    for _, setting in ipairs(input_settings) do
+        command.exec("riverctl", setting)
+    end
 end
+
+return M

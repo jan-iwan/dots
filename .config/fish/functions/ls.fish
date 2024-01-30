@@ -1,4 +1,4 @@
-function ls --wraps='exa -F' --description 'alias ls=exa -F'
-  exa -F $argv
+function ls --wraps='eza --classify --group-directories-first' --description 'alias ls eza --classify --group-directories-first'
+  eza --classify --group-directories-first $argv
         
 end

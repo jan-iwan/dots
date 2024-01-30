@@ -1,0 +1,19 @@
+[options]
+background = 1d2021
+
+width = 736
+height = 544
+
+overlay = true
+overlay_font = Terminus:11
+overlay_text_color = ebdbb2
+overlay_background_color = 1d2021
+overlay_background_alpha = 00
+overlay_position_bottom = true
+
+scaling_mode = shrink
+upscaling_method = nearest_neighbour
+
+[binds]
+n = next
+p = prev

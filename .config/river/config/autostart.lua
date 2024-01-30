@@ -1,5 +1,9 @@
 #!/bin/bash
 
+local M = {}
+
+local command = require("command")
+
 local programs = {
     "waybar",
 
@@ -7,7 +11,7 @@ local programs = {
     "gammastep -l -34:-58",
 
     -- turn off display after timeout
-    "swayidle -w timeout 593 'wlopm --off *' resume 'wlopm --on *'" ,
+    "swayidle -w timeout 593 'wlopm --off \\*' resume 'wlopm --on \\*'" ,
 
     -- autostart desktop apps
     "dapper -u",
@@ -20,8 +24,17 @@ local programs = {
     "wl-paste --watch cliphist store"
 }
 
-local cmd = require("cmd")
+function M.start(restart)
+    for _, program in ipairs(programs) do
+        if restart ~= nil then
+            -- get first word of the program (i.e. program name)
+            -- and kill it
+            command.exec("killall", { program:match("%w+") })
+        end
 
-for _, program in ipairs(programs) do
-    cmd.exec("riverctl", { "spawn", program })
+        -- start the program
+        command.exec("riverctl", { "spawn", program })
+    end
 end
+
+return M
