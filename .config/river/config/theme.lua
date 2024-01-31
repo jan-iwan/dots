@@ -39,6 +39,7 @@ local filters = {
         },
         ["title"] = {
             "Telegram",
+            "Helm",
             "",
         }
     },

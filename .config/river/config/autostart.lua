@@ -29,7 +29,7 @@ function M.start(restart)
         if restart ~= nil then
             -- get first word of the program (i.e. program name)
             -- and kill it
-            command.exec("killall", { program:match("%w+") })
+            command.exec("killall", { program:match("%w+") }, true)
         end
 
         -- start the program

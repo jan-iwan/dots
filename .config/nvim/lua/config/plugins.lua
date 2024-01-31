@@ -1,11 +1,12 @@
 -- declare lazy.nvim options before doing anything
 local opts = {
     install = {
-        -- if gruvbox is not available, use default
+        -- if gruvbox is not available, use default.
+        -- lazy.nvim uses habamax by default, wich i think looks out of place
         colorscheme = { "gruvbox", "default" },
     },
     ui = {
-        -- i don't like icons
+        -- i don't like icons they don't look great alongside bitmap fonts
         icons = {
             cmd = "[cmd]",
             config = "[cfg]",

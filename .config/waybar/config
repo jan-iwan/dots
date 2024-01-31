@@ -2,9 +2,28 @@
     "height": 16,
     "spacing": 8,
 
-    "modules-left": ["image#mudkip", "river/tags", "river/mode", "wlr/taskbar"],
-    "modules-center": ["river/window"],
-    "modules-right": ["network", "temperature", "cpu", "memory", "pulseaudio", "clock", "tray"],
+    "modules-left": [
+        "image#mudkip",
+        "river/tags",
+        "river/mode",
+        "wlr/taskbar"
+    ],
 
-    "include": ["/home/jiwn/.config/waybar/modules.json"]
+    "modules-center": [
+        "river/window"
+    ],
+
+    "modules-right": [
+        "network",
+        "temperature",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "clock",
+        "tray"
+    ],
+
+    "include": [
+        "/home/jiwn/.config/waybar/modules.json"
+    ]
 }

@@ -117,7 +117,7 @@ local river = {
     {
         mod = { "Super" },
         key = "K",
-        cmd = { "focus-view", " previous" },
+        cmd = { "focus-view", "previous" },
     },
     {
         mod = { "Super", "Shift" },
@@ -166,7 +166,7 @@ local river = {
     {
         mod = { "Super", "Alt" },
         key = "H",
-        cmd = { "move left 100" },
+        cmd = { "move", "left", "100" },
         opt = "repeat"
     },
     {
