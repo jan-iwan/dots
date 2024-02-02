@@ -1,5 +1,5 @@
 -- declare lazy.nvim options before doing anything
-local opts = {
+local lazy_opts = {
     install = {
         -- if gruvbox is not available, use default.
         -- lazy.nvim uses habamax by default, wich i think looks out of place
@@ -43,15 +43,15 @@ if vim.loop.fs_stat(lazypath) then
 
     vim.opt.rtp:prepend(lazypath)
 
-    require("lazy").setup("plugins", opts)
+    require("lazy").setup("plugins", lazy_opts)
 
     return
 
 else
     -- if lazy is not installed don't install it right away,
     -- if there was no internet connection that would make nvim unusable
-    function install()
-        print("Installing lazy.nvim!")
+    function Install_lazy()
+        print("Installing lazy.nvim! Please wait")
 
         vim.fn.system({
             "git",
@@ -63,10 +63,11 @@ else
         })
 
         vim.opt.rtp:prepend(lazypath)
-        require("lazy").setup("plugins", opts)
+        require("lazy").setup("plugins", lazy_opts)
     end
 
     -- some highlights for when there is no colorscheme
+    -- i think it doesn't work
     vim.opt.termguicolors = false
     vim.cmd([[
     hi SignColumn NONE
@@ -77,8 +78,8 @@ else
     hi TabLineSel NONE
     ]])
 
-    -- same as `:lua install`
-    vim.keymap.set("n", "<leader>P", install)
+    -- same as `:lua install_lazy`_
+    vim.keymap.set("n", "<leader>P", Install_lazy)
 
-    print("<insert>Hello world!<Esc>:wq<cr> Run `:lua install()` to install plugins.")
+    print("<insert>Hello, world!<Esc>:wq<cr> Press \" P\" to install plugins.")
 end

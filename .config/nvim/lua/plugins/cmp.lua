@@ -1,12 +1,14 @@
 -- instead of icons in completion menu
 local kind_icons = {
-    Class = "class", Color = "color", Constant = "const",
-    Constructor = "class()", Enum = "enum", EnumMember = "enum",
-    Field = "field", File = "file", Folder = "file",
-    Function = "func", Interface = "intf", Keyword = "key",
-    Method = "method", Module = "lib", Property = "prop",
-    Snippet = "snip", Struct = "struct", Text = "txt",
-    Unit = "unit", Value = "value", Variable = "var",
+  Text = "txt",         Method = ".f()",        Function = "f()",
+  Constructor = "F()",  Field = ".x",           Variable = "var",
+  Class = "class",      Interface = "intf",     Module = "lib",
+  Property = "prop",    Unit = "unit",          Value = "value",
+  Enum = "enum",        Keyword = "key",        Snippet = "snip",
+  Color = "color",      File = "file",          Reference = "ref",
+  Folder = "file",      EnumMember = "enum",    Constant = "const",
+  Struct = "struct",    Event = "event",        Operator = "op",
+  TypeParameter = "()",
 }
 
 local cmp = {
@@ -25,11 +27,10 @@ local cmp = {
 
     config = function()
         local cmp = require("cmp")
-        local cmp_action = require("lsp-zero.cmp").action()
 
         -- cmp is enabled by default
         local enable = true
-        -- but it can be disabled by with this keymap
+        -- but it can be disabled (toggled) by with this keymap
         vim.keymap.set("n", "<leader>lC",
         function()
             enable = not enable
@@ -39,14 +40,10 @@ local cmp = {
         cmp.setup({
             mapping = {
                 ["<C-k>"] = cmp.mapping.confirm({select = false}),
-                ["<C-j>"] = cmp.mapping.select_prev_item(cmp_select),
-                ["<C-l>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<C-n>"] = cmp.mapping.select_prev_item(cmp_select),
+                ["<C-p>"] = cmp.mapping.select_next_item(cmp_select),
 
                 ["<C-h>"] = cmp.mapping.abort(),
-
-                -- navigate between snippet placeholder
-                ["<Tab>"] = cmp_action.luasnip_jump_forward(),
-                ["<S-Tab>"] = cmp_action.luasnip_jump_backward(),
 
                 -- navigate documentation
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -55,21 +52,22 @@ local cmp = {
                 -- trigger completion menu
                 ["<C-Space>"] = cmp.mapping.complete(),
             },
+            window = {
+                -- limit docs size
+                documentation = { max_height = 32, max_width = 32, },
+            },
+            snippet = {
+                expand = function(args)
+                    -- LuaSnip specific
+                    require("luasnip").lsp_expand(args.body)
+                end,
+            },
             sources = {
                 { name = "nvim_lsp" },
                 { name = "luasnip", keyword_length = 2 },
                 { name = "buffer", keyword_length = 4 },
                 { name = "path" },
                 { name = "nvim_lua" }, -- lua for nvim
-            },
-            snippet = {
-                expand = function(args)
-                    require("luasnip").lsp_expand(args.body)
-                end,
-            },
-            window = {
-                -- limit docs size
-                documentation = { max_height = 32, max_width = 32, },
             },
             formatting = {
                 fields = {"abbr", "kind", "menu"},
@@ -111,15 +109,18 @@ local cmp = {
 
 local snippets = {
     "L3MON4D3/LuaSnip",
+
+    event = { "InsertEnter", "CmdlineEnter" },
+
     dependencies = {{ "rafamadriz/friendly-snippets" }},
+
     build = "make install_jsregexp",
+
     version = "v2.*",
+
     config = function()
         -- for friendly-snippets (VS Code-like)
         require("luasnip.loaders.from_vscode").lazy_load()
-
-        -- SnipMate-like snippets
-        -- require("luasnip.loaders.from_snipmate").lazy_load()
 
         -- load lua snippets
         require("luasnip.loaders.from_lua").lazy_load({
@@ -138,31 +139,25 @@ local snippets = {
             -- dynamic snippets that update while typing
             updateevents = "TextChanged,TextChangedI",
 
-            store_selection_keys = "<C-e>",
+            store_selection_keys = "<Tab>",
         })
+
+        -- navigate between snippet placeholder
+        vim.keymap.set({"i", "s"}, "<Tab>", function()
+            ls.jump( 1)
+        end, { silent = true })
+
+        vim.keymap.set({"i", "s"}, "<S-Tab>", function()
+            ls.jump(-1)
+        end, { silent = true })
 
         -- for choice nodes
         vim.keymap.set({ "i", "s" }, "<C-n>", function()
             if ls.choice_active() then
                 ls.change_choice(1)
             end
-        end)
+        end, { silent = true })
     end
 }
-
-
--- what i used for latex snippets
--- local ultisnips = {
---     "SirVer/ultisnips",
---
---     ft = { "tex" },
---
---     init = function()
---         -- vim.g.UltiSnipsExpandTrigger = "<tab>"
---         vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
---         vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
---         -- vim.g.UltiSnipsEditSplit = "vertical"
---     end,
--- }
 
 return { cmp, snippets }

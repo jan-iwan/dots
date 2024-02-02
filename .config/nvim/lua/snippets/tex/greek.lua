@@ -1,6 +1,4 @@
-local function in_mathzone()
-    return vim.fn["vimtex#syntax#in_mathzone"]() == 1
-end
+local tex = require("snippets.tex.utils")
 
 local alphabet = {
     ["a"] = "alpha",
@@ -29,7 +27,7 @@ local alphabet = {
     [";r"] = "varrho",
     ["s"] = "sigma",
     ["S"] = "Sigma",
-    ["t"] = "tau",
+    ["pt"] = "tau",
     ["u"] = "upsilon",
     ["U"] = "Upsilon",
     ["f"] = "phi",
@@ -47,7 +45,7 @@ for trig, text in pairs(alphabet) do
     table.insert(snips, s(
     { trig = ";" .. trig, snippetType = "autosnippet", },
     { t("\\" .. text), },
-    { condition = in_mathzone }
+    { condition = tex.in_math }
     ))
 end
 

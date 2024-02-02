@@ -1,76 +1,110 @@
-local lsp_zero = {
-    "VonHeikemen/lsp-zero.nvim",
-
-    branch = "v2.x",
-    lazy = true,
-
-    config = function()
-        require('lsp-zero.settings').preset({})
-    end,
-}
+-- This was done with a lot of help from lsp-zero's migrate away guide:
+-- https://github.com/VonHeikemen/lsp-zero.nvim/
 
 local lsp_config = {
-    "neovim/nvim-lspconfig" ,
+    "neovim/nvim-lspconfig",
 
-    cmd = { "LspInfo" , "Mason"},
+    cmd = { "LspInfo" },
     event = { "BufReadPre", "BufNewFile" },
-    keys = { { "<leader>lm", vim.cmd.Mason }, desc = "Mason" },
 
     dependencies = {
         { "hrsh7th/nvim-cmp" },
+        { "williamboman/mason.nvim" },
+    },
+
+    config = function()
+        vim.diagnostic.config({ virtual_text = false })
+
+        local map = vim.keymap.set
+
+        -- diagnostics are not exclusive to lsp servers
+        map("n", "<leader>lg", vim.diagnostic.open_float)
+        map("n", "[l", vim.diagnostic.goto_next)
+        map("n", "]l", vim.diagnostic.goto_prev)
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+            desc = "LSP actions",
+            callback = function(event)
+                -- buffer-local keymaps
+                local opts = { buffer = event.buf }
+
+                -- "l" for lsp
+                map("n", "K", vim.lsp.buf.hover, opts)
+                map("n", "gd", vim.lsp.buf.definition, opts)
+                map("n", "gD", vim.lsp.buf.declaration, opts)
+                map("n", "gi", vim.lsp.buf.implementation, opts)
+                map("n", "go", vim.lsp.buf.type_definition, opts)
+                map("n", "gr", vim.lsp.buf.references, opts)
+                map("i", "gs", vim.lsp.buf.signature_help, opts)
+                map("n", "<F2>", vim.lsp.buf.rename, opts)
+                map("n", "<F4>", vim.lsp.buf.code_action, opts)
+                map({ "n", "x" }, "<F3>", function()
+                    vim.lsp.buf.format({ async = true })
+                end, opts)
+            end
+        })
+        -- lsp_zero.set_sign_icons({
+        --     error = "E", warn = "!", hint = "*", info = "i",
+        -- })
+    end
+}
+
+local mason = {
+    "williamboman/mason.nvim",
+
+    cmd = { "Mason" },
+    keys = { { "<leader>lm", vim.cmd.Mason }, desc = "Mason" },
+
+    dependencies = {
+        { "neovim/nvim-lspconfig" },
         {
             "williamboman/mason-lspconfig.nvim",
             opts = {},
         },
-        {
-            "williamboman/mason.nvim",
-            build = function()
-                pcall(vim.cmd, "MasonUpdate")
-            end,
-            opts = {
-                ui = {
-                    icons = {
-                        package_installed = "ok",
-                        package_pending = "...",
-                        package_uninstalled = "x",
-                    },
-                },
-                keymaps = {
-                    cancel_installation = "x",
-                },
-            }
+    },
+
+    build = function()
+        pcall(vim.cmd, "MasonUpdate")
+    end,
+
+    opts = {
+        ui = {
+            icons = {
+                package_installed = "ok",
+                package_pending = "...",
+                package_uninstalled = "x",
+            },
+        },
+        keymaps = {
+            cancel_installation = "x",
         },
     },
 
     config = function()
-        local lsp = require("lsp-zero").preset({})
+        local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-        lsp.on_attach(function(client, bufnr)
-            local map = vim.keymap.set
-            local opts = { buffer = bufnr }
+        local default_setup = function(server)
+            require("lspconfig")[server].setup({
+                capabilities = lsp_capabilities,
+            })
+        end
 
-            -- "l" for lsp
-            map("n", "K", vim.lsp.buf.hover, opts)
-            map("n", "[l", vim.diagnostic.goto_next, opts)
-            map("n", "]l", vim.diagnostic.goto_prev, opts)
-            map("n", "<leader>ld", vim.lsp.buf.definition, opts)
-            map("n", "<leader>lD", vim.lsp.buf.declaration, opts)
-            map("n", "<leader>li", vim.lsp.buf.implementation, opts)
-            map("n", "<leader>lg", vim.diagnostic.open_float, opts)
-            map("n", "<leader>lca", vim.lsp.buf.code_action, opts)
-            map("n", "<leader>lrr", vim.lsp.buf.references, opts)
-            map("n", "<leader>lrn", vim.lsp.buf.rename, opts)
-            map("n", "<leader>lws", vim.lsp.buf.workspace_symbol, opts)
-            map("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-        end)
-
-        lsp.set_sign_icons({
-            error = "E", warn = "!", hint = "*", info = "i",
+        require("mason").setup({})
+        require("mason-lspconfig").setup({
+            ensure_installed = {},
+            handlers = {
+                default_setup,
+                lua_ls = function()
+                    require("lspconfig").lua_ls.setup({
+                        capabilities = lsp_capabilities,
+                        settings = {
+                            Lua = { diagnostics = { globals = { "vim" } }, },
+                        },
+                    })
+                end
+            },
         })
-
-        vim.diagnostic.config({ virtual_text = false })
-
-        lsp.setup()
     end
 }
 
@@ -92,4 +126,4 @@ local specific = {
     },
 }
 
-return { lsp_zero, lsp_config, specific }
+return { lsp_config, mason, specific }
