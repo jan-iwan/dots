@@ -29,7 +29,6 @@ local lsp_config = {
                 -- buffer-local keymaps
                 local opts = { buffer = event.buf }
 
-                -- "l" for lsp
                 map("n", "K", vim.lsp.buf.hover, opts)
                 map("n", "gd", vim.lsp.buf.definition, opts)
                 map("n", "gD", vim.lsp.buf.declaration, opts)
@@ -44,9 +43,6 @@ local lsp_config = {
                 end, opts)
             end
         })
-        -- lsp_zero.set_sign_icons({
-        --     error = "E", warn = "!", hint = "*", info = "i",
-        -- })
     end
 }
 

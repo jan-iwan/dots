@@ -43,7 +43,7 @@ local alphabet = {
 local snips = {}
 for trig, text in pairs(alphabet) do
     table.insert(snips, s(
-    { trig = ";" .. trig, snippetType = "autosnippet", },
+    { trig = ";" .. trig, snippetType = "autosnippet", wordTrig = false },
     { t("\\" .. text), },
     { condition = tex.in_math }
     ))

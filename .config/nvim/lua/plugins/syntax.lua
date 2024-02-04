@@ -3,6 +3,8 @@ local treesitter = {
 
     event = { "BufReadPre", "InsertEnter" },
 
+    build = ":TSUpdate",
+
     config = function()
         require'nvim-treesitter.configs'.setup {
             -- A list of parser names, or "all"
@@ -65,9 +67,19 @@ local others = {
         end,
     },
 
+    -- comment stuff
+    {
+        "numToStr/Comment.nvim",
+        event = { "BufReadPre", "InsertEnter" },
+        opts = {
+            -- ignore blank lines
+            ignore = "^$",
+        },
+    },
+
     -- indentation mark
     {
-        "lukas-reineke/indent-blankline.nvim", 
+        "lukas-reineke/indent-blankline.nvim",
         event = { "InsertEnter", "BufEnter" },
     },
 

@@ -43,7 +43,7 @@ local cmp = {
                 ["<C-n>"] = cmp.mapping.select_prev_item(cmp_select),
                 ["<C-p>"] = cmp.mapping.select_next_item(cmp_select),
 
-                ["<C-h>"] = cmp.mapping.abort(),
+                ["<C-c>"] = cmp.mapping.abort(),
 
                 -- navigate documentation
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -120,7 +120,9 @@ local snippets = {
 
     config = function()
         -- for friendly-snippets (VS Code-like)
-        require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load({
+            exclude = "latex",
+        })
 
         -- load lua snippets
         require("luasnip.loaders.from_lua").lazy_load({

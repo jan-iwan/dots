@@ -4,7 +4,7 @@ local tex = require("snippets.tex.utils")
 return {
     -- square root
     s(
-        { trig = "qr", snippetType = "autosnippet" },
+        { trig = "sr", snippetType = "autosnippet" },
         fmta([[\sqrt{<>}]], i(1)),
         { condition = tex.in_math, }
     ),
@@ -20,7 +20,7 @@ return {
     ),
 
     s(
-        { trig = "qr", snippetType = "autosnippet" },
+        { trig = "ee", snippetType = "autosnippet" },
         fmta([[e^{<>}]], i(1)),
         { condition = tex.in_math, }
     ),
@@ -45,6 +45,7 @@ return {
         { t([[\dif ]]) },
         { condition = tex.in_math, }
     ),
+
     -- derivative
     s(
         { trig = "dv", snippetType = "autosnippet", },
@@ -53,6 +54,7 @@ return {
             fmta([[\dv{<>} <>]], { r(1, "var", i(nil, "x")), r(2, "fun") }),
         })
     ),
+    -- nth derivative
     s(
         { trig = "ndv", snippetType = "autosnippet", },
         c(1, {
@@ -70,6 +72,7 @@ return {
         }),
         { condition = tex.in_math, }
     ),
+    -- nth derivative
     s(
         { trig = "ndp", snippetType = "autosnippet", },
         c(1, {
@@ -164,5 +167,12 @@ return {
         { trig = "cj", snippetType = "autosnippet", },
         t([[\conj]]),
         { condition = tex.in_math, }
+    ),
+
+    -- subset
+    s(
+        { trig = "sst", snippetType = "autosnippet", wordTrig = false },
+        t([[\subset]]),
+        { condition = tex.in_mathzone, }
     ),
 }

@@ -17,14 +17,14 @@ return {
 
     -- subscript
     s(
-        { trig = ";-", wordTrig = false, snippetType = "autosnippet", },
+        { trig = "__", wordTrig = false, snippetType = "autosnippet", },
         fmta("_{<>}", { i(1) }),
         { condition = tex.in_mathzone, }
     ),
 
     -- superscript
     s(
-        { trig = ";6", wordTrig = false, snippetType = "autosnippet", },
+        { trig = "^^", wordTrig = false, snippetType = "autosnippet", },
         fmta("^{<>}", { i(1) }),
         { condition = tex.in_mathzone, }
     ),
@@ -40,18 +40,6 @@ return {
     s(
         { trig = "fun", snippetType = "autosnippet", },
         fmta([[<>:<>\to <>]], { i(1, "f"), i(2, "\\reals"), i(3, "\\reals")} ),
-        { condition = tex.in_mathzone, }
-    ),
-
-    -- subset
-    s(
-        { trig = ",ss", snippetType = "autosnippet", wordTrig = false },
-        t([[\subseteq]]),
-        { condition = tex.in_mathzone, }
-    ),
-    s(
-        { trig = ",sb", snippetType = "autosnippet", wordTrig = false },
-        t([[\subset]]),
         { condition = tex.in_mathzone, }
     ),
 }

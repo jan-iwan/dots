@@ -9,13 +9,6 @@ local plugins = {
         "mbbill/undotree",
         keys = {{ "<leader>u", vim.cmd.UndotreeToggle }, desc = "undo tree" },
     },
-
-    -- comment stuff
-    {
-        "numToStr/Comment.nvim",
-        event = { "BufReadPre", "InsertEnter" },
-        opts = {},
-    },
 }
 
-return { plugins }
+return plugins

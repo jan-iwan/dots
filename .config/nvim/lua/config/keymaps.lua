@@ -25,7 +25,7 @@ map("n", "<C-A-h>", ":vertical resize -2<CR>")
 map("n", "<C-A-l>", ":vertical resize +2<CR>")
 
 -- terminal window
-map("n", "<C-t>", "<Esc>:split<cr>:resize 10<cr>:set nonumber<cr>:terminal<cr>i")
+map("n", "<C-t>", "<Esc>:split<cr>:resize 10<cr>:set nonumber<cr>:terminal<cr>")
 
 -- buffers
 map("n", "<leader>c", cmd.bdelete)
@@ -33,8 +33,8 @@ map("n", "<S-l>", cmd.bnext)
 map("n", "<S-h>", cmd.bprevious)
 
 -- move text up and down
-map("n", "<A-j>", "<Esc>:m .+1<CR>==gi")
-map("n", "<A-k>", "<Esc>:m .-2<CR>==gi")
+map("n", "<A-j>", "<Esc>:m .+1<CR>==")
+map("n", "<A-k>", "<Esc>:m .-2<CR>==")
 
 
 --# visual mode #--
@@ -43,8 +43,8 @@ map("n", "<A-k>", "<Esc>:m .-2<CR>==gi")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 -- move text up and down
-map("v", "<A-j>", ":m .+1<CR>==")
 map("v", "<A-k>", ":m .-2<CR>==")
+map("v", "<A-j>", ":m .+1<CR>==")
 
 -- pasted stuff stays in clipboard
 map("v", "p", '"_dP')
