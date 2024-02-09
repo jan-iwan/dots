@@ -1,27 +1,3 @@
--- WIP
--- i have some latex files which i want to access with link that look like
--- "[[tex:filename]]"
--- local function handle_link()
---     local location, _, _ = require("obsidian.util").cursor_link()
-
---     -- check if it starts with "tex:" and, if so, open the corresponding latex file
---     if string.find(location, "tex:") == 1 then
---         -- separate string by ":" resulting in { "tex", "filename" }
---         local words = {}
---         for word in string.gmatch(location, "([^:]+)") do
---             table.insert(words, word)
---         end
-
---         local file_name = words[2]
---         local path = "~/Documents/latex/" .. file_name
-
---         print(path)
---     else
---         vim.cmd("ObsidianFollowLink")
---     end
--- end
-
-
 local obsidian = {
     "epwalsh/obsidian.nvim",
     version = "*",
@@ -123,13 +99,14 @@ local obsidian = {
                 -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
                 -- In this case a note with the title 'My new note' will be given an ID that looks
                 -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-                local time = tostring(os.time())
-                local suffix = ""
-                if title ~= nil then
-                    -- If title is given, transform it into valid file name.
-                    suffix = "_" .. title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-                end
-                return time .. suffix
+                -- local time = tostring(os.time())
+                -- local suffix = ""
+                -- if title ~= nil then
+                --     -- If title is given, transform it into valid file name.
+                --     suffix = "_" .. title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+                -- end
+                -- return time .. suffix
+                return title
             end,
 
             -- Optional, boolean or a function that takes a filename and returns a boolean.
@@ -138,7 +115,7 @@ local obsidian = {
 
             -- yaml at the top of each note
             note_frontmatter_func = function(note)
-                local out = { id = note.id, aliases = note.aliases, tags = note.tags, date = os.date("%a %d/%m/%Y"), }
+                local out = { aliases = note.aliases, tags = note.tags, date = os.date("%a %d/%m/%Y"), }
 
                 -- `note.metadata` contains any manually added fields in the frontmatter.
                 -- So here we just make sure those fields are kept in the frontmatter.
@@ -152,7 +129,7 @@ local obsidian = {
             end,
 
             templates = {
-                subdir = "templates",
+                subdir = "0-templates",
                 date_format = "%a %d/%m/%Y",
                 time_format = "%H:%M",
                 -- A map for custom variables, the key should be the variable and the value a function
@@ -250,7 +227,7 @@ local obsidian = {
                     ObsidianHighlightText = { bg = "#689d6a" },
                 },
                 attachments = {
-                    img_folder = "media",
+                    img_folder = "0-media",
                 },
             },
         })
