@@ -1,6 +1,6 @@
 -- instead of icons in completion menu
 local kind_icons = {
-  Text = "txt",         Method = ".f()",        Function = "f()",
+  Text = "txt",         Method = ".m()",        Function = "f()",
   Constructor = "F()",  Field = ".x",           Variable = "var",
   Class = "class",      Interface = "intf",     Module = "lib",
   Property = "prop",    Unit = "unit",          Value = "value",
@@ -27,11 +27,12 @@ local cmp = {
 
     config = function()
         local cmp = require("cmp")
+        local luasnip = require("luasnip")
 
         -- cmp is enabled by default
         local enable = true
         -- but it can be disabled (toggled) by with this keymap
-        vim.keymap.set("n", "<leader>lC",
+        vim.keymap.set("n", "<leader>C",
         function()
             enable = not enable
             cmp.setup({enabled = enable})
@@ -39,11 +40,19 @@ local cmp = {
 
         cmp.setup({
             mapping = {
-                ["<C-k>"] = cmp.mapping.confirm({select = false}),
-                ["<C-n>"] = cmp.mapping.select_prev_item(cmp_select),
-                ["<C-p>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<C-k>"] = cmp.mapping(function(fallback)
+                    if luasnip.expandable() then
+                        luasnip.expand()
+                    elseif cmp.visible() then
+                        cmp.confirm()
+                    else
+                        fallback()
+                    end
+                end),
+                ["<C-p>"] = cmp.mapping.select_prev_item(),
+                ["<C-n>"] = cmp.mapping.select_next_item(),
 
-                ["<C-c>"] = cmp.mapping.abort(),
+                ["<C-b>"] = cmp.mapping.abort(),
 
                 -- navigate documentation
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -51,6 +60,32 @@ local cmp = {
 
                 -- trigger completion menu
                 ["<C-Space>"] = cmp.mapping.complete(),
+
+                -- luasnip
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if luasnip.jumpable(1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end, {"i", "s"}),
+
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if luasnip.jumpable(-1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end, {"i", "s"}),
+
+                -- cycle through choices in luasnip
+                ["<C-c>"] = cmp.mapping(function(fallback)
+                    if luasnip.choice_active() then
+                        luasnip.change_choice(1)
+                    else
+                        fallback()
+                    end
+                end, {"i", "s"}),
             },
             window = {
                 -- limit docs size
@@ -124,14 +159,14 @@ local snippets = {
             exclude = "latex",
         })
 
-        -- load lua snippets
+        -- load custom lua snippets
         require("luasnip.loaders.from_lua").lazy_load({
             paths = "~/.config/nvim/lua/snippets"
         })
 
-        local ls = require("luasnip")
+        local luasnip = require("luasnip")
 
-        ls.config.set_config({
+        luasnip.config.set_config({
             -- remember to keep around the last snippet
             history = true,
 
@@ -141,24 +176,8 @@ local snippets = {
             -- dynamic snippets that update while typing
             updateevents = "TextChanged,TextChangedI",
 
-            store_selection_keys = "<Tab>",
+            store_selection_keys = "<C-s>",
         })
-
-        -- navigate between snippet placeholder
-        vim.keymap.set({"i", "s"}, "<Tab>", function()
-            ls.jump( 1)
-        end, { silent = true })
-
-        vim.keymap.set({"i", "s"}, "<S-Tab>", function()
-            ls.jump(-1)
-        end, { silent = true })
-
-        -- for choice nodes
-        vim.keymap.set({ "i", "s" }, "<C-n>", function()
-            if ls.choice_active() then
-                ls.change_choice(1)
-            end
-        end, { silent = true })
     end
 }
 

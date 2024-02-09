@@ -1,5 +1,17 @@
 local line_begin = require("luasnip.extras.expand_conditions").line_begin
 local tex = require("snippets.tex.utils")
+local utils = require("snippets.utils")
+
+local brackets = {
+	p = { "(", ")" },
+    v = { "\\lVert", "\\rVert" },
+	a = { "\\langle", "\\rangle" },
+	A = { "Angle", "Angle" },
+	b = { "brack", "brack" },
+	B = { "Brack", "Brack" },
+	c = { "brace", "brace" },
+	m = { "|", "|" },
+}
 
 return {
     -- inline math
@@ -40,6 +52,25 @@ return {
     s(
         { trig = "fun", snippetType = "autosnippet", },
         fmta([[<>:<>\to <>]], { i(1, "f"), i(2, "\\reals"), i(3, "\\reals")} ),
+        { condition = tex.in_mathzone, }
+    ),
+
+    -- delimiters. e.g. \left( \right)
+    s(
+        { trig = "lr([aAbBcmp])", regTrig = true, snippetType = "autosnippet" },
+        fmta([[
+        \left<> <> \right<>
+        ]],{
+            f(function(_, snip)
+                local cap = snip.captures[1] or "p"
+                return brackets[cap][1]
+            end),
+            d(1, utils.get_selection),
+            f(function(_, snip)
+                local cap = snip.captures[1] or "p"
+                return brackets[cap][2]
+            end),
+        }),
         { condition = tex.in_mathzone, }
     ),
 }

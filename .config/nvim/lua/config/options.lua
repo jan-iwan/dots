@@ -1,45 +1,41 @@
-local opt = vim.opt
-local g = vim.g
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.writebackup = false
 
-opt.backup = false
-opt.swapfile = false
-opt.undofile = true
-opt.writebackup = false
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
 
-opt.mouse = "a"
-opt.clipboard = "unnamedplus"
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.showtabline = 2
+vim.opt.smartindent = true
 
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.showtabline = 2
-opt.smartindent = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.smartcase = true
+vim.opt.smartcase = true
 
+vim.opt.cursorline = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"
 
-opt.hlsearch = false
-opt.incsearch = true
-opt.smartcase = true
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+vim.opt.wrap = false
+vim.opt.pumheight = 24
 
-opt.cursorline = true
-opt.number = true
-opt.relativenumber = true
-opt.signcolumn = "yes"
+vim.opt.updatetime = 476
 
-opt.scrolloff = 8
-opt.sidescrolloff = 8
-opt.wrap = false
-opt.pumheight = 24
+vim.opt.splitbelow = true
 
-opt.updatetime = 476
+vim.opt.conceallevel = 0
 
-opt.splitbelow = true
+vim.opt.textwidth = 80
 
-opt.conceallevel = 0
+-- for obsidian.nvim
+vim.opt.conceallevel = 2
 
-opt.textwidth = 80
-
-g.netrw_keepdir = 0
-g.netrw_localcopydircmd = "cp -r"
-g.netrw_banner = 0
-g.netrw_winsize = 30

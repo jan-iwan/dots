@@ -1,68 +1,57 @@
-local map = vim.keymap.set
-local g = vim.g
-local cmd = vim.cmd
-
-g.mapleader = " "
-g.maplocalleader = " "
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 --# normal mode #--
 
-map("n", ";w", ":w<cr>")
-map("n", ";q", ":q<cr>")
-map("n", ";Q", ":qall<cr>")
-map("n", "<leader>e", cmd.Lexplore)
+-- easier write and quit
+vim.keymap.set("n", ";w", ":w<cr>")
+vim.keymap.set("n", ";q", ":q<cr>")
+vim.keymap.set("n", ";Q", ":qall<cr>")
 
--- window navigation
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+-- netrw file explorer
+vim.keymap.set("n", "<leader>e", ":Explore<CR>")
+
+-- window navigation (normal and terminal mode)
+vim.keymap.set({ "n", "t" }, "<C-h>", "<C-w>h")
+vim.keymap.set({ "n", "t" }, "<C-j>", "<C-w>j")
+vim.keymap.set({ "n", "t" }, "<C-k>", "<C-w>k")
+vim.keymap.set({ "n", "t" }, "<C-l>", "<C-w>l")
 
 -- window size
-map("n", "<C-A-k>", ":resize -2<CR>")
-map("n", "<C-A-j>", ":resize +2<CR>")
-map("n", "<C-A-h>", ":vertical resize -2<CR>")
-map("n", "<C-A-l>", ":vertical resize +2<CR>")
-
--- terminal window
-map("n", "<C-t>", "<Esc>:split<cr>:resize 10<cr>:set nonumber<cr>:terminal<cr>")
+vim.keymap.set({ "n", "t" }, "<C-A-h>", ":vertical resize -2<CR>")
+vim.keymap.set({ "n", "t" }, "<C-A-j>", ":resize +2<CR>")
+vim.keymap.set({ "n", "t" }, "<C-A-k>", ":resize -2<CR>")
+vim.keymap.set({ "n", "t" }, "<C-A-l>", ":vertical resize +2<CR>")
 
 -- buffers
-map("n", "<leader>c", cmd.bdelete)
-map("n", "<S-l>", cmd.bnext)
-map("n", "<S-h>", cmd.bprevious)
+vim.keymap.set("n", "<leader>c", vim.cmd.bdelete)
+vim.keymap.set("n", "<S-l>", vim.cmd.bnext)
+vim.keymap.set("n", "<S-h>", vim.cmd.bprevious)
 
 -- move text up and down
-map("n", "<A-j>", "<Esc>:m .+1<CR>==")
-map("n", "<A-k>", "<Esc>:m .-2<CR>==")
+vim.keymap.set("n", "<A-j>", "<Esc>:m .+1<CR>==")
+vim.keymap.set("n", "<A-k>", "<Esc>:m .-2<CR>==")
 
 
 --# visual mode #--
 
 -- for indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 -- move text up and down
-map("v", "<A-k>", ":m .-2<CR>==")
-map("v", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("v", "<A-k>", ":m .-2<CR>==")
+vim.keymap.set("v", "<A-j>", ":m .+1<CR>==")
 
 -- pasted stuff stays in clipboard
-map("v", "p", '"_dP')
+-- weird results when pasting at end of line
+vim.keymap.set("v", "p", '"_dP')
 
 
 --# visual block mode #--
 
 -- move text up and down
-map("x", "J", ":move '>+1<CR>gv-gv")
-map("x", "K", ":move '<-2<CR>gv-gv")
-map("x", "<A-j>", ":move '>+1<CR>gv-gv")
-map("x", "<A-k>", ":move '<-2<CR>gv-gv")
-
-
---# terminal mode #--
-
--- window navigation
-map("t", "<C-h>", "<C-\\><C-N><C-w>h")
-map("t", "<C-j>", "<C-\\><C-N><C-w>j")
-map("t", "<C-k>", "<C-\\><C-N><C-w>k")
-map("t", "<C-l>", "<C-\\><C-N><C-w>l")
+vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv")
+vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv")
+vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv")
+vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv")

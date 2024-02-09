@@ -15,12 +15,10 @@ local lsp_config = {
     config = function()
         vim.diagnostic.config({ virtual_text = false })
 
-        local map = vim.keymap.set
-
         -- diagnostics are not exclusive to lsp servers
-        map("n", "<leader>lg", vim.diagnostic.open_float)
-        map("n", "[l", vim.diagnostic.goto_next)
-        map("n", "]l", vim.diagnostic.goto_prev)
+        vim.keymap.set("n", "<leader>lg", vim.diagnostic.open_float)
+        vim.keymap.set("n", "[l", vim.diagnostic.goto_next)
+        vim.keymap.set("n", "]l", vim.diagnostic.goto_prev)
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -29,16 +27,16 @@ local lsp_config = {
                 -- buffer-local keymaps
                 local opts = { buffer = event.buf }
 
-                map("n", "K", vim.lsp.buf.hover, opts)
-                map("n", "gd", vim.lsp.buf.definition, opts)
-                map("n", "gD", vim.lsp.buf.declaration, opts)
-                map("n", "gi", vim.lsp.buf.implementation, opts)
-                map("n", "go", vim.lsp.buf.type_definition, opts)
-                map("n", "gr", vim.lsp.buf.references, opts)
-                map("i", "gs", vim.lsp.buf.signature_help, opts)
-                map("n", "<F2>", vim.lsp.buf.rename, opts)
-                map("n", "<F4>", vim.lsp.buf.code_action, opts)
-                map({ "n", "x" }, "<F3>", function()
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
+                vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+                vim.keymap.set({ "n", "x" }, "<F3>", function()
                     vim.lsp.buf.format({ async = true })
                 end, opts)
             end
