@@ -1,0 +1,14 @@
+linux
+linux-firmware
+base
+base-devel
+efibootmgr
+
+arch-install-scripts
+networkmanager
+fish
+neovim
+ntp
+git
+wget
+less
