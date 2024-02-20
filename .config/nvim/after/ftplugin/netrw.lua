@@ -1,18 +1,8 @@
-vim.g.netrw_keepdir = 0
-vim.g.netrw_localcopydircmd = "cp -r"
-vim.g.netrw_banner = 0
--- ignore dotfiles by default
-vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+,]]
+-- global options cannot be set up here
+-- they need to in lua/config/options.lua for some reason
+-- otherwise toggling hidden files will not work (idk why)
 
-local ignore = {
-    "aux", "log", "fls", "toc", "fdb_latexmk", "synctex.gz",
-}
-
-for _, ext in ipairs(ignore) do
-    vim.g.netrw_list_hide = vim.g.netrw_list_hide .. [[.*\.]] .. ext .. [[,]]
-end
-
-local map = function(lhs, rhs)
+local function map(lhs, rhs)
     vim.keymap.set("n", lhs, rhs, { remap = true, buffer = true })
 end
 

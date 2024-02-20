@@ -102,22 +102,4 @@ local mason = {
     end
 }
 
--- language specific extras
-local specific = {
-    -- latex
-    {
-        "lervag/vimtex",
-        ft = { "tex" },
-        config = function()
-            vim.g.vimtex_view_method = "zathura"
-        end
-    },
-
-    -- c, c++
-    {
-        "p00f/clangd_extensions.nvim",
-        ft = { "c", "cpp", "h", "hpp" },
-    },
-}
-
-return { lsp_config, mason, specific }
+return { lsp_config, mason }

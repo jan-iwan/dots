@@ -1,4 +1,4 @@
-local tex = require("snippets.utils.tex")
+local ts = require("snippets.utils.ts")
 
 local alphabet = {
     ["a"] = "alpha",
@@ -45,7 +45,7 @@ for trig, text in pairs(alphabet) do
     table.insert(snips, s(
     { trig = ";" .. trig, snippetType = "autosnippet", wordTrig = false },
     { t("\\" .. text), },
-    { condition = tex.in_math }
+    { condition = ts.in_math }
     ))
 end
 

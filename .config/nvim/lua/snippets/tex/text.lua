@@ -1,5 +1,5 @@
 local line_begin = require("luasnip.extras.expand_conditions").line_begin
-local tex = require("snippets.tex.utils")
+local tex = require("snippets.utils.tex")
 local utils = require("snippets.utils")
 
 return {

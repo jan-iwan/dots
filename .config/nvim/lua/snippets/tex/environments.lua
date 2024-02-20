@@ -1,5 +1,5 @@
-local line_begin = require("luasnip.extras.expand_conditions").line_begin
-local tex = require("snippets.tex.utils")
+local utils = require("snippets.utils")
+local tex = require("snippets.utils.tex")
 
 -- create latex environments
 local function new_env(name, label)
@@ -35,7 +35,7 @@ return {
         <>
         \end{document}
         ]], { i(0) }),
-        { condition = line_begin, }
+        { condition = utils.line_begin, }
     ),
 
     -- any environment
@@ -47,7 +47,7 @@ return {
         \end{<>}
 
         ]], { i(1), i(2), rep(1)}),
-        { condition = line_begin, }
+        { condition = utils.line_begin, }
     ),
 
     -- common environments
@@ -111,7 +111,7 @@ return {
                 fmta("[<>] <>", { i(1), r(2, "item") })
             })
         }),
-        { confition = line_begin }
+        { confition = utils.line_begin }
     ),
 
     s(
@@ -134,6 +134,6 @@ return {
                 fmta("[<>] <>", { i(1), r(2, "item") })
             })
         }),
-        { confition = line_begin }
+        { confition = utils.line_begin }
     ),
 }

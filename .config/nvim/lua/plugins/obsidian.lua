@@ -4,8 +4,8 @@ local obsidian = {
     lazy = true,
     -- only loads for
     event = {
-        "BufReadPre " .. vim.fn.expand("~") .. "/Documents/w/**.md",
-        "BufNewFile " .. vim.fn.expand("~") .. "/Documents/w/**.md",
+        "BufReadPre " .. vim.fn.expand("~") .. "/Documents/kasi/**.md",
+        "BufNewFile " .. vim.fn.expand("~") .. "/Documents/kasi/**.md",
     },
 
     dependencies = {
@@ -14,6 +14,7 @@ local obsidian = {
         "nvim-telescope/telescope.nvim",
         "nvim-treesitter/nvim-treesitter",
     },
+
     config = function()
         local obsidian = require("obsidian")
 
@@ -21,7 +22,7 @@ local obsidian = {
             workspaces = {
                 {
                     name = "w",
-                    path = "~/Documents/w",
+                    path = "~/Documents/kasi",
                 },
             },
 

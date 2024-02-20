@@ -1,11 +1,12 @@
-local tex = require("snippets.utils.tex")
+local line_begin = require("luasnip.extras.expand_conditions").line_begin
+local ts = require("snippets.utils.ts")
 
 return {
     -- square root
     s(
         { trig = "sr", snippetType = "autosnippet" },
         fmta([[\sqrt{<>}]], i(1)),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- square
@@ -15,34 +16,34 @@ return {
             t([[^2]]),
             fmta([[^{<>}]], i(1, "n")),
         }),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     s(
         { trig = "ee", snippetType = "autosnippet" },
         fmta([[e^{<>}]], i(1)),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- dot product
     s(
         { trig = "d.", snippetType = "autosnippet", wordTrig = false },
         t([[\cdot ]]),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- cross product / cartesian product
     s(
         { trig = "x.", snippetType = "autosnippet", wordTrig = false },
         t([[\times ]]),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- differential
     s(
         { trig = "df", snippetType = "autosnippet" },
         { t([[\dif ]]) },
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- derivative
@@ -69,7 +70,7 @@ return {
             fmta([[\pdv{<>}{<>}]], { r(1, "fun"), r(2, "var", i(nil, "x")) }),
             fmta([[\pdv{<>} <>]], { r(1, "var", i(nil, "x")), r(2, "fun") }),
         }),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
     -- nth derivative
     s(
@@ -87,7 +88,7 @@ return {
             fmta([[\partial_{<>} ]], { r(1, "var", i(nil, "x")) }),
             fmta([[\partial^{<>}_{<>} ]], { i(1, "2"), r(2, "var", i(nil, "x")) }),
         }),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- dot derivative
@@ -100,14 +101,14 @@ return {
     s(
         { trig = "/n", snippetType = "autosnippet", },
         { t([[\nabla ]]) },
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- limits
     s(
         { trig = "lim", snippetType = "autosnippet", },
         fmta([[\lim_{<>\to <>} <>]], { i(1), i(2), i(3) }),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- integral
@@ -119,7 +120,7 @@ return {
                 fmta([[\int_{<>}^{<>} <>]], { i(1, "a"), i(2, "b"), r(3, "integrand") }),
             })
         },
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- multiple integral
@@ -132,7 +133,7 @@ return {
                 fmta([[\iiint_{<>} <>]], { r(1, "domain"), r(2, "integrand") }),
             })
         },
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- closed integral
@@ -145,7 +146,7 @@ return {
                 fmta([[\oiiint_{<>} <>]], { r(1, "domain"), r(2, "integrand") }),
             })
         },
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- summation
@@ -158,20 +159,20 @@ return {
                 fmta([[\sum <>]], { r(1, "sum") }),
             }),
         },
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- complex conjugate
     s(
         { trig = "cj", snippetType = "autosnippet", },
         t([[\conj]]),
-        { condition = tex.in_math, }
+        { condition = ts.in_math, }
     ),
 
     -- subset
     s(
         { trig = "sst", snippetType = "autosnippet", wordTrig = false },
         t([[\subset]]),
-        { condition = tex.in_mathzone, }
+        { condition = ts.in_math, }
     ),
 }
