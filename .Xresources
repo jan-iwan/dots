@@ -3,7 +3,6 @@ Xcursor.size: 16
 *.background: #1d2021
 *.foreground: #ebdbb2
 *.font: xft:Terminus-11
-Sxiv.font: Terminus
 
 !black
 *.color0:  #263640
