@@ -129,32 +129,35 @@ function fish_right_prompt
         set_color normal
         echo -n (set_color white)':'(set_color -o brred)"$action"
     end
+
+    set_color normal
+
     if test $status_ahead -ne 0
-        echo -n ' '(set_color brmagenta)'⬆'
+        echo -n ' '(set_color brmagenta)'(->)'
     end
     if test $status_behind -ne 0
-        echo -n ' '(set_color brmagenta)'⬇'
+        echo -n ' '(set_color brmagenta)'(<-)'
     end
     if test $status_stashed -ne 0
-        echo -n ' '(set_color cyan)'✭'
+        echo -n ' '(set_color cyan)'(st)'
     end
     if test $status_added -ne 0
-        echo -n ' '(set_color green)'✚'
+        echo -n ' '(set_color brgreen)'(+)'
     end
     if test $status_deleted -ne 0
-        echo -n ' '(set_color red)'✖'
+        echo -n ' '(set_color red)'(-)'
     end
     if test $status_modified -ne 0
-        echo -n ' '(set_color blue)'✱'
+        echo -n ' '(set_color blue)'(*)'
     end
     if test $status_renamed -ne 0
-        echo -n ' '(set_color magenta)'➜'
+        echo -n ' '(set_color magenta)'(ren)'
     end
     if test $status_unmerged -ne 0
-        echo -n ' '(set_color yellow)'═'
+        echo -n ' '(set_color yellow)'(unmg)'
     end
     if test $status_untracked -ne 0
-        echo -n ' '(set_color white)'◼'
+        echo -n ' '(set_color white)'(untr)'
     end
 
     set_color normal
