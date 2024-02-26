@@ -1,0 +1,5 @@
+IndentWidth: 4
+SpaceBeforeParens: false
+PointerAlignment: Left
+SpaceAfterCStyleCast: true
+IndentCaseLabels: true
