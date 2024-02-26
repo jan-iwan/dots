@@ -147,7 +147,7 @@ local snippets = {
 
     event = { "InsertEnter", "CmdlineEnter" },
 
-    dependencies = {{ "rafamadriz/friendly-snippets" }},
+    -- dependencies = {{ "rafamadriz/friendly-snippets" }},
 
     build = "make install_jsregexp",
 
@@ -155,9 +155,9 @@ local snippets = {
 
     config = function()
         -- for friendly-snippets (VS Code-like)
-        require("luasnip.loaders.from_vscode").lazy_load({
-            exclude = "latex",
-        })
+        -- require("luasnip.loaders.from_vscode").lazy_load({
+        --     exclude = "latex",
+        -- })
 
         -- load custom lua snippets
         require("luasnip.loaders.from_lua").lazy_load({

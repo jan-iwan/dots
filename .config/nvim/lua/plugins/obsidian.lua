@@ -50,20 +50,14 @@ local obsidian = {
 
                 -- Trigger completion at 2 chars.
                 min_chars = 2,
-
-                -- Where to put new notes created from completion. Valid options are
-                --  * "current_dir" - put new notes in same directory as the current buffer.
-                --  * "notes_subdir" - put new notes in the default notes subdirectory.
-                new_notes_location = "current_dir",
-
-                -- Either 'wiki' ([[]]) or 'markdown' ([]).
-                preferred_link_style = "wiki",
-
-                -- Control how wiki links are completed with these (mutually exclusive) options:
-                prepend_note_id = true,
-                prepend_note_path = false,
-                use_path_only = false,
             },
+            -- Where to put new notes created from completion. Valid options are
+            --  * "current_dir" - put new notes in same directory as the current buffer.
+            --  * "notes_subdir" - put new notes in the default notes subdirectory.
+            new_notes_location = "current_dir",
+
+            -- Either 'wiki' ([[]]) or 'markdown' ([]).
+            preferred_link_style = "wiki",
 
             mappings = {
                 ["<CR>"] = {
@@ -135,22 +129,6 @@ local obsidian = {
                 time_format = "%H:%M",
                 -- A map for custom variables, the key should be the variable and the value a function
                 substitutions = {},
-            },
-
-            -- Optional, customize the backlinks interface.
-            backlinks = {
-                -- The default height of the backlinks location list.
-                height = 10,
-                -- Whether or not to wrap lines.
-                wrap = false,
-            },
-
-            -- Optional, customize the tags interface.
-            tags = {
-                -- The default height of the tags location list.
-                height = 10,
-                -- Whether or not to wrap lines.
-                wrap = false,
             },
 
             -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external

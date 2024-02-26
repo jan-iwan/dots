@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---# normal mode #--
+-- ## normal mode ## --
 
 -- easier write and quit
 vim.keymap.set("n", ";w", ":w<cr>")
@@ -24,7 +24,7 @@ vim.keymap.set({ "n", "t" }, "<C-A-k>", ":resize -2<CR>")
 vim.keymap.set({ "n", "t" }, "<C-A-l>", ":vertical resize +2<CR>")
 
 -- buffers
-vim.keymap.set("n", "<leader>c", vim.cmd.bdelete)
+vim.keymap.set("n", "<leader>q", vim.cmd.bdelete)
 vim.keymap.set("n", "<S-l>", vim.cmd.bnext)
 vim.keymap.set("n", "<S-h>", vim.cmd.bprevious)
 
@@ -32,8 +32,7 @@ vim.keymap.set("n", "<S-h>", vim.cmd.bprevious)
 vim.keymap.set("n", "<A-j>", "<Esc>:m .+1<CR>==")
 vim.keymap.set("n", "<A-k>", "<Esc>:m .-2<CR>==")
 
-
---# visual mode #--
+-- ## visual mode ## --
 
 -- for indenting
 vim.keymap.set("v", "<", "<gv")
@@ -48,7 +47,7 @@ vim.keymap.set("v", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("v", "p", '"_dP')
 
 
---# visual block mode #--
+-- ## visual block mode ## --
 
 -- move text up and down
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv")

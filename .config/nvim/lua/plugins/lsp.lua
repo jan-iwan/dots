@@ -86,7 +86,7 @@ local mason = {
 
         require("mason").setup({})
         require("mason-lspconfig").setup({
-            ensure_installed = {},
+            ensure_installed = { "clangd", "pyright", "lua_ls" },
             handlers = {
                 default_setup,
                 lua_ls = function()
@@ -96,10 +96,18 @@ local mason = {
                             Lua = { diagnostics = { globals = { "vim" } }, },
                         },
                     })
-                end
+                end,
             },
         })
     end
 }
 
-return { lsp_config, mason }
+local dap = {
+    { "mfussenegger/nvim-dap" },
+
+    {
+        "jay-babu/mason-nvim-dap.nvim"
+    }
+}
+
+return { lsp_config, mason, dap }

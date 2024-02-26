@@ -3,7 +3,7 @@ local all = {
     {
         "nvim-treesitter/nvim-treesitter",
 
-        event = { "BufReadPre", "InsertEnter" },
+        event = { "BufReadPre", "BufNewFile" },
 
         build = ":TSUpdate",
 
@@ -27,12 +27,26 @@ local all = {
                         local max_filesize = 1000 * 1024 -- 100 KB
                         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
                         if ok and stats and stats.size > max_filesize then
+                            print("Large file! Disabling Treesitter.")
                             return true
                         end
                     end,
 
                     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
                     additional_vim_regex_highlighting = false,
+                },
+
+                indent = { enable = true },
+
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        -- set to `false` to disable one of the mappings
+                        init_selection = "gn",
+                        node_incremental = "gn",
+                        scope_incremental = false,
+                        node_decremental = "gb",
+                    },
                 },
             }
         end
@@ -83,12 +97,6 @@ local all = {
 }
 
 local language_specific = {
-    -- c, c++
-    {
-        "p00f/clangd_extensions.nvim",
-        ft = { "c", "cpp", "h", "hpp" },
-    },
-
     -- latex
     {
         "lervag/vimtex",

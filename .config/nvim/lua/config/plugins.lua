@@ -46,10 +46,9 @@ if vim.loop.fs_stat(lazypath) then
     require("lazy").setup("plugins", lazy_opts)
 
     return
-
 else
     -- if lazy is not installed don't install it right away,
-    -- if there was no internet connection that would make nvim unusable
+    -- you may just not need it right away.
     function Install_lazy()
         print("Installing lazy.nvim! Please wait")
 
