@@ -1,3 +1,8 @@
+! I don't think i need this file but I like to keep it anyway. I firts used it
+! to configure URXVT and, some time after, sxiv.
+! I have no idea where I got the colors from, it's almost gruvbox except for
+! the cyan. The bright white is also a bit weird.
+
 Xcursor.theme: Simp1e-Gruvbox-Dark
 Xcursor.size: 16
 *.background: #1d2021
