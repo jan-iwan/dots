@@ -1,9 +1,8 @@
 {
-    "height": 16,
+    "height": 23,
     "spacing": 8,
 
     "modules-left": [
-        "image#mudkip",
         "river/tags",
         "river/mode",
         "wlr/taskbar"

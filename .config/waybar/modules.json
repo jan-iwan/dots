@@ -1,10 +1,4 @@
 {
-    "image#mudkip": {
-        "path": "/home/jiwn/z/img/xpm/mudkip.xpm",
-        "interval": 0,
-        "size": 23
-    },
-
     "river/window": {
         "format": "{}",
         "max-length": 48
@@ -18,35 +12,32 @@
     "wlr/taskbar": {
         "on-click": "activate",
         "on-click-middle": "close",
-        "tooltip-format": "{name}\n{title}",
-        "app_ids-mapping": {
-            "alacrittyf": "alacritty"
-        }
+        "tooltip-format": "{name}\n{title}"
     },
 
     "network": {
         "interval": 3,
         "format-disconnected": "net down",
-        "tooltip-format": "interface: {ifname}\nip: {gwaddr}",
+        "tooltip-format": "interface: {ifname}\nip: {ipaddr}",
         "format": "{bandwidthDownBytes} {bandwidthUpBytes}"
     },
 
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
         "tooltip-format": "CPU temp: {temperatureC}°C",
-        "on-click": "alacritty --class alacrittyf,alacrittyf -e watch -n.5 sensors"
+        "on-click": "foot watch -n.5 sensors"
     },
 
     "cpu": {
         "interval": 1,
         "format": "{usage}%",
-        "on-click": "alacritty --class alacrittyf,alacrittyf -e btop"
+        "on-click": "foot btop"
     },
 
     "memory": {
         "format": "{percentage}%",
         "interval": 3,
-        "on-click": "alacritty --class alacrittyf,alacrittyf -e btop"
+        "on-click": "foot btop"
     },
 
     "pulseaudio": {
@@ -55,7 +46,7 @@
         "on-click": "pavucontrol",
         "on-click-right": "amixer -D pipewire set Master toggle",
         "on-click-middle": "qpwgraph",
-        "on-click-forward": "alacritty --class alacrittyf,alacrittyf -e alsamixer",
+        "on-click-forward": "foot alsamixer",
         "scroll-step": 1
     },
 
