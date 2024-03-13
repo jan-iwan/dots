@@ -3,3 +3,7 @@ SpaceBeforeParens: false
 PointerAlignment: Left
 SpaceAfterCStyleCast: true
 IndentCaseLabels: true
+SortIncludes: Never
+AlignConsecutiveAssignments:
+  Enabled: true
+AlignEscapedNewlines: Left
