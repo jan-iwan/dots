@@ -1,0 +1,31 @@
+/** Some apps use titlebar class and some window */
+/* .titlebar, */
+/* window { */
+/* 	border-radius: 0; */
+/* 	box-shadow: none; */
+/* } */
+
+/** also remove shaddows */
+decoration {
+	box-shadow: none;
+}
+
+decoration:backdrop {
+	box-shadow: none;
+}
+
+headerbar.titlebar.default-decoration {
+    background: transparent;
+    padding: 0;
+    margin: 0 0 -17px 0;
+    border: none;
+    min-height: 0;
+    font-size: 0;
+    box-shadow: none;
+}
+
+window.csd,             /* gtk4? */
+window.csd decoration { /* gtk3 */
+    border: none;
+    box-shadow: none;
+}
