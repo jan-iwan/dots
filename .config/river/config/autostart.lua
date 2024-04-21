@@ -5,31 +5,35 @@ local M = {}
 local command = require("command")
 
 local programs = {
-    "waybar",
+    -- Status bar
+    "waybar --log-level error",
 
     -- redshift
     "gammastep -l -34:-58",
 
-    -- turn off display after timeout
-    "swayidle -w timeout 593 'wlopm --off \\*' resume 'wlopm --on \\*'" ,
+    -- Turn off display after timeout
+    "swayidle -w timeout 1111 'wlopm --off \\*' resume 'wlopm --on \\*'",
 
-    -- autostart desktop apps
-    "dapper -u",
+    -- Autostart desktop apps
+    "dex -a",
 
-    -- notifications
+    -- Notifications
     "dunst",
 
+    -- Music (i rarely use this)
     "mpd $HOME/.config/mpd/mpd.conf",
 
+    -- Clipboard history
     "wl-paste --watch cliphist store"
 }
 
-function M.start(restart)
+function M.setup(opts)
     for _, program in ipairs(programs) do
-        if restart ~= nil then
-            -- get first word of the program (i.e. program name)
+        if opts.restart == true then
+            -- Get first word of the program (i.e. program name)
             -- and kill it
             command.exec("killall", { program:match("%w+") }, true)
+            -- I should probably keep some list of PIDs instead of doing this
         end
 
         -- start the program

@@ -291,7 +291,7 @@ end
 
 local command = require("command")
 
-function M.apply()
+function M.setup()
     -- spawn apps
     for _, keybind in ipairs(apps) do
         local mod = modstr(keybind.mod)
@@ -310,7 +310,7 @@ function M.apply()
     -- local bit = require("bit") -- for luajit
     for key = 1, 9 do
         -- local tag_num = bit.lshift(1, key - 1)
-        local tag_num = 1 << (key - 1)
+        local tag_num = 1 << (key - 1) -- << only works in lua >= 5.2
 
         for cmd, mods in pairs(tags) do
             local mod = modstr(mods)

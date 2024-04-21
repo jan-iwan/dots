@@ -5,47 +5,45 @@ local wallpaper = {
     ["DP-3"] = "$HOME/z/img/bg.png",
 }
 
-local monitors = {
-    ["HDMI-A-1"] = "--preferred --pos 0,0",
-    ["DP-3"] = "--pos 1920,0",
-}
+local monitors = nil
 
 local river_settings = {
     ["default-layout"] = "rivertile",
 
     ["xcursor-theme"] = "Simp1e-Gruvbox-Dark",
 
-    ["background-color"] = "0x1d2021", -- #1d2021
-    ["border-color-focused"] = "0x79740e", -- #79740e
+    ["background-color"] = "0x1d2021",       -- #1d2021
+    ["border-color-focused"] = "0x79740e",   -- #79740e
     ["border-color-unfocused"] = "0x263640", -- #263640
+    ["border-color-urgent"] = "0xb16282",    -- #b16282
     ["border-width"] = "1",
 }
 
-local filters = {
+local rules = {
     -- floating windows
-    ["float-filter-add"] = {
-        ["app-id"] = {
+    ["float"] = {
+        ["-app-id"] = {
             "foot",
-            "alacritty",
             "FloatingWindow",
             "rofi",
             "Gimp",
             "thunar",
             "pavucontrol",
             "virt-manager",
-            "vimiv",
             "imv",
-            "python3",
+            "mpv",
+            "python3", -- for matplotlib
         },
-        ["title"] = {
+        ["-title"] = {
             "Telegram",
             "Helm",
             "",
         }
     },
     -- client side decorations
-    ["csd-filter-add"] = {
-        ["app-id"] = {
+    ["ssd"] = {
+        ["-app-id"] = {
+            "firefox"
         }
     },
 }
@@ -61,6 +59,7 @@ local gsettings = {
         ["gtk-theme"] = "Klaus",
         ["icon-theme"] = "gruvbox-plus-icon-pack",
         ["cursor-theme"] = river_settings["xcursor-theme"],
+        ["font-antialiasing"] = "grayscale",
     }
 }
 
@@ -69,8 +68,8 @@ local gsettings = {
 
 local command = require("command")
 
-function M.apply(restart)
-    if restart ~= nil then
+function M.setup(opts)
+    if opts.restart == true then
         command.exec("killall", { "swaybg" })
     end
 
@@ -78,25 +77,24 @@ function M.apply(restart)
         command.exec("riverctl", {
             "spawn", "swaybg -o " .. monitor .. " -i " .. image
         })
-
     end
 
-    local randr = "wlr-randr"
-
-    for monitor, settings in pairs(monitors) do
-        randr = randr .. " --output " .. monitor .. " " .. settings
+    if monitors ~= nil then
+        local randr = "wlr-randr"
+        for monitor, settings in pairs(monitors) do
+            randr = randr .. " --output " .. monitor .. " " .. settings
+        end
+        command.exec("riverctl", { "spawn", randr })
     end
-
-    command.exec("riverctl", { "spawn", randr })
 
     for key, value in pairs(river_settings) do
         command.exec("riverctl", { key, value })
     end
 
-    for filter, types in pairs(filters) do
-        for type, patterns in pairs(types) do
-            for _, pattern in ipairs(patterns) do
-                command.exec("riverctl", { filter, type, pattern })
+    for action, id_types in pairs(rules) do
+        for id_type, ids in pairs(id_types) do
+            for _, id in ipairs(ids) do
+                command.exec("riverctl", { "rule-add", id_type, id, action })
             end
         end
     end

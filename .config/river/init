@@ -1,9 +1,9 @@
 #!/bin/lua
 
-require("river.config.theme").apply()
-require("river.config.input").apply()
-require("river.config.autostart").start()
-require("river.config.keys").apply()
+require("river.config.theme").setup()
+require("river.config.input").setup()
+require("river.config.autostart").setup()
+require("river.config.keys").setup()
 
 local rivertile_opts = {
     "-view-padding", "0",

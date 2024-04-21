@@ -1,12 +1,12 @@
 local M = {}
 
--- mouse device name (run `riverctl list-inputs` to find it)
+-- mouse device name (run `riverctl list-inputs` to find yours)
 local mouse = "pointer-1133-16500-Logitech_G305"
 
 local input_settings = {
     -- keyboard
     { "set-repeat", "50", "300" },
-    { "keyboard-layout", "-variant", "altgr-intl", "-options", "nodeadkeys", "us" },
+    { "keyboard-layout", "-variant", "altgr-intl", "us" },
 
     -- mouse
     { "focus-follows-cursor", "disabled" },
@@ -17,7 +17,7 @@ local input_settings = {
 
 local command = require("command")
 
-function M.apply()
+function M.setup()
     for _, setting in ipairs(input_settings) do
         command.exec("riverctl", setting)
     end
