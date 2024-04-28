@@ -1,7 +1,24 @@
+set font "Terminus 11"
 set selection-clipboard clipboard
+
+set default-bg "#282828"
+set default-fg "#EBDBB2"
+
 set recolor-darkcolor "#D5C4A1"
 set recolor-lightcolor "#1D2021"
+
 set recolor-keephue false
 set recolor-reverse-video true
 set recolor
-set font Terminus
+
+set statusbar-fg "#EBDBB2"
+set statusbar-bg "#263640"
+set inputbar-bg "#4A697D"
+set inputbar-fg "#B8BB26"
+set completion-fg "#EBDBB2"
+set completion-bg "#263640"
+
+set statusbar-home-tilde true
+
+set highlight-color rgba(152, 151, 26, 0.3)
+set highlight-active-color rgba(215, 153, 33, 0.3)
