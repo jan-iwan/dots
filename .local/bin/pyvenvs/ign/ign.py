@@ -1,0 +1,60 @@
+# make image use the gruvbox color palette
+
+import argparse
+from ImageGoNord import GoNord
+
+desc_msg = "Image Go Nord"
+
+epilog_msg = """
+Palettes are just plain text files containing a newline separated
+list of hex color codes. e.g. #98971a. By default, gruvbox is used
+"""
+
+default_palette = "Gruvbox.txt"
+
+
+def add_palette(gn, palette_path):
+    palette = open(palette_path)
+    colors = palette.read().splitlines()
+
+    for color in colors:
+        gn.add_color_to_palette(color)
+
+    return
+
+# possible cli arguments
+
+
+def set_args(parser):
+    parser.add_argument("input", metavar="<input file>", type=str,
+                        help="Image used as input")
+    parser.add_argument("output", metavar="<output file>", type=str,
+                        help="Where to output the generated image")
+    parser.add_argument("-p", "--palette", help="Choose palette")
+
+    return
+
+
+def main():
+    parser = argparse.ArgumentParser(description=desc_msg, epilog=epilog_msg)
+    set_args(parser)
+    args = parser.parse_args()
+
+    gn = GoNord()
+    gn.reset_palette()
+
+    # set palette
+    if args.palette:
+        add_palette(gn, args.palette)
+    else:
+        gn.add_file_to_palette(default_palette)
+
+    image = gn.open_image(args.input)
+
+    # save result
+    gn.convert_image(image, save_path=args.output)
+    return
+
+
+if __name__ == "__main__":
+    main()
