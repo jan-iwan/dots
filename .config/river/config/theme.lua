@@ -23,6 +23,7 @@ local rules = {
     -- floating windows
     ["float"] = {
         ["-app-id"] = {
+            "",
             "foot",
             "FloatingWindow",
             "rofi",
@@ -33,17 +34,21 @@ local rules = {
             "imv",
             "mpv",
             "python3", -- for matplotlib
+            "qBittorrent",
+            "qpwgraph",
+            "org.corectrl.CoreCtrl",
         },
         ["-title"] = {
+            "",
             "Telegram",
             "Helm",
-            "",
         }
     },
     -- client side decorations
     ["ssd"] = {
         ["-app-id"] = {
-            "firefox"
+            "firefox",
+            "org.pwmt.zathura",
         }
     },
 }
@@ -69,6 +74,8 @@ local gsettings = {
 local command = require("command")
 
 function M.setup(opts)
+    opts = opts or {}
+
     if opts.restart == true then
         command.exec("killall", { "swaybg" })
     end

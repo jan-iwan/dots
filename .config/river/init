@@ -1,4 +1,4 @@
-#!/bin/lua
+#!/bin/luajit
 
 require("river.config.theme").setup()
 require("river.config.input").setup()

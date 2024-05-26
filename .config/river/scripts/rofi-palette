@@ -1,4 +1,4 @@
-#!/bin/lua
+#!/bin/luajit
 
 local colors = require("palette").icolors
 local prompt = "Gruvbox"

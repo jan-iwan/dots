@@ -1,4 +1,4 @@
-#!/bin/lua
+#!/bin/luajit
 
 local theme = "$HOME/.config/rofi/powermenu.rasi"
 local confirm_theme = "$HOME/.config/rofi/confirm.rasi"

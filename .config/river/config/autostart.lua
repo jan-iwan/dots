@@ -14,7 +14,7 @@ local programs = {
     -- Turn off display after timeout
     "swayidle -w timeout 1111 'wlopm --off \\*' resume 'wlopm --on \\*'",
 
-    -- Autostart desktop apps
+    -- Autostart desktop entries (~/.config/autostart/, etc.)
     "dex -a",
 
     -- Notifications
@@ -27,17 +27,32 @@ local programs = {
     "wl-paste --watch cliphist store"
 }
 
+local function kill(program)
+    -- Get first word of the program (i.e. program name)
+    -- and kill it
+    command.exec(
+        "killall",
+        { program:match("%w+") },
+        { wait = true }
+    )
+
+    -- I should probably keep some list of PIDs instead of doing this
+    -- Maybe not, idk
+end
+
 function M.setup(opts)
+    opts = opts or {}
+
     for _, program in ipairs(programs) do
         if opts.restart == true then
-            -- Get first word of the program (i.e. program name)
-            -- and kill it
-            command.exec("killall", { program:match("%w+") }, true)
-            -- I should probably keep some list of PIDs instead of doing this
+            kill(program)
         end
 
         -- start the program
-        command.exec("riverctl", { "spawn", program })
+        command.exec(
+            "riverctl",
+            { "spawn", program }
+        )
     end
 end
 
