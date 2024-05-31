@@ -1,19 +1,28 @@
-#!/bin/fish
+#!/bin/sh
 
-set color $(hyprpicker)
+# Pick a color from the screen using hyprpicker
+
+set -e
+
+COLOR_FILE="/tmp/picked_color.png"
+
+color=$(hyprpicker)
 
 # run only if a color was picked
-if test -n "$color"
+if [ $color ]
+then
+    # clipboard
     wl-copy $color
 
-    convert \
+    # ImageMagick. The command used to be 'convert', but it is now deprecated
+    magick \
         -size 16x16 \
         xc:$color \
-        /tmp/picked_color.png
+        $COLOR_FILE
 
     notify-send \
         --expire-time=60000 \
-        --icon=/tmp/picked_color.png \
+        --icon=$COLOR_FILE \
         --app-name="Color" \
         $color
-end
+fi

@@ -1,5 +1,8 @@
 #!/bin/luajit
 
+-- Use rofi to display and choose a color from a ~/.config/palette.lua,
+-- copy the selected color to the clipboard and show it as a notification
+
 local colors = require("palette").icolors
 local prompt = "Gruvbox"
 local theme = "$HOME/.config/rofi/palette.rasi"

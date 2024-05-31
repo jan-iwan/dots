@@ -28,7 +28,7 @@ local programs = {
 }
 
 local function kill(program)
-    -- Get first word of the program (i.e. program name)
+    -- Get first word of the program (i.e. program name, remove arguments)
     -- and kill it
     command.exec(
         "killall",

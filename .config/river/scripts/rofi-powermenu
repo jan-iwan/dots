@@ -60,7 +60,10 @@ local selected = command.capture(echo .. "|" .. rofi_cmd)
 for _, entry in ipairs(options) do
     if entry.opt == selected then
         local confirm = command.capture(string.format(
-            "printf 'Yes\nNo' | rofi -monitor -1 -dmenu -p 'Confirm' -mesg '%s?' -theme %s",
+            [[
+            printf 'Yes\nNo' |
+            rofi -monitor -1 -dmenu -p 'Confirm' -mesg '%s?' -theme %s
+            ]],
             entry.opt, confirm_theme
         ))
 
