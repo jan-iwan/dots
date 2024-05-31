@@ -13,4 +13,4 @@ local rivertile_opts = {
 
 -- replace init with rivertile
 -- the lua-posix package is needed to have access to execp
-require("posix.unistd").execp("rivertile", rivertile_opts)
+require("command").exec("rivertile", rivertile_opts)

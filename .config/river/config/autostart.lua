@@ -32,8 +32,7 @@ local function kill(program)
     -- and kill it
     command.exec(
         "killall",
-        { program:match("%w+") },
-        { wait = true }
+        { program:match("%w+") }
     )
 
     -- I should probably keep some list of PIDs instead of doing this
